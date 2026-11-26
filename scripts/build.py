@@ -72,7 +72,8 @@ ICONS = {
 def asset_url(prefix: str, name: str) -> str:
     """A site asset with its content hash, so a browser never keeps an old copy after a change
     (GitHub Pages lets browsers cache for 10 minutes)."""
-    digest = hashlib.sha1((SITE / name).read_bytes()).hexdigest()[:10]
+    # line endings left out: a Windows checkout (CRLF) and GitHub (LF) must agree
+    digest = hashlib.sha1((SITE / name).read_bytes().replace(b"\r\n", b"\n")).hexdigest()[:10]
     return f"{prefix}{name}?v={digest}"
 
 
