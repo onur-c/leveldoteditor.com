@@ -1,5 +1,7 @@
 # Publishes site/ to GitHub Pages on every push to master. The pages are committed already
 # built (scripts/build.py needs the private editor repository), so this only checks and uploads.
+# Upload and deploy are separate jobs: in one job the deploy step sometimes looked for the
+# artifact before GitHub listed it ("No artifacts named github-pages", 2026-11-26).
 name: Pages
 
 on:
@@ -17,11 +19,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -33,5 +32,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
