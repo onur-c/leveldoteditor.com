@@ -251,26 +251,26 @@ section > h2 { font-size: 28px; margin-bottom: 24px; }
 .tree pre { background: var(--bg-raised); box-shadow: 0 0 0 1px var(--line); font-size: 14px; }
 .tree pre span { color: var(--text-muted); font-family: var(--font); }
 
-/* diagram: the editor window */
-.screen-map {
-  display: grid; gap: 6px; margin: 8px 0 1.2em; padding: 6px;
-  background: var(--bg-sunken); border-radius: var(--radius); box-shadow: 0 0 0 1px var(--line);
-  grid-template-columns: 1fr 3fr 1.3fr;
-  grid-template-rows: auto auto 150px auto;
-  grid-template-areas: "top top top" "bar bar bar" "left view right" "status status status";
-  font-size: 14px;
+/* screenshot of the window with numbered pins */
+.annotated { margin: 8px 0 14px; }
+.annotated-img { position: relative; border-radius: var(--radius); box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(0, 0, 0, .5); }
+.annotated-img img { border-radius: var(--radius); }
+.pin {
+  position: absolute; transform: translate(-50%, -50%);
+  display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--pill); color: var(--pill-ink); font: 700 14px/1 var(--font);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, .45);
 }
-.screen-map .area {
-  background: var(--fill); border-radius: 6px; padding: 8px 10px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
+.doc ol.legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 24px; counter-reset: pin; }
+.doc ol.legend > li { counter-increment: pin; background: none; box-shadow: none; padding: 4px 0 4px 38px; }
+.doc ol.legend > li::before {
+  content: counter(pin); left: 0; top: 4px; background: var(--pill); color: var(--pill-ink);
 }
-.screen-map small { display: block; }
-.a-top { grid-area: top; }
-.a-bar { grid-area: bar; }
-.a-left { grid-area: left; }
-.a-view { grid-area: view; background: var(--accent-soft) !important; font-weight: 600; }
-.a-right { grid-area: right; }
-.a-status { grid-area: status; }
+
+/* a strip of the app's own UI */
+.ui-strip { margin: 6px 0 14px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.ui-strip img { width: auto; max-width: 100%; border-radius: 8px; box-shadow: 0 0 0 1px var(--line), 0 10px 24px -14px rgba(0, 0, 0, .6); }
+.ui-strip figcaption { color: var(--text-muted); font-size: 14px; }
 
 /* key cards and chips */
 .keycards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 8px 0 1em; }
@@ -367,8 +367,8 @@ section > h2 { font-size: 28px; margin-bottom: 24px; }
   .flow { flex-direction: column; }
   .flow .edge { max-width: none; padding: 6px 0; }
   .flow .edge::after { content: "↓"; }
-  .screen-map { grid-template-columns: 1fr 1fr; grid-template-rows: auto; grid-template-areas: "top top" "bar bar" "view view" "left right" "status status"; }
-  .a-view { min-height: 90px; }
+  .doc ol.legend { grid-template-columns: 1fr; }
+  .pin { width: 20px; height: 20px; font-size: 11px; box-shadow: 0 0 0 2px rgba(0, 0, 0, .45); }
   .doc table { display: block; overflow-x: auto; }
   .sc .keys { max-width: 50%; }
   .pager { flex-direction: column; }

@@ -5,20 +5,23 @@ The screen, selecting, moving things and the camera.
 
 ## The screen
 
-<div class="screen-map" role="img" aria-label="The editor window: menu and toolbar on top, Blockout bar below it, Tools panel on the left, 3D view in the middle, Outliner and Details on the right, status bar at the bottom">
-  <div class="area a-top">Menu and toolbar</div>
-  <div class="area a-bar">Blockout bar: shapes</div>
-  <div class="area a-left">Tools<small>[[F6]]</small></div>
-  <div class="area a-view">3D view</div>
-  <div class="area a-right">Outliner and Details<small>[[F7 / Alt+O]]</small></div>
-  <div class="area a-status">Status bar: hints, Entities and Props drawers</div>
-</div>
+<figure class="annotated"><div class="annotated-img"><img src="../img/ui-window.jpg" alt="The Leveldot Editor window with its areas numbered" width="1920" height="1030" loading="lazy"><span class="pin" style="left:56%;top:4.9%">1</span><span class="pin" style="left:49.5%;top:9.7%">2</span><span class="pin" style="left:6.5%;top:73%">3</span><span class="pin" style="left:62.5%;top:68%">4</span><span class="pin" style="left:90.4%;top:40.8%">5</span><span class="pin" style="left:95.5%;top:55.7%">6</span><span class="pin" style="left:67.7%;top:98.4%">7</span></div></figure>
 
-- **Tools** on the left: the four selection modes and the tools for what is selected.
-- **Outliner** on the right lists the objects of the level; **Details** shows the selected one.
-- **Status bar** at the bottom always says what you can do now. Read it when a step does not work.
+<ol class="legend">
+<li><strong>Menu and toolbar:</strong> modes, Move / Rotate / Scale, Play, Export.</li>
+<li><strong>Blockout bar:</strong> the shapes you draw.</li>
+<li><strong>Tools</strong> [[F6]]: selection modes and the tools for what is selected.</li>
+<li><strong>3D view:</strong> where you build.</li>
+<li><strong>Outliner:</strong> every object of the level.</li>
+<li><strong>Details:</strong> the selected object's settings.</li>
+<li><strong>Status bar:</strong> what you can do now. Read it when a step does not work.</li>
+</ol>
+
+Hide or show the side panels: Tools [[F6]], Outliner and Details [[F7 / Alt+O]].
 
 ## Selection modes
+
+<figure class="ui-strip"><img src="../img/ui-modes.jpg" alt="The four selection mode buttons, 1 to 4, at the top of the Tools panel" width="227" height="49" loading="lazy"><figcaption>Top of the Tools panel</figcaption></figure>
 
 <div class="keycards">
   <div class="keycard">[[1]]<span>Vertex</span></div>
@@ -38,6 +41,8 @@ The mode decides what a click selects. These four keys never change.
 | Everything, nothing | [[Ctrl+A]], [[Alt+A]] |
 
 ## Move, rotate, scale
+
+<figure class="ui-strip"><img src="../img/ui-transform.jpg" alt="The Move, Rotate and Scale buttons W, E, R on the toolbar" width="156" height="42" loading="lazy"><figcaption>On the toolbar</figcaption></figure>
 
 <div class="keycards">
   <div class="keycard">[[W]]<span>Move</span></div>

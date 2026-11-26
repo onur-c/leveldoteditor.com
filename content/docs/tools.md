@@ -7,19 +7,9 @@ A short tour, grouped by job. Every command and its key is on the [Shortcuts](sh
 
 Pick a shape on the Blockout bar, drag on the grid or on any surface, then pull up the height. [[Enter]] confirms, [[Esc]] cancels.
 
-<div class="chips">
-  <span class="chip">Box [[Shift+B]]</span>
-  <span class="chip">Plane [[Shift+P]]</span>
-  <span class="chip">Polygon</span>
-  <span class="chip">Spline</span>
-  <span class="chip">Cylinder</span>
-  <span class="chip">Cone</span>
-  <span class="chip">Sphere</span>
-  <span class="chip">Ramp</span>
-  <span class="chip">Stairs</span>
-  <span class="chip">Arch</span>
-  <span class="chip">Decal</span>
-</div>
+<figure class="ui-strip"><img src="../img/ui-blockout.jpg" alt="The Blockout bar: Box, Plane, Polygon, Height, Spline, Cylinder, Cone, Sphere, Ramp, Stairs, Arch, Decal" width="750" height="55" loading="lazy"><figcaption>The Blockout bar</figcaption></figure>
+
+Quick keys: Box [[Shift+B]], Plane [[Shift+P]]. **Height** sets where a shape starts above the grid.
 
 **Draw on** chooses where a shape starts: the surface under the mouse, or the grid.
 

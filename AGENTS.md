@@ -60,8 +60,10 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   kapakçığına çevirir ve editörün `SHORTCUTS.md`'sinde olmayan bir tuşta durur (fare hareketleri ve araç
   içi tuşlar `EXTRA_KEYS`'te). Shortcuts sayfası tümüyle `SHORTCUTS.md`'den üretilir.
 - **Diyagramlar** HTML + CSS'tir, resim değil: `.flow` (kutular ve oklar; telefonda alt alta), `.tree`
-  (dosya ağacı), `.screen-map` (pencere yerleşimi), `.keycards`, `.chips`, `.cards`. Tema renklerini
-  kullanırlar, ikisinde de okunur.
+  (dosya ağacı), `.annotated` (pencere görüntüsü + numaralı `.pin`'ler, altında `ol.legend`),
+  `.ui-strip` (uygulamadan kesilmiş küçük arayüz şeridi), `.keycards`, `.cards`. Tema renklerini
+  kullanırlar, ikisinde de okunur. Arayüz görüntüleri `site/img/ui-*.jpg`: kullanıcının verdiği gerçek
+  ekran kesitleri; `.pin` konumları görüntüdeki yüzde koordinatlarıdır, görüntü değişince güncellenir.
 - **Ortak üst bar ve alt bilgi** `build.py`'deki `header()` / `footer()`'dadır; `site/index.html`'de
   `<!-- header -->` / `<!-- footer -->` işaretleri arasına o yazar. Logonun sağ üstündeki **Alpha** hapı
   orada. Bağlantılar (itch.io, Discord, YouTube) yalnız `build.py` `LINKS`'te ve `index.html` gövdesinde;
