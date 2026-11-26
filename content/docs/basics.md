@@ -84,22 +84,6 @@ Hold [[Caps Lock]] while you drag a gizmo or Grab, and point the mouse at someth
 | Frame the selection | [[F]] |
 | Four views | [[Alt+Q / Ctrl+Alt+Q]] |
 
-## Right mouse button
-
-The right button does more than open a menu. What it does depends on the keys you hold.
-
-| Do | How |
-|---|---|
-| Open the tools of the current mode | [[Right-click]] without moving the mouse |
-| Look around, fly | Hold [[Right mouse]] (see Camera) |
-| Change the fly speed | Hold [[Right mouse]] and turn the [[Wheel]] |
-| Take the material of a face | [[Shift+Right-click]] the face |
-| Continue the selected face's texture onto the next face | [[Alt+Right-click]] the next face |
-| Carry a texture along a strip (an arch, a pipe) | [[Ctrl+Alt+Right-click]] the next face, keep the button down and move over the following faces |
-| Cancel a gizmo drag | [[Right-click]] while dragging |
-
-The right-click menu changes with the mode: in Face mode it holds face tools, in Object mode object tools, and so on.
-
 ## Undo and repeat
 
 | Do | Key |

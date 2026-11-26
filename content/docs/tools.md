@@ -17,20 +17,41 @@ Quick keys: Box [[Shift+B]], Plane [[Shift+P]]. **Height** sets where a shape st
 
 Select something first, then use a tool. Its settings show at the bottom left of the 3D view.
 
+### Shape
+
 | Tool | Key | What it does |
 |---|---|---|
 | Extrude | [[Shift+E]] | Grows faces out, or walls from open edges |
 | Inset | [[I]] | Shrinks faces and adds a frame around them |
 | Bevel | [[B]] | Rounds or chamfers edges and corners |
-| Loop Cut | [[Ctrl+R]] | Adds a ring of edges around the mesh |
-| Knife | [[Shift+K]] | Cuts new edges point by point |
+| Push Through | | Pushes faces into a wall until it is pierced |
 | Opening | [[Ctrl+Shift+O]] | Cuts a door or window through a wall |
+| Solidify | | Gives faces a thickness |
 | Hollow | [[Ctrl+Shift+W]] | Turns a solid block into a room |
+| Jumble | [[J]] | Moves vertices by a pattern: hills, ridges, cells |
+
+### Cut and split
+
+| Tool | Key | What it does |
+|---|---|---|
+| Loop Cut | [[Ctrl+R]] | Adds a ring of edges around the mesh |
+| Cut | [[C]] | Drag a line across faces to cut them |
+| Knife | [[Shift+K]] | Cuts new edges point by point |
+| Subdivide | [[Alt+V]] | Splits faces into a grid |
+| Slice | [[Shift+X]] | Splits whole objects along a line |
+| Detach Faces | [[N]] | Moves faces into a new object |
+
+### Join and copy
+
+| Tool | Key | What it does |
+|---|---|---|
 | Bridge | [[Shift+C]] | Joins two rows of edges with faces |
 | Fill Hole | [[Ctrl+F]] | Closes an opening |
-| Boolean difference | [[Ctrl+Minus / Ctrl+Shift+Numpad Subtract]] | Cuts one object out of another |
 | Merge Objects | [[M]] | Joins objects into one |
-| Jumble | [[J]] | Moves vertices by a pattern: hills, ridges, cells |
+| Boolean difference | [[Ctrl+Minus / Ctrl+Shift+Numpad Subtract]] | Cuts one object out of another |
+| Mirror | [[Shift+Z]] | Mirrors objects (X; Y and Z in the menu) |
+| Array | | Copies in a line or around a circle |
+| Group | [[Ctrl+G]] | Parts that select and move together |
 
 ## Texture and UV
 
@@ -41,15 +62,19 @@ Select something first, then use a tool. Its settings show at the bottom left of
 | Make a material from an image | [[Ctrl+Shift+I]], or drop the image on the window |
 | Pick a face's material | [[Shift+Right-click]] |
 | Continue a texture across an edge | [[Alt+Right-click]] |
+| Carry a texture along a strip (an arch, a pipe) | [[Ctrl+Alt+Right-click]] the next face; keep the button down to go on |
 | Fit the texture to a face | [[Ctrl+Alt+Numpad 5]] |
+| Fit a rectangle of an atlas to each face | [[Shift+H]] |
+| Copy and paste a face's UV | [[Ctrl+Alt+C]], [[Ctrl+Alt+V]] |
 | Show a UV checker | [[Alt+Shift+U]] |
 
-Hotspot atlases, a UV editor, decals and vertex colours are in the **Texture** menu.
+A UV editor, decals and vertex colours are in the **Texture** menu.
 
 ## Props
 
 - **File → Import Models…** brings in GLB, glTF or FBX files (with Blender installed, `.blend` and `.obj` too). Dropping files on the window does the same.
 - Each model becomes a tile in the **Props** drawer [[Shift+M]]. Drag a tile into the level; the wheel turns it before you drop it.
+- **Mark as Prop** turns your own geometry into a reusable model. Edit it once, every copy follows.
 
 ## Entities
 
@@ -65,6 +90,8 @@ Entities are objects that do something in the game: lights, doors, coins, trigge
 
 - Open the **Entities** drawer with [[Shift+A]]. It also holds the built-in set: lights, effects (smoke, fire, rain…), doors and lifts, Player Start, Level Exit.
 - [[Alt+Enter]] shows the selected entity's settings and events.
+- **Movers** make a group move on its own, without code: a door, a lift, a platform, a spinner (**Add Mover to Group**).
+- A **Physics Body** falls and can be pushed in the game; **Settle** drops it where it comes to rest.
 
 ## Logic
 
