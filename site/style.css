@@ -143,6 +143,8 @@ section > h2 { font-size: 28px; margin-bottom: 24px; }
 .feature { background: var(--bg-raised); border-radius: var(--radius); padding: 22px 22px 18px; box-shadow: 0 0 0 1px var(--line); }
 .feature h3 { font-size: 18px; }
 .feature p { margin: 0; color: var(--text-muted); }
+.feature .exp-line { margin-top: 10px; }
+.exp-line .tag-exp { margin: 0 6px 0 0; }
 
 .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .shots figure { margin: 0; }
