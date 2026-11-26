@@ -1,0 +1,2274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commands and keyboard shortcuts · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: commands and keyboard shortcuts.">
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="docs">
+<!-- header (scripts/build.py writes this block) -->
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="../index.html" aria-label="Leveldot home">
+      <picture>
+        <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
+        <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
+      </picture>
+    </a>
+    <nav class="top-nav" aria-label="Site">
+      <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
+      <a class="nav-link" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg><span>Discord</span></a>
+      <a class="nav-link" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg><span>YouTube</span></a>
+      <a class="button primary small" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download</span></a>
+    </nav>
+  </div>
+</header>
+<!-- /header -->
+<div class="docs-layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="side-title">Documentation</p>
+    <a href="index.html">Install</a>
+    <a href="link-godot.html">Link Godot</a>
+    <a href="tools.html">Tools</a>
+    <a href="shortcuts.html" aria-current="page">Shortcuts</a>
+    <a href="tutorial.html">Tutorial</a>
+  </nav>
+  <main class="doc page-shortcuts" id="main">
+    <h1>Commands and keyboard shortcuts</h1>
+    <label class="filter"><span class="visually-hidden">Filter commands</span><input id="filter" type="search" placeholder="Filter commands or keys…" autocomplete="off"></label><p id="filter-empty" class="muted" hidden>No command matches.</p>
+    <p>Every command the editor registers, grouped like Help → Keyboard Shortcuts, by the kind of work; Keys — means no default key; Mode is the selection mode the command works in (Any: every mode); Where is the menu, or 3D View for the view's own header (View ▾, Overlays ▾, Snap, Checker), — for a command that lives only on a bar, a panel or a window. These are the default keys; Help → Keyboard Shortcuts changes them for one user, and Help → Find Action (Ctrl+K) runs any command by name. <code>1</code> / <code>2</code> / <code>3</code> / <code>4</code> (Vertex / Edge / Face / Object Mode) cannot be changed. Camera and mouse gestures (right mouse + WASDQE, Alt + left drag, Shift / Alt + right-click material gestures, double-click selection, Shift + gizmo drag extrude, Ctrl + Shift + gizmo drag Push Through) are in the <a href="tools.html">manual</a>.</p>
+<h2 id="file">File</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Choose Godot Editor…</td>
+<td>Any</td>
+<td>File</td>
+<td>Choose the Godot editor program Open in Godot starts (for example Godot_v4.x-stable_win64.exe). Remembered for every project.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Delete Level</td>
+<td>Any</td>
+<td>File</td>
+<td>Delete Level: takes the open level out of the project (Ctrl+Z puts it back). Level Exits of other levels that lead to it show in Validation Issues as a destination that is not found.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Duplicate Level</td>
+<td>Any</td>
+<td>File</td>
+<td>Duplicate Level: copy the open level and open the copy (Ctrl+Z removes it). In the copy, exits and reactions that led back to the original level now lead to the copy. Materials, models and entity types are shared.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+E</td>
+<td>Export to Folder…</td>
+<td>Any</td>
+<td>File</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>Export to Godot</td>
+<td>Any</td>
+<td>File</td>
+<td>Export into the linked Godot game (File → Link Godot Project…) or the folder chosen last with Export to Folder…; Godot refreshes the level by itself. Unsaved changes are saved first.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Import Level from Project…</td>
+<td>Any</td>
+<td>File</td>
+<td>Import Level from Project: copy every level of another project (choose its project.json) into this one, with its materials, models and entity types. Files with the same name are never overwritten, and the other project is not changed.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Import Models…</td>
+<td>Any</td>
+<td>File</td>
+<td>Import Models: copy GLB, glTF or FBX files into the project; each becomes a tile in the Props drawer. Dropping files or a folder on the window does the same.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+I</td>
+<td>Import Texture…</td>
+<td>Any</td>
+<td>File</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Link Godot Project…</td>
+<td>Any</td>
+<td>File</td>
+<td>Link Godot Project: choose your game's folder (the one with project.godot). Leveldot sets up the Leveldot Bridge there, so exports go to the game and Godot refreshes the level by itself.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>New Level</td>
+<td>Any</td>
+<td>File</td>
+<td>New Level: an empty level in this project, opened at once (Ctrl+Z takes it away). Every level is saved with the project and exported into its own folder of the game.</td>
+</tr>
+<tr>
+<td>Ctrl+N</td>
+<td>New Project</td>
+<td>Any</td>
+<td>File</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+PageDown</td>
+<td>Next Level</td>
+<td>Any</td>
+<td>File</td>
+<td>Open the next level of this project (a view change: nothing is saved or undone; the selection and the camera of each level are kept).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Open Destination Level</td>
+<td>Any</td>
+<td>File</td>
+<td>Open the level the selected Level Exit leads to, with its Player Start selected. If it is in another project, this level is saved first when it has changes.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Open in Godot</td>
+<td>Any</td>
+<td>File</td>
+<td>Open the linked game in the Godot editor. If Godot already has it open, that window comes to the front. Choose the Godot editor once with File → Choose Godot Editor… if it is not found.</td>
+</tr>
+<tr>
+<td>Ctrl+O</td>
+<td>Open Project…</td>
+<td>Any</td>
+<td>File</td>
+<td></td>
+</tr>
+<tr>
+<td>F5</td>
+<td>Play Level</td>
+<td>Any</td>
+<td>File</td>
+<td>Play Level: saves, exports to the linked game and starts it at this level, at the selected Player Start or else the level's default one.</td>
+</tr>
+<tr>
+<td>Ctrl+PageUp</td>
+<td>Previous Level</td>
+<td>Any</td>
+<td>File</td>
+<td>Open the previous level of this project (a view change: nothing is saved or undone; the selection and the camera of each level are kept).</td>
+</tr>
+<tr>
+<td>Ctrl+Q</td>
+<td>Quit</td>
+<td>Any</td>
+<td>File</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Recovery Snapshots…</td>
+<td>Any</td>
+<td>Window</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Rename Level…</td>
+<td>Any</td>
+<td>File</td>
+<td>Rename the open level: its name turns into a field above the Outliner (Enter renames, Esc keeps it). The only level of a project is the project, so its name is the project's.</td>
+</tr>
+<tr>
+<td>Ctrl+S</td>
+<td>Save</td>
+<td>Any</td>
+<td>File</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Shift+S</td>
+<td>Save As…</td>
+<td>Any</td>
+<td>File</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Snapshot Now</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="modes-and-transform">Modes and Transform</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Edge Mode</td>
+<td>Any</td>
+<td>Select</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Face Mode</td>
+<td>Any</td>
+<td>Select</td>
+<td></td>
+</tr>
+<tr>
+<td>G</td>
+<td>Grab</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Grab: the selection follows the mouse. X / Y / Z lock an axis, Shift + X / Y / Z a plane; type a distance on a locked axis. Click or Enter confirms, Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Local Orientation</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The gizmo's handles point along the active object's own axes (its rotation): move a turned object along its own X. Move, Rotate and the second X / Y / Z press of Grab follow it; Scale of whole objects stays on the level's axes.</td>
+</tr>
+<tr>
+<td>W</td>
+<td>Move</td>
+<td>Any</td>
+<td>Toolbar</td>
+<td>Move (W): drag an arrow (one axis), a square (its plane) or the centre circle (the view plane); snaps to the grid.</td>
+</tr>
+<tr>
+<td>Comma</td>
+<td>Next Orientation</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Switch the transform orientation: World → Local → Normal → World (the picker right of W / E / R shows it).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Normal Orientation</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Face / Edge / Vertex Mode: the gizmo's Y points out of the selection (its normal), X along a tangent; in Object Mode it is Local. Move, Rotate and the second X / Y / Z press of Grab follow it; Scale of whole objects stays on the level's axes.</td>
+</tr>
+<tr>
+<td>Alt+Down</td>
+<td>Nudge Down</td>
+<td>Any</td>
+<td>—</td>
+<td>Move the selection one grid step along the world axis nearest to this direction on screen.</td>
+</tr>
+<tr>
+<td>Alt+Left</td>
+<td>Nudge Left</td>
+<td>Any</td>
+<td>—</td>
+<td>Move the selection one grid step along the world axis nearest to this direction on screen.</td>
+</tr>
+<tr>
+<td>Alt+Right</td>
+<td>Nudge Right</td>
+<td>Any</td>
+<td>—</td>
+<td>Move the selection one grid step along the world axis nearest to this direction on screen.</td>
+</tr>
+<tr>
+<td>Alt+Up</td>
+<td>Nudge Up</td>
+<td>Any</td>
+<td>—</td>
+<td>Move the selection one grid step along the world axis nearest to this direction on screen.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Object Mode</td>
+<td>Any</td>
+<td>Select</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Object Pivot to Bottom Centre</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Move the pivot of each selected geometry object to the middle of the bottom of its box (where it stands on the floor). The mesh stays where it is. One undo step.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Object Pivot to Centre</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Move the pivot of each selected geometry object to the middle of its box. The mesh stays where it is. One undo step.</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>Object Pivot to Selection</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Move the object's pivot to the selected vertex, edge, face or the point set with P. The mesh stays where it is. Rotate and Scale turn around the pivot, and it is the object's origin in the game.</td>
+</tr>
+<tr>
+<td>P</td>
+<td>Pivot to Corner</td>
+<td>Any</td>
+<td>—</td>
+<td>Put the pivot on the corner or face centre under the mouse; E rotates and R scales around it. P over empty space returns it to the centre.</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Rotate</td>
+<td>Any</td>
+<td>Toolbar</td>
+<td>Rotate (E): drag a ring around the selection centre (the outer ring turns round the view); snaps to the angle step.</td>
+</tr>
+<tr>
+<td>R</td>
+<td>Scale</td>
+<td>Any</td>
+<td>Toolbar</td>
+<td>Scale (R): drag a handle (one axis), a square (its two axes) or the centre circle (all three), Shift = uniform; snaps to 0.1 steps.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Vertex Mode</td>
+<td>Any</td>
+<td>Select</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>World Orientation</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The gizmo's handles point along the level's axes. Move, Rotate and the second X / Y / Z press of Grab follow it; Scale of whole objects stays on the level's axes.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edit">Edit</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Add Mover to Group</td>
+<td>Any</td>
+<td>—</td>
+<td>Details → Group → Add Mover: adds a Mover to the selected group so doors, elevators and platforms can move from the level's reactions, without game code.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Apply Array</td>
+<td>Any</td>
+<td>—</td>
+<td>Add the copies as shown (Enter). One undo step.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Array</td>
+<td>Object</td>
+<td>Edit</td>
+<td>Make copies of the selected objects in a row (Linear) or around a centre (Radial). Set the count and spacing on the card; Enter applies, Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Cancel Array</td>
+<td>Any</td>
+<td>—</td>
+<td>Close Array without adding anything (Esc).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Collections…</td>
+<td>Any</td>
+<td>Edit</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+C</td>
+<td>Copy Objects</td>
+<td>Object</td>
+<td>Edit</td>
+<td>Copy the selected objects with their materials, settings and reactions, to paste into this level or another level of the project (Ctrl+V). A text field keeps Ctrl+C for its own text.</td>
+</tr>
+<tr>
+<td>Ctrl+X</td>
+<td>Cut Objects</td>
+<td>Object</td>
+<td>Edit</td>
+<td>Copy the selected objects (as Copy Objects) and delete them, as one undo step: Ctrl+V puts them into this level or another level of the project.</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td>Delete</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Delete the selection in one undo step. Object Mode: remove the selected objects. Face Mode: remove the selected faces. Edge and Vertex Modes: remove the faces that use the selected edges or vertices.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Delete Object</td>
+<td>Any</td>
+<td>—</td>
+<td>Delete the selected objects, whatever mode the 3D view is in. One undo step.</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>Duplicate</td>
+<td>Any</td>
+<td>Edit</td>
+<td></td>
+</tr>
+<tr>
+<td>Shift+D</td>
+<td>Duplicate and Grab</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Copy the current selection in one undo step. Object Mode: move the copies with the mouse. Esc cancels the copy. Element modes: run Duplicate.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+D</td>
+<td>Duplicate Linked</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Copy the selected objects so they share one mesh: changing the shape of one changes every linked copy. Make Unique breaks the link. The copies follow the mouse; Esc leaves nothing behind.</td>
+</tr>
+<tr>
+<td>Ctrl+G</td>
+<td>Group Objects</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Group the selected objects so they select and move together. Groups can contain groups. Ctrl+Shift+G ungroups without moving anything.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Group Pivot to Bottom Centre</td>
+<td>Any</td>
+<td>—</td>
+<td>Put the selected group's pivot (its node's origin in Godot) at the bottom centre of its parts, where a new group's pivot starts. Moves no object. One undo step.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Make Object Moving</td>
+<td>Any</td>
+<td>—</td>
+<td>Details → Motion: the selected single object moves in the game (a platform, a door): it is wrapped in a Moving group of its own, one undo step. Ungroup (Ctrl+Shift+G) makes it Static again.</td>
+</tr>
+<tr>
+<td>Alt+D / Alt+U</td>
+<td>Make Unique</td>
+<td>Any</td>
+<td>Edit</td>
+<td>The selected linked copies get a mesh of their own: later edits no longer reach the other copies.</td>
+</tr>
+<tr>
+<td>Ctrl+V</td>
+<td>Paste Objects</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Paste (Ctrl+V): the copied objects appear where the originals were, selected; W or G moves them. Connections between copied objects are kept; connections to objects not in this level are dropped, and the status bar says so.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Physics Body</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Make the selected shapes and props physical: they fall, tip over and can be pushed in the game (crates, barrels). Use it again to make them fixed.</td>
+</tr>
+<tr>
+<td>Ctrl+Y</td>
+<td>Redo</td>
+<td>Any</td>
+<td>Edit</td>
+<td></td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Rename</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Rename the selected object in the Outliner (Enter confirms, Esc cancels)</td>
+</tr>
+<tr>
+<td>Shift+R</td>
+<td>Repeat Last</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Repeat Last: do the last Extrude, Inset or Bevel again on the selection, with the same amount. Press it again to stack storeys or steps.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Settle</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Drop the selected shapes and props so they fall and come to rest on what is under them. Enter keeps where they land, Esc puts them back.</td>
+</tr>
+<tr>
+<td>Ctrl+Z</td>
+<td>Undo</td>
+<td>Any</td>
+<td>Edit</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Shift+G</td>
+<td>Ungroup</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Ungroup the selected object group(s), keeping every object's world position, rotation, scale and geometry intact. One undo step.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3d-view">3D View</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+<td>Frame Selection / All</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Frame everything that is selected in the 3D view; with nothing selected, the whole level</td>
+</tr>
+<tr>
+<td>Alt+F</td>
+<td>Front</td>
+<td>Any</td>
+<td>3D View</td>
+<td></td>
+</tr>
+<tr>
+<td>H</td>
+<td>Hide Selected</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Hide the selected objects (one undo step). Alt+H shows everything again; the Outliner's Show column works per object.</td>
+</tr>
+<tr>
+<td>Alt+Numpad Add / BracketRight</td>
+<td>Larger Grid</td>
+<td>Any</td>
+<td>3D View</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt+P</td>
+<td>Perspective</td>
+<td>Any</td>
+<td>3D View</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt+H</td>
+<td>Show All</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Show every hidden object again (one undo step). Objects hidden through a group or collection stay hidden by it.</td>
+</tr>
+<tr>
+<td>Ctrl+H</td>
+<td>Show Only Selected</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Hide everything except the selected objects (one undo step). Alt+H shows everything again.</td>
+</tr>
+<tr>
+<td>Alt+S</td>
+<td>Side</td>
+<td>Any</td>
+<td>3D View</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt+Numpad Subtract / BracketLeft</td>
+<td>Smaller Grid</td>
+<td>Any</td>
+<td>3D View</td>
+<td></td>
+</tr>
+<tr>
+<td>Shift+S / Alt+Numpad Period</td>
+<td>Snap to Grid</td>
+<td>Any</td>
+<td>3D View</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt+T</td>
+<td>Top</td>
+<td>Any</td>
+<td>3D View</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="overlays">Overlays</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+Shift+B</td>
+<td>Back Faces</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Draw the side of a face that looks away as see-through blue stripes instead of leaving it out: a plane seen from behind, a room seen from outside.</td>
+</tr>
+<tr>
+<td>Alt+Shift+K</td>
+<td>Collision</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Show what the player will collide with in the game, as see-through fills. Also shows the invisible ramps added in front of steps so stairs can be walked up.</td>
+</tr>
+<tr>
+<td>Alt+Shift+C</td>
+<td>Connection Lines</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Draw the connections of the selected entities in the 3D view: green arrows to what they trigger, blue arrows from what triggers them. The Logic view always draws them.</td>
+</tr>
+<tr>
+<td>Alt+Shift+L</td>
+<td>Edge Lengths</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Write the length in metres on the edges of what is selected: the selected faces or edges in Face / Edge Mode, the whole object otherwise; while a tool runs, on the edges it is changing.</td>
+</tr>
+<tr>
+<td>Alt+Shift+N</td>
+<td>Entity Names</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Write every entity's name above it in the 3D view. Nearer names win where they would overlap; far ones fade.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Lightmap Density</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Show how sharp the baked light will be on each object: a checker whose squares are lightmap pixels, tinted by resolution. Objects left out of the bake are grey. Set it in Details → Rendering → Lightmap and Level → Lightmap.</td>
+</tr>
+<tr>
+<td>Alt+Shift+P</td>
+<td>Physics Bodies</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Mark every Physics Body in the 3D view (the shapes and props that fall, tip over and are pushed in the game) with the physics sign and its mass above it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+U</td>
+<td>UV Checker Texture</td>
+<td>Any</td>
+<td>3D View</td>
+<td>UV Checker: draw a checker on every face instead of its material, to see the texture's size, direction and seams.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="select">Select</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shift+G</td>
+<td>Faces with Same Material</td>
+<td>Face</td>
+<td>Select</td>
+<td>Face Mode: select every face of the selected objects that has the same material as the selected faces</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Faces with Same Surface</td>
+<td>Face</td>
+<td>Select</td>
+<td>Face Mode: select every face of the selected objects that looks like the selected faces: the same material and the same own surface settings (Details → Surface).</td>
+</tr>
+<tr>
+<td>Ctrl+Numpad Add</td>
+<td>Grow Selection</td>
+<td>Vertex · Edge · Face</td>
+<td>Select</td>
+<td>Add the neighbouring faces (across edges), edges or vertices of the selection.</td>
+</tr>
+<tr>
+<td>Ctrl+I</td>
+<td>Invert Selection</td>
+<td>Any</td>
+<td>Select</td>
+<td>Reverse the current selection. Object Mode: select the other editable objects. Face, Edge and Vertex Modes: select the other elements of the selected objects.</td>
+</tr>
+<tr>
+<td>Ctrl+A</td>
+<td>Select All</td>
+<td>Any</td>
+<td>Select</td>
+<td>Select everything editable in the current mode. Object Mode: select every editable object. Face, Edge and Vertex Modes: select every element of the selected objects.</td>
+</tr>
+<tr>
+<td>Shift+L</td>
+<td>Select Connected</td>
+<td>Vertex · Edge · Face</td>
+<td>Select</td>
+<td>Add every face, edge or vertex of the pieces of mesh the selection touches (everything joined to it through edges).</td>
+</tr>
+<tr>
+<td>L</td>
+<td>Select Edge Loop</td>
+<td>Edge · Face</td>
+<td>Select</td>
+<td>Extend the selection along a continuous loop. Edge Mode: follow connected edges, or the outline of an opening. Face Mode: extend along the selected row of quads in both directions.</td>
+</tr>
+<tr>
+<td>X</td>
+<td>Select Edge Ring</td>
+<td>Edge · Face</td>
+<td>Select</td>
+<td>Extend the selection across a ring of connected quads. Edge Mode: select parallel edges across the ring. Face Mode: select the strip at right angles to the selected row.</td>
+</tr>
+<tr>
+<td>Alt+A</td>
+<td>Select None</td>
+<td>Any</td>
+<td>Select</td>
+<td>Clear the selection (Esc in the viewport clears elements first, then objects).</td>
+</tr>
+<tr>
+<td>Ctrl+Numpad Subtract</td>
+<td>Shrink Selection</td>
+<td>Vertex · Edge · Face</td>
+<td>Select</td>
+<td>Drop the faces, edges or vertices on the border of the selection.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mesh">Mesh</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Align</td>
+<td>Vertex · Edge · Face</td>
+<td>—</td>
+<td>Align X, Y or Z (line the selected vertices up along a level axis) or Make Planar (onto their best-fitting plane).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Align X</td>
+<td>Vertex · Edge · Face</td>
+<td>Mesh ▸ Align</td>
+<td>Flatten the selected vertices (or the corners of the selected edges or faces) onto their average X, along the level's X axis. A bumpy edge or floor becomes flat.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Align Y</td>
+<td>Vertex · Edge · Face</td>
+<td>Mesh ▸ Align</td>
+<td>Flatten the selected vertices (or the corners of the selected edges or faces) onto their average height, along the level's Y axis. A bumpy edge or floor becomes flat.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Align Z</td>
+<td>Vertex · Edge · Face</td>
+<td>Mesh ▸ Align</td>
+<td>Flatten the selected vertices (or the corners of the selected edges or faces) onto their average Z, along the level's Z axis. A bumpy edge or floor becomes flat.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Apply Jumble</td>
+<td>Any</td>
+<td>—</td>
+<td>Move the vertices as shown (Enter). One undo step.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Auto-Triangulate Bent Faces</td>
+<td>Any</td>
+<td>Mesh</td>
+<td>Off (default): moving a corner or an edge out of a face's plane bends the face and keeps it whole. On: such a face is split into triangles at once, so every face stays flat.</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Bevel</td>
+<td>Vertex · Edge</td>
+<td>Mesh</td>
+<td>Round a corner or replace it with a flat chamfer. Use the wheel to change segments. Edge Mode: add strips along selected edges and join them at shared corners. Vertex Mode: cut off the selected corners along their incident edges. Click or Enter confirms. Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Boolean</td>
+<td>Object</td>
+<td>—</td>
+<td>Boolean Difference, Union or Intersect of the selected geometry objects; the last one selected is the one that is cut or joined into.</td>
+</tr>
+<tr>
+<td>Ctrl+Minus / Ctrl+Shift+Numpad Subtract</td>
+<td>Boolean Difference</td>
+<td>Object</td>
+<td>Mesh ▸ Boolean</td>
+<td>Boolean Difference: cut the other selected objects out of the last one selected (a box through a wall cuts a doorway). Their faces line the cut with their materials; the cutters are removed (Keep cutters on the card keeps them). One undo step.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Numpad Multiply</td>
+<td>Boolean Intersect</td>
+<td>Object</td>
+<td>Mesh ▸ Boolean</td>
+<td>Boolean Intersect: keep only the part of the last selected object that is inside the others. One undo step.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+Numpad Add</td>
+<td>Boolean Union</td>
+<td>Object</td>
+<td>Mesh ▸ Boolean</td>
+<td>Boolean Union: join the selected objects into the last one selected as one solid; the faces inside each other go. One undo step.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Boolean: Keep Cutters</td>
+<td>Any</td>
+<td>—</td>
+<td>Whether the Boolean just done keeps its cutter objects. It is done again, still one undo step.</td>
+</tr>
+<tr>
+<td>Shift+C</td>
+<td>Bridge</td>
+<td>Edge</td>
+<td>Mesh</td>
+<td>Edge Mode: join the selected edges with new faces, for example a corridor between two openings (L selects an outline). Edges of several objects merge the objects.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Cancel Jumble</td>
+<td>Any</td>
+<td>—</td>
+<td>Close Jumble without changing anything (Esc).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Clean Up</td>
+<td>Vertex · Edge · Face</td>
+<td>—</td>
+<td>Dissolve, Collapse or Triangulate (the ones that work in this mode): take edges or vertices away, merge elements into one vertex, or cut faces into triangles.</td>
+</tr>
+<tr>
+<td>Alt+M</td>
+<td>Collapse</td>
+<td>Vertex · Edge · Face</td>
+<td>Mesh ▸ Clean Up</td>
+<td>Merge a group of selected mesh elements into a vertex at its centre. Face and Edge Modes: collapse each connected group separately. Vertex Mode: collapse the selected vertices of each object to their centre.</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+N</td>
+<td>Conform Normals</td>
+<td>Face · Object</td>
+<td>Mesh ▸ Normals</td>
+<td>Make the selected faces face the same way as the faces around them (one face of a box that was flipped turns back); faces with no unselected neighbour follow most of their own area. Object Mode: affect every face of the selected objects. Face Mode: affect the selected faces. One undo step.</td>
+</tr>
+<tr>
+<td>V</td>
+<td>Connect</td>
+<td>Vertex · Edge</td>
+<td>Mesh</td>
+<td>Cut faces with new edges. Edge Mode: connect the midpoints of selected edges. Three or more edges split the face around its centre. Vertex Mode: connect two selected corners of a face.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Convert Spline to Mesh</td>
+<td>Any</td>
+<td>Mesh</td>
+<td>Turn the selected splines into ordinary meshes you can edit with every mesh tool. The spline's points and settings are lost (Ctrl+Z brings them back).</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Cut</td>
+<td>Any</td>
+<td>Mesh ▸ Line Cuts</td>
+<td>Drag a line across faces to cut new edges where it passes; nothing is separated. The new edges stay selected.</td>
+</tr>
+<tr>
+<td>N</td>
+<td>Detach Faces</td>
+<td>Face</td>
+<td>Mesh</td>
+<td>Face Mode: move the selected faces out into a new object (one undo step); they stay selected so W moves the piece.</td>
+</tr>
+<tr>
+<td>Ctrl+Backspace</td>
+<td>Dissolve</td>
+<td>Vertex · Edge</td>
+<td>Mesh ▸ Clean Up</td>
+<td>Remove selected mesh elements and merge the neighbouring faces. Edge Mode: remove edges between faces and merge the faces on their sides. Vertex Mode: remove corners and merge surrounding faces when three or more edges meet.</td>
+</tr>
+<tr>
+<td>Alt+N</td>
+<td>Extract Faces</td>
+<td>Face</td>
+<td>Mesh</td>
+<td>Face Mode: copy the selected faces into a new object (the original stays); the copies stay selected.</td>
+</tr>
+<tr>
+<td>Shift+E</td>
+<td>Extrude Faces</td>
+<td>Edge · Face</td>
+<td>Mesh</td>
+<td>Grow new geometry from the selection. Face Mode: move the selected faces along their normals and build side walls. Edge Mode: extend selected edges into new faces. Click or Enter confirms. Esc cancels.</td>
+</tr>
+<tr>
+<td>Ctrl+F</td>
+<td>Fill Hole</td>
+<td>Edge</td>
+<td>Mesh</td>
+<td>Edge Mode: close the opening next to a selected open edge with a new face. Ctrl+A then Ctrl+F closes every opening.</td>
+</tr>
+<tr>
+<td>Shift+N</td>
+<td>Flip Faces</td>
+<td>Face · Object</td>
+<td>Mesh ▸ Normals</td>
+<td>Turn faces to face the opposite way. Object Mode: reverse every face of the selected objects. Face Mode: reverse just the selected faces.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+W</td>
+<td>Hollow</td>
+<td>Object</td>
+<td>Mesh ▸ Walls</td>
+<td>Object Mode: turn the selected shapes into rooms by giving them 0.25 m thick walls that grow inward. Change Thickness or direction on the card that opens.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Hollow / Solidify: Thickness</td>
+<td>Any</td>
+<td>—</td>
+<td>Thickness (metres) and side of the Hollow or Solidify just done. It is done again with the new values, still one undo step.</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Inset Faces</td>
+<td>Face</td>
+<td>Mesh</td>
+<td>Face Mode: shrink the selected faces inward and fill the border with a ring of faces. Move the mouse to set the amount; click or Enter confirms, Esc cancels. I treats each face on its own.</td>
+</tr>
+<tr>
+<td>J</td>
+<td>Jumble</td>
+<td>Any</td>
+<td>Mesh</td>
+<td>Move the selected vertices by a pattern (noise, ridges, waves, random) to turn a flat, subdivided surface into ground or rock. Set it on the card; Enter applies, Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Jumble: Edit Last</td>
+<td>Any</td>
+<td>—</td>
+<td>Open the Jumble you just applied again with its settings, instead of jumbling on top of it.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Jumble: New Seed</td>
+<td>Any</td>
+<td>—</td>
+<td>Another random pattern with the same settings.</td>
+</tr>
+<tr>
+<td>Shift+K</td>
+<td>Knife</td>
+<td>Any</td>
+<td>Mesh</td>
+<td>Knife: click points on faces, edges or corners; the cut runs between them across every face. Click the first point again to close a loop. Enter confirms, Esc cancels. Z cuts through hidden faces.</td>
+</tr>
+<tr>
+<td>Ctrl+R</td>
+<td>Loop Cut</td>
+<td>Any</td>
+<td>Mesh</td>
+<td>Loop Cut: hover an edge of the selected object and click to cut a ring of faces there. The mouse wheel or PageUp / PageDown set several cuts. Enter confirms, Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Make Planar</td>
+<td>Vertex · Edge · Face</td>
+<td>Mesh ▸ Align</td>
+<td>Move the selected vertices (or the corners of the selected edges or faces) onto the plane that fits them best. A bent face becomes flat.</td>
+</tr>
+<tr>
+<td>Backspace</td>
+<td>Merge Faces</td>
+<td>Face</td>
+<td>Mesh</td>
+<td>Merge Faces (Face Mode): merge the selected touching faces on one plane into one face (they must make one convex outline); a box cut with V and merged is the plain box again.</td>
+</tr>
+<tr>
+<td>M</td>
+<td>Merge Objects</td>
+<td>Object</td>
+<td>Mesh</td>
+<td>Merge Objects (Object Mode): merge the selected geometry objects into the last selected one (one undo step). Entities are left out.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Mirror</td>
+<td>Object</td>
+<td>—</td>
+<td>Mirror X, Y or Z: mirror the selected geometry objects along a level axis, across the plane through their centre (faces stay outward).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Mirror Front–Back (Z)</td>
+<td>Object</td>
+<td>Mesh ▸ Mirror</td>
+<td>Mirror Z (Object Mode): mirror the selected objects front to back across the plane through their centre. Shift+D first to keep the original as a symmetric copy.</td>
+</tr>
+<tr>
+<td>Shift+Z</td>
+<td>Mirror Left–Right (X)</td>
+<td>Object</td>
+<td>Mesh ▸ Mirror</td>
+<td>Mirror X (Object Mode): mirror the selected objects left to right across the plane through their centre. Shift+D first to keep the original as a symmetric copy.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Mirror Up–Down (Y)</td>
+<td>Object</td>
+<td>Mesh ▸ Mirror</td>
+<td>Mirror Y (Object Mode): mirror the selected objects top to bottom across the plane through their centre. Shift+D first to keep the original as a symmetric copy.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Normals</td>
+<td>Face · Object</td>
+<td>—</td>
+<td>Choose how the faces point using Flip, Conform or Recalculate. Object Mode: affect every face of selected objects. Face Mode: affect the selected faces.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+O</td>
+<td>Opening</td>
+<td>Face</td>
+<td>Mesh ▸ Walls</td>
+<td>Face Mode: cut a door or window through the wall behind each selected face. Set Width, Height, From floor and Offset on the card that opens. The wall needs a back: Hollow a box first.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Opening: Size</td>
+<td>Any</td>
+<td>—</td>
+<td>Width, Height, From floor and Offset (metres) and Sides of the Opening just cut. It is cut again with the new size, still one undo step.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Push Through</td>
+<td>Face</td>
+<td>Mesh ▸ Walls</td>
+<td>Face Mode: push the selected faces into the wall behind them. Pushed all the way through, they open a hole (a door or window); otherwise they make a recess. Click or Enter confirms, Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Recalculate Normals Inside</td>
+<td>Face · Object</td>
+<td>Mesh ▸ Normals</td>
+<td>Turn the selected faces to face into the mesh they belong to (a box becomes a room seen from inside). Object Mode: affect every face of the selected objects. Face Mode: affect the selected faces. One undo step.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+N</td>
+<td>Recalculate Normals Outside</td>
+<td>Face · Object</td>
+<td>Mesh ▸ Normals</td>
+<td>Turn the selected faces to face out of the mesh they belong to: a closed mesh by the space it encloses, an open one away from its middle, a flat one upward. Object Mode: affect every face of the selected objects (a room becomes a solid again). Face Mode: affect the selected faces. One undo step.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Separate</td>
+<td>Face</td>
+<td>—</td>
+<td>Detach Faces (N) or Extract Faces (Alt+N): the selected faces into a new object, moved out or copied.</td>
+</tr>
+<tr>
+<td>Shift+X</td>
+<td>Slice</td>
+<td>Any</td>
+<td>Mesh ▸ Line Cuts</td>
+<td>Drag a line across the selected objects to split each into two closed halves. Both halves stay selected.</td>
+</tr>
+<tr>
+<td>Shift+V</td>
+<td>Slide</td>
+<td>Vertex · Edge</td>
+<td>Mesh</td>
+<td>Slide the selection along neighbouring edges without leaving the mesh. Edge Mode: slide selected edges across their faces as a line. Vertex Mode: slide each vertex along the edge under the pointer. Click or Enter confirms. Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Solidify</td>
+<td>Face</td>
+<td>Mesh ▸ Walls</td>
+<td>Face Mode: give the selected faces a thickness, so a floor plane becomes a slab. Change Thickness or direction on the card that opens.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Split Edges</td>
+<td>Edge</td>
+<td>Mesh</td>
+<td>Edge Mode: add evenly spaced vertices on the selected edges. Set Cuts on the card for more; nothing moves.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Split Edges: Cuts</td>
+<td>Any</td>
+<td>—</td>
+<td>New vertices on each edge of the Split Edges just done: 1 = in the middle, 3 = four equal pieces. The split is done again with the new number, still one undo step.</td>
+</tr>
+<tr>
+<td>Alt+V</td>
+<td>Subdivide</td>
+<td>Face</td>
+<td>Mesh</td>
+<td>Face Mode: cut each selected face into smaller pieces. Press again to cut finer, or set Cuts on the card that opens.</td>
+</tr>
+<tr>
+<td>Ctrl+T</td>
+<td>Triangulate</td>
+<td>Face · Object</td>
+<td>Mesh ▸ Clean Up</td>
+<td>Split faces into triangles without changing the shape. Object Mode: triangulate all faces of the selected objects. Face Mode: triangulate selected faces, or all faces if none are selected.</td>
+</tr>
+<tr>
+<td>Alt+Numpad 5 / Ctrl+Alt+Shift+V</td>
+<td>Vertices to Grid</td>
+<td>Any</td>
+<td>Mesh</td>
+<td>Move vertices to the nearest grid point even when snapping is off. Object Mode: move every vertex of the selected meshes. Element modes: move the vertices of the selected elements.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Walls</td>
+<td>Face</td>
+<td>—</td>
+<td>Push Through, Opening or Solidify: push faces through a wall, cut a window through it, or give faces a thickness.</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Shift+M</td>
+<td>Weld Vertices</td>
+<td>Any</td>
+<td>Mesh ▸ Clean Up</td>
+<td>Merge vertices within 1 mm of each other. Object Mode: weld every vertex of the selected meshes. Element modes: weld the vertices of the selected elements.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">Create</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Cancel Drawing</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Confirm Drawing</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Convert Prop to Mesh</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Turn only the selected props into plain meshes, so you can change them without changing the other copies. The prop stays in the Props drawer.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Arch</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Arch — drag the wall's footprint (the opening goes through its short side), then the height; the wheel sets the curve's segments, Tab turns it. Esc cancels.</td>
+</tr>
+<tr>
+<td>Shift+B</td>
+<td>Draw Box</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw box — drag two corners on grid/surface; Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Cone</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Cone — drag the footprint, then the height; the wheel sets the sides (4 = a pyramid). Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Cylinder</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Cylinder — drag the footprint, then the height; the wheel sets the sides (4 = a box, 6 = a hexagonal pillar). On the tool card, Sweep makes part of the round (180 = a half) and Wall makes it hollow (a tube, a round tower, a curved wall). Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Decal</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Decal — drag a rectangle on a face (or the grid): the Active Material's picture is projected there, facing that surface. A click places a 1 m decal as long as the picture; a click on a decal selects it (W / E / R, Shift+T for another picture). Esc finishes.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Height: Grid (Auto)</td>
+<td>Any</td>
+<td>—</td>
+<td>New boxes and shapes start as high as the grid step (a one-cell base gives a cube) and follow it when the grid changes.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw on Grid</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw on Grid: new shapes start on the grid only, even through faces in the way. Move the grid with Alt+PageUp / PageDown, or turn it vertical to draw at another height or on a wall.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw on Surface</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw on Surface: boxes, shapes, polygons, splines and decals start on the face under the mouse and stand out of it; where there is no face, on the grid.</td>
+</tr>
+<tr>
+<td>Shift+P</td>
+<td>Draw Plane</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw plane — drag two corners on grid/surface; Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Polygon</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Polygon — click the corners of any outline on the grid or on a face (snapped to the grid), then move up/down for the height: a solid block of that shape, or a flat polygon at height 0 (floors, walkways). Click the first corner or press Enter to close it, Backspace takes the last corner back. Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Ramp</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Ramp — drag from the foot of the slope to its top, then the height; Tab turns it a quarter. Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Sphere</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Sphere — drag the footprint; it starts round (click to confirm) or move up/down for an egg or a dome-like flat one; the wheel sets the segments. Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Spline</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Spline — click points on the grid or on surfaces; a mesh curves smoothly through them and stays a spline: drag its points later, add or remove points, and change its shape in Details → Spline (Arc 0 = a flat road, 180 = a half pipe, 360 = a pipe or tunnel). The wheel raises the next point, Tab closes the loop, Enter or a second click on the last point finishes, Backspace takes the last point back. Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Draw Stairs</td>
+<td>Any</td>
+<td>Create</td>
+<td>Draw Stairs — drag from the bottom step toward the top, then the height; steps follow the height (Step height on the tool card, 0.2 m) unless the wheel or Steps sets them; Tab turns them a quarter. Turn on the tool card curves them round a centre (90 = a quarter turn, 360 = a spiral); Turn per step keeps them turning as they get taller (a spiral as long as you like); Underside 2 or more opens them underneath. Esc cancels.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Edit Base Mesh</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Change a prop made in this level: it turns back into meshes you can edit. Finish Editing Prop (Ctrl+Enter) makes it a prop again, and every copy of it follows.</td>
+</tr>
+<tr>
+<td>Shift+A</td>
+<td>Entities Drawer</td>
+<td>Any</td>
+<td>Create</td>
+<td>Entities: open or close the drawer under the 3D view with the project's entity types. Drag a type into the view and let go where it should stand; a double click places it at the view centre.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+A</td>
+<td>Entity Catalog…</td>
+<td>Any</td>
+<td>Create</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Enter</td>
+<td>Finish Editing Prop</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Turn the meshes you are editing back into a prop. Every copy of the prop in the level takes the new shape.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Mark as Prop</td>
+<td>Any</td>
+<td>Edit</td>
+<td>Turn the selected meshes into a prop: a reusable model listed in the Props drawer. Edit Base Mesh brings the meshes back to change them.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Place Selected Type at View Centre</td>
+<td>Any</td>
+<td>Create</td>
+<td></td>
+</tr>
+<tr>
+<td>Shift+M</td>
+<td>Props Drawer</td>
+<td>Any</td>
+<td>Create</td>
+<td>Props: open or close the drawer with your imported models (GLB, glTF, FBX). Drag a model into the view to place it; double-click places it at the view centre.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Quick Box at View Centre</td>
+<td>Any</td>
+<td>Create</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Quick Plane at View Centre</td>
+<td>Any</td>
+<td>Create</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="texture-and-uv">Texture and UV</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Add Blockout Set</td>
+<td>Any</td>
+<td>—</td>
+<td>Add the nine built-in blockout (prototype) materials this project does not have (one undo step). New projects start with them.</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+G</td>
+<td>Align to Grid</td>
+<td>Face · Object</td>
+<td>Texture</td>
+<td>Align to Grid: lays the texture on the selected faces flat to the grid, one tile at the size set by Texel density, so it continues across faces and objects.</td>
+</tr>
+<tr>
+<td>Shift+T</td>
+<td>Apply Active Material</td>
+<td>Face · Object</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt+Shift+1</td>
+<td>Blockout 1 (grey)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 1 (grey) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+2</td>
+<td>Blockout 2 (light)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 2 (light) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+3</td>
+<td>Blockout 3 (dark)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 3 (dark) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+4</td>
+<td>Blockout 4 (orange)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 4 (orange) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+5</td>
+<td>Blockout 5 (red)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 5 (red) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+6</td>
+<td>Blockout 6 (green)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 6 (green) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+7</td>
+<td>Blockout 7 (blue)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 7 (blue) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+8</td>
+<td>Blockout 8 (yellow)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 8 (yellow) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Alt+Shift+9</td>
+<td>Blockout 9 (purple)</td>
+<td>Any</td>
+<td>—</td>
+<td>Make the built-in Blockout 9 (purple) the active material (built-in blockout set; added to the project if it does not have it). Shift+T applies it.</td>
+</tr>
+<tr>
+<td>Ctrl+M</td>
+<td>Browse Materials</td>
+<td>Any</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 5</td>
+<td>Center UV</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Clear Vertex Colors</td>
+<td>Any</td>
+<td>Texture</td>
+<td>Take the vertex colours off the selection: every face of the selected objects (4), the selected faces (3), the selected corners (1 / 2). One undo step.</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+C</td>
+<td>Copy UV</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 3</td>
+<td>Fit Height (V)</td>
+<td>Face</td>
+<td>Texture</td>
+<td>Fit Height: one texture repeat spans the face height. Keep Ratio also sizes its width.</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 5</td>
+<td>Fit to Face</td>
+<td>Face</td>
+<td>Texture</td>
+<td>Fit to Face: one texture repeat covers the whole face in both directions.</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 1</td>
+<td>Fit Width (U)</td>
+<td>Face</td>
+<td>Texture</td>
+<td>Fit Width: one texture repeat spans the face width. Keep Ratio also sizes its height.</td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 1</td>
+<td>Flip Texture Horizontal</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 3</td>
+<td>Flip Texture Vertical</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Flow Texture</td>
+<td>Face</td>
+<td>Texture</td>
+<td>Flow Texture: the active face's material continues across the neighbouring selected faces, so a trim follows a curve. Ctrl+Alt + right-click a neighbouring face does it one face at a time.</td>
+</tr>
+<tr>
+<td>Shift+H</td>
+<td>Hotspot</td>
+<td>Face · Object</td>
+<td>Texture</td>
+<td>Put the active material on the selected faces with the hotspot rectangle that fits each surface best (touching faces on one plane count as one surface).</td>
+</tr>
+<tr>
+<td>Shift+F</td>
+<td>Hotspot Each Face</td>
+<td>Face · Object</td>
+<td>Texture</td>
+<td>Like Hotspot, but every selected face gets its own rectangle.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Hotspot Rectangles…</td>
+<td>Any</td>
+<td>Texture</td>
+<td>Draw the hotspot rectangles of the active material's texture (or make a grid): Shift+H then fits the best rectangle onto each selected surface.</td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 2</td>
+<td>Justify Bottom</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 4</td>
+<td>Justify Left</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 6</td>
+<td>Justify Right</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 8</td>
+<td>Justify Top</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Material Defaults…</td>
+<td>Any</td>
+<td>Texture</td>
+<td>The project's default sampling (Linear / Nearest), transparency, two sides, lighting, roughness and metallic: every material that does not set its own uses them.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Object-Align UVs</td>
+<td>Face · Object</td>
+<td>Texture</td>
+<td>Project from object positions, keeping rotation, scale, offset and texture part. Replaces Flow or edited corner UVs.</td>
+</tr>
+<tr>
+<td>Ctrl+Alt+V</td>
+<td>Paste UV</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+F / Ctrl+Shift+F</td>
+<td>Reset UV</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 7</td>
+<td>Rotate Left 15°</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 7</td>
+<td>Rotate Left 90°</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 9</td>
+<td>Rotate Right 15°</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Numpad 9</td>
+<td>Rotate Right 90°</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 2</td>
+<td>Shift Down</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 1</td>
+<td>Shift Down Left</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 3</td>
+<td>Shift Down Right</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 4</td>
+<td>Shift Left</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 6</td>
+<td>Shift Right</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 8</td>
+<td>Shift Up</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 7</td>
+<td>Shift Up Left</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Numpad 9</td>
+<td>Shift Up Right</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 8</td>
+<td>Texture Height ×2</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 2</td>
+<td>Texture Height ÷2</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 6</td>
+<td>Texture Width ×2</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+Alt+Numpad 4</td>
+<td>Texture Width ÷2</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Treat Faces as One</td>
+<td>Any</td>
+<td>—</td>
+<td>Treat as One: Fit, Justify, Rotate and Flip treat all selected faces as one surface, so one texture runs across them instead of restarting on each face.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>UV Editor…</td>
+<td>Face</td>
+<td>Texture</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Vertex Color…</td>
+<td>Any</td>
+<td>Texture</td>
+<td>Paint vertex colours: they multiply the material (texture and tint) here and in the game. Object Mode (4): every face of the selected objects. Face Mode (3): the selected faces, sharp at their edges. Edge (2) / Vertex Mode (1): the selected corners; the colour fades across the faces around them.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>World-Align UVs</td>
+<td>Face · Object</td>
+<td>Texture</td>
+<td>Project from world positions, keeping rotation, scale, offset and texture part. Replaces Flow or edited corner UVs. Align to Grid (Ctrl+Alt+G) also straightens and sizes it.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Wrap UV</td>
+<td>Face</td>
+<td>—</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="logic-and-entities">Logic and Entities</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+Shift+L</td>
+<td>All Reactions…</td>
+<td>Any</td>
+<td>Window</td>
+<td>All Reactions: an overview of every reaction in the level, to search and check. A reaction is edited at its owner: an entity's Events in Entity Details, or Level Logic.</td>
+</tr>
+<tr>
+<td>K</td>
+<td>Connect to Entity…</td>
+<td>Any</td>
+<td>Create</td>
+<td>Connect: make one entity trigger another. Start from the selected entity (or click one), then click the entity to trigger. A small form opens: Enter stores the reaction, Esc closes it.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Convert Logic Parts…</td>
+<td>Any</td>
+<td>Window</td>
+<td>Convert Logic Parts: turn the older logic parts of this level (Signal, Level Start, Counter, Log) into Level Logic signals and reactions. Shows what will change first; one undo step.</td>
+</tr>
+<tr>
+<td>Alt+Enter</td>
+<td>Entity Details…</td>
+<td>Any</td>
+<td>Window</td>
+<td>Entity Details: the selected entity's properties, events and type in a window of their own, each on a tab.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Import Entity Types from Godot…</td>
+<td>Any</td>
+<td>—</td>
+<td>Import from Godot: read the entity types from your Godot game (written by the Leveldot Bridge). They are added to this project as the pack "Godot project". Save the project first.</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>Level Logic…</td>
+<td>Any</td>
+<td>Window</td>
+<td>Level Logic: the level's signals and flags, what happens when the level starts, and timers.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Refresh Entity Packs</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Show All Connections</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The Logic view draws every connection of the level. Labels appear when the mouse is on an arrow; at most 200 arrows, the status line says when some are left out.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Show Connection Chain</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The Logic view draws everything the selection leads to, step after step, and everything that leads to it.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Show Selected Connections</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The Logic view draws the connections of the selected entities (and, thinner, of the entity the mouse rests on).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Update Entity Types from Godot</td>
+<td>Any</td>
+<td>—</td>
+<td>Update from Godot: read the types file imported last again, after you exported the types in Godot once more.</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>Validation Issues…</td>
+<td>Any</td>
+<td>Window</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="window-and-help">Window and Help</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>About Leveldot Editor</td>
+<td>Any</td>
+<td>Help</td>
+<td>Version, Godot engine, where your personal settings are stored, and the licenses</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Align Grid to Face</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Align the working grid's plane and origin to the selected face in Perspective view.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Dismiss Quick Tips</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl+K / F3</td>
+<td>Find Action…</td>
+<td>Any</td>
+<td>Help</td>
+<td>Search every command by name and run it; shows its shortcut and why it is unavailable</td>
+</tr>
+<tr>
+<td>Alt+Q / Ctrl+Alt+Q</td>
+<td>Four Views</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Show four views side by side: Perspective, Top, Front and Side. Keys and tools work in the view under the mouse; drag the cross to resize. Use it again to return to one view.</td>
+</tr>
+<tr>
+<td>Home</td>
+<td>Frame Selection in All Views</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Frame what is selected (with nothing selected, the whole level) in every view of the Four Views at once, not only the one under the mouse.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Grid Height</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Grid Plane</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Grid Tilt</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt+Numpad 7</td>
+<td>Horizontal Grid</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The grid lies flat (XZ), like the ground: Draw on Grid draws floors and boxes standing on it. Perspective only: Top, Front and Side keep their own plane.</td>
+</tr>
+<tr>
+<td>Ctrl+Shift+K</td>
+<td>Keyboard Shortcuts…</td>
+<td>Any</td>
+<td>Help</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Link a Godot Project…</td>
+<td>Any</td>
+<td>Help</td>
+<td>A short guide: connect a Godot game, export a level into it and play it</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>Logic View</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Logic: shows the level for working on logic. Surfaces turn grey, entities and their connections stand out, and a click selects entities only. 1 / 2 / 3 go back to Modeling.</td>
+</tr>
+<tr>
+<td>Alt+Numpad 2 / Alt+PageDown</td>
+<td>Lower Grid</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Move the grid one grid step down (a vertical grid: back along its axis).</td>
+</tr>
+<tr>
+<td>Ctrl+Space</td>
+<td>Maximize Viewport</td>
+<td>Any</td>
+<td>Window</td>
+<td>Fold both side columns to give the 3D view the whole window; again to bring them back.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Modeling View</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Modeling: the level with its materials; everything can be clicked and edited. The same level, camera, selection and undo history as the Logic view.</td>
+</tr>
+<tr>
+<td>F7 / Alt+O</td>
+<td>Outliner and Details</td>
+<td>Any</td>
+<td>Window</td>
+<td>Show or hide the Outliner and Details column. A narrow window folds it after the Tools column.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Quick Tips</td>
+<td>Any</td>
+<td>Window</td>
+<td></td>
+</tr>
+<tr>
+<td>Alt+Numpad 8 / Alt+PageUp</td>
+<td>Raise Grid</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Move the grid one grid step up (a vertical grid: along its axis). Draw on Grid then draws at that height.</td>
+</tr>
+<tr>
+<td>Alt+Numpad 0</td>
+<td>Reset Grid</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Put the grid back on the ground: horizontal, level (0°), every plane at 0.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Reset Personal Layout</td>
+<td>Any</td>
+<td>Window</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Theme: Godot 3</td>
+<td>Any</td>
+<td>—</td>
+<td>Use the Godot 3 colour theme (Window → Theme); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Theme: Leveldot Dark</td>
+<td>Any</td>
+<td>—</td>
+<td>Use the Leveldot Dark colour theme (Window → Theme); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Theme: Leveldot Light</td>
+<td>Any</td>
+<td>—</td>
+<td>Use the Leveldot Light colour theme (Window → Theme); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Theme: Retro 95</td>
+<td>Any</td>
+<td>—</td>
+<td>Use the Retro 95 colour theme (Window → Theme); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Theme: Steam</td>
+<td>Any</td>
+<td>—</td>
+<td>Use the Steam colour theme (Window → Theme); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Theme: Workstation</td>
+<td>Any</td>
+<td>—</td>
+<td>Use the Workstation colour theme (Window → Theme); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Theme: XP</td>
+<td>Any</td>
+<td>—</td>
+<td>Use the XP colour theme (Window → Theme); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>Tools Panel</td>
+<td>Any</td>
+<td>Window</td>
+<td>Show or hide the Tools column. A narrow window folds it automatically to keep the 3D view usable.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Tutorial</td>
+<td>Any</td>
+<td>Help</td>
+<td>Build a small game step by step: a room, a corridor, coins, a door and a second level</td>
+</tr>
+<tr>
+<td>—</td>
+<td>UI Density: Compact</td>
+<td>Any</td>
+<td>—</td>
+<td>Use compact spacing and padding across bars and panels (Window → UI Density); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>UI Density: Relaxed</td>
+<td>Any</td>
+<td>—</td>
+<td>Use relaxed spacing and padding across bars and panels (Window → UI Density); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Use Windows Title Bar</td>
+<td>Any</td>
+<td>Window</td>
+<td>Show the system's title bar and frame instead of the editor's own (drag the menu row, its window buttons); remembered with your personal layout</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>User Manual</td>
+<td>Any</td>
+<td>Help</td>
+<td>What each tool and window does: a short reference you can search</td>
+</tr>
+<tr>
+<td>Alt+Numpad 1</td>
+<td>Vertical Grid (XY)</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The grid stands up facing front (XY, moved along Z): Draw on Grid draws walls and shapes out of it. Perspective only: Top, Front and Side keep their own plane.</td>
+</tr>
+<tr>
+<td>Alt+Numpad 3</td>
+<td>Vertical Grid (ZY)</td>
+<td>Any</td>
+<td>3D View</td>
+<td>The grid stands up facing the side (ZY, moved along X): Draw on Grid draws walls and shapes out of it. Perspective only: Top, Front and Side keep their own plane.</td>
+</tr>
+<tr>
+<td>Alt+Z</td>
+<td>Wireframe</td>
+<td>Any</td>
+<td>3D View</td>
+<td>Draw only the edges of the level in this view, so what is behind shows through. Entities and the selection stay as they are. The Four Views' Top, Front and Side start like this.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="logic-graph-window">Logic Graph Window</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt+G</td>
+<td>Logic Graph…</td>
+<td>Any</td>
+<td>Window</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="material-browser">Material Browser</h2>
+<table>
+<thead>
+<tr>
+<th>Keys</th>
+<th>Command</th>
+<th>Mode</th>
+<th>Where</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>—</td>
+<td>Material Sampling: Default</td>
+<td>Any</td>
+<td>—</td>
+<td>The project's default sampling (Texture → Material Defaults…) for the materials selected in the Material Browser.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Material Sampling: Linear</td>
+<td>Any</td>
+<td>—</td>
+<td>Smooth texture sampling for the materials selected in the Material Browser (kept in the export to Godot).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Material Sampling: Nearest</td>
+<td>Any</td>
+<td>—</td>
+<td>Sharp, pixel-art texture sampling for the materials selected in the Material Browser (kept in the export to Godot).</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Refresh Materials</td>
+<td>Any</td>
+<td>—</td>
+<td></td>
+</tr>
+<tr>
+<td>—</td>
+<td>Remove Materials</td>
+<td>Any</td>
+<td>—</td>
+<td>Remove the materials selected in the Material Browser from the project (Delete in the browser). Faces using them show the UV checker; Ctrl+Z brings them back. Texture files stay on disk.</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Select Material Faces</td>
+<td>Any</td>
+<td>—</td>
+<td>Select all editable faces (or decals) in the active level that use the selected material(s).</td>
+</tr>
+</tbody>
+</table>
+  </main>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#file">File</a></li><li><a href="#modes-and-transform">Modes and Transform</a></li><li><a href="#edit">Edit</a></li><li><a href="#3d-view">3D View</a></li><li><a href="#overlays">Overlays</a></li><li><a href="#select">Select</a></li><li><a href="#mesh">Mesh</a></li><li><a href="#create">Create</a></li><li><a href="#texture-and-uv">Texture and UV</a></li><li><a href="#logic-and-entities">Logic and Entities</a></li><li><a href="#window-and-help">Window and Help</a></li><li><a href="#logic-graph-window">Logic Graph Window</a></li><li><a href="#material-browser">Material Browser</a></li></ul></aside>
+</div>
+<!-- footer (scripts/build.py writes this block) -->
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="../img/icon.png" alt="" width="24" height="24">
+    <span>Leveldot Editor, a level editor for Godot 4.</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">YouTube</a>
+      <a href="../docs/index.html">Docs</a>
+    </nav>
+  </div>
+</footer>
+<!-- /footer -->
+<script src="../docs.js"></script>
+</body>
+</html>

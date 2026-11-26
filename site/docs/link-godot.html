@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Link a Godot project · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: link a godot project.">
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="docs">
+<!-- header (scripts/build.py writes this block) -->
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="../index.html" aria-label="Leveldot home">
+      <picture>
+        <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
+        <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
+      </picture>
+    </a>
+    <nav class="top-nav" aria-label="Site">
+      <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
+      <a class="nav-link" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg><span>Discord</span></a>
+      <a class="nav-link" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg><span>YouTube</span></a>
+      <a class="button primary small" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download</span></a>
+    </nav>
+  </div>
+</header>
+<!-- /header -->
+<div class="docs-layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="side-title">Documentation</p>
+    <a href="index.html">Install</a>
+    <a href="link-godot.html" aria-current="page">Link Godot</a>
+    <a href="tools.html">Tools</a>
+    <a href="shortcuts.html">Shortcuts</a>
+    <a href="tutorial.html">Tutorial</a>
+  </nav>
+  <main class="doc page-link-godot" id="main">
+    <h1>Link a Godot project</h1>
+    
+    <p>Linking connects your Leveldot project to a Godot game so that <strong>Save</strong> (Ctrl+S) also exports your levels into the game.</p>
+<p><strong>You need:</strong> a Godot project that uses <strong>Godot 4.4 or later</strong> (any 4.x from 4.4 on), and a saved Leveldot project. Leveldot itself does not need Godot installed.</p>
+<h2 id="what-link-does">What Link does</h2>
+<ul>
+<li>installs the <strong>Leveldot Bridge</strong> addon into the game (<code>res://addons/leveldot_bridge/</code>) and enables it in <code>project.godot</code>;</li>
+<li>chooses the folder each level is exported to;</li>
+<li>reads the game's entity types, if it has any yet;</li>
+<li>exports the project once.</li>
+</ul>
+<p>It adds nothing else: your own scenes and scripts are never changed. Leveldot remembers the linked game for the project.</p>
+<h2 id="first-time">First time</h2>
+<ol>
+<li>Save the project (<strong>Ctrl+S</strong>). Link needs a saved project.</li>
+<li>In Leveldot choose <strong>File → Link Godot Project…</strong> and pick the folder that holds your game's <code>project.godot</code>. When the first export has worked, a summary says what was done. If it fails, the message says what to fix; press <strong>Ctrl+E</strong> to export again.</li>
+<li>Open the game in Godot (<strong>File → Open in Godot</strong> does it). If Godot already had the game open, choose <strong>Project → Reload Current Project</strong> once, so that it loads the addon.</li>
+<li>In Godot open the <strong>Leveldot</strong> screen (at the top, beside 2D / 3D / Script) → <strong>Levels</strong>, select your level and press <strong>Create Game Scene…</strong>. This makes a scene of your own that shows the level. If it asks you to refresh first, press <strong>Refresh</strong> and wait for the import to finish.</li>
+<li>Put your player, enemies and scripts into that scene, not into the generated level.</li>
+</ol>
+<h2 id="every-day">Every day</h2>
+<ul>
+<li><strong>Ctrl+S</strong> (Save) exports every level of a linked project in the background. Saving a Leveldot project inside a Godot game also links it when there is no remembered export folder. Godot picks up the export and rebuilds the level scenes by itself — even while unfocused or on another monitor; your own scenes keep their nodes. A scene with unsaved changes is left alone, and Godot says so.</li>
+<li><strong>Ctrl+E</strong> (Export to Godot) saves unsaved changes and exports. Use it to export again without editing. If an export is already running, the latest saved version is queued for the next export.</li>
+<li><strong>What you see after Save or export</strong> — in Godot, a compact status button on the top toolbar (visible from 2D, 3D, Script and every other screen) and editor toasts show when a level is importing, refreshing, refreshed (with time to the second and duration), refreshed with warnings, skipped (automatic refresh off), or failed (plain cause and next step). Clicking the status button opens the <strong>Leveldot</strong> screen at that level. In Leveldot, the status bar confirms once Godot refreshes the export (or reminds you after about 20 seconds if Godot has not picked it up yet).</li>
+<li><strong>F5</strong> (Play Level) saves, exports and starts the game at the level you are editing. It needs one successful export and a scene of the game that shows the level (step 4). Without one, Leveldot uses the game's main scene when that scene instances a level (or its script loads a generated world / uses <code>LeveldotLevels</code>) and the level you are editing is in the game's level list (a level gets listed once it has a Player Start, a Level Exit or a reaction that goes to a level). If one Player Start is in your selection, you start there. Pressing F5 inside Godot runs the game's main scene instead.</li>
+</ul>
+<h2 id="where-files-go">Where files go</h2>
+<ul>
+<li><code>res://leveldot/generated/</code> — written by Leveldot and the addon; never edit anything in it. Each level's export has its own folder, <code>levels/&lt;level name&gt;/</code> (the name is made file-safe the first time and gets a number if another level already uses it). Godot imports its <code>world.glb</code> and the addon builds <code>generated_world.tscn</code> beside it. The addon also writes <code>entity_types.json</code> (your game's entity types, for Leveldot) and, once a level has a Player Start, a Level Exit or a reaction that goes to a level, <code>levels.tres</code> (the game's level list).</li>
+<li><code>res://leveldot/entities/</code> — your entity types (Leveldot screen → Entities → <strong>New Entity…</strong> writes here).</li>
+<li><code>res://leveldot/levels/</code> — where <strong>Create Game Scene…</strong> suggests saving your scenes.</li>
+<li><code>res://addons/leveldot_bridge/</code> — the addon. Leveldot updates it when you export with a newer version.</li>
+</ul>
+<p>Keep your own scenes and scripts outside <code>generated/</code>. Keep exports out of any folder that holds a <code>.gdignore</code> file: Godot does not import such folders.</p>
+<h2 id="common-problems">Common problems</h2>
+<ul>
+<li><strong>"Save the project first"</strong> — press Ctrl+S, then link again.</li>
+<li><strong>Godot older than 4.4</strong> — the addon needs Godot 4.4 or later. Open the game in a newer Godot.</li>
+<li><strong>Godot does not react to an export</strong> — the game must be open in Godot with <strong>Leveldot Bridge</strong> switched on under <strong>Project → Project Settings → Plugins</strong>. Reload the project once after linking. You can also press <strong>Refresh</strong> on the Leveldot screen's Levels page.</li>
+<li><strong>The level is not in the game</strong> — only a scene that contains the level's <code>generated_world.tscn</code> shows it. Use <strong>Create Game Scene…</strong> (step 4).</li>
+<li><strong>A201</strong> — a file the export needs is missing, ignored by Godot (<code>.gdignore</code>) or not imported yet. The message names the file. Let Godot finish importing, or move the export folder, then export again.</li>
+<li><strong>X402</strong> — the export and the addon do not match, or a file changed after export. If the message names <code>export_schema_version</code>, export again from Leveldot (it updates the addon); update Leveldot and the addon together.</li>
+<li><strong>X403</strong> — a scene named <code>generated_world.tscn</code> that Leveldot did not write is in the way. Move or rename it.</li>
+<li><strong>X401</strong> — a refresh stopped with a script error, or a generated file could not be written. Look at Godot's Output panel, export again; if it repeats, update the addon.</li>
+<li><strong>E302</strong> — a reaction is malformed, or an entity that sends or receives events has a script without the event functions. Export again; make the entity extend <code>LeveldotEntity</code>.</li>
+<li><strong>E303</strong> — a value stored in the level does not fit the entity's setting (for example it was renamed or changed type). The setting keeps its default; fix it in the script or the level.</li>
+<li><strong>E301</strong> — the level uses an entity type whose scene is missing in the game. On the Leveldot screen's Levels page press <strong>Create …</strong> next to the missing type, or restore its scene. Then refresh.</li>
+<li><strong>A failed export</strong> keeps the level's previous export. With several levels, each is written in turn after a check of all of them: a failure later on does not undo a level already written. <strong>A failed refresh</strong> keeps the last generated scene and its colliders, but Godot may already show the new geometry from <code>world.glb</code>. Fix what the message says and export or refresh again.</li>
+</ul>
+  </main>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#what-link-does">What Link does</a></li><li><a href="#first-time">First time</a></li><li><a href="#every-day">Every day</a></li><li><a href="#where-files-go">Where files go</a></li><li><a href="#common-problems">Common problems</a></li></ul></aside>
+</div>
+<!-- footer (scripts/build.py writes this block) -->
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="../img/icon.png" alt="" width="24" height="24">
+    <span>Leveldot Editor, a level editor for Godot 4.</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">YouTube</a>
+      <a href="../docs/index.html">Docs</a>
+    </nav>
+  </div>
+</footer>
+<!-- /footer -->
+<script src="../docs.js"></script>
+</body>
+</html>

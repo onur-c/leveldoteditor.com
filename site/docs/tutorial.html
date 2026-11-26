@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tutorial · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: tutorial.">
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="docs">
+<!-- header (scripts/build.py writes this block) -->
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="../index.html" aria-label="Leveldot home">
+      <picture>
+        <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
+        <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
+      </picture>
+    </a>
+    <nav class="top-nav" aria-label="Site">
+      <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
+      <a class="nav-link" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg><span>Discord</span></a>
+      <a class="nav-link" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg><span>YouTube</span></a>
+      <a class="button primary small" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download</span></a>
+    </nav>
+  </div>
+</header>
+<!-- /header -->
+<div class="docs-layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="side-title">Documentation</p>
+    <a href="index.html">Install</a>
+    <a href="link-godot.html">Link Godot</a>
+    <a href="tools.html">Tools</a>
+    <a href="shortcuts.html">Shortcuts</a>
+    <a href="tutorial.html" aria-current="page">Tutorial</a>
+  </nav>
+  <main class="doc page-tutorial" id="main">
+    <h1>Tutorial</h1>
+    
+    <p>Learn Leveldot by building a small game. <strong>Part 0</strong> shows the screen and the basic moves. Then six projects build on each other. At the end you can walk through a game in Godot that has coins, a door, a lamp, an alarm and a passage to a second level.</p>
+<p>Command and button names are written as they appear in the app. If a step does not work, read the status bar at the bottom of the window: it says why. <strong>F1</strong> opens the User Manual.</p>
+<ul>
+<li><strong>Part 0</strong> (20 min) — Get to know the screen: camera, selection modes, Move / Rotate / Scale, undo, saving</li>
+<li><strong>Project 1</strong> (30 min) — A room: draw Plane and Box, extruding walls, duplicating, blockout colours</li>
+<li><strong>Project 2</strong> (45 min) — Two rooms and a corridor: flip Faces, Loop Cut, Extrude, Inset, Bevel, Repeat Last</li>
+<li><strong>Project 3</strong> (30 min) — Walk around the level: link a Godot game, Export, your own scene, collision</li>
+<li><strong>Project 4</strong> (40 min) — Coins and a door: entities, reactions, a level signal, "on the 3rd time"</li>
+<li><strong>Project 5</strong> (60 min) — Pressure plate, lamp, alarm: your own entity types, a flag, a timer, a delay, game code</li>
+<li><strong>Project 6</strong> (30 min) — A second level: new Level, Player Start, Level Exit, changing levels</li>
+</ul>
+<p>You can stop after Project 2 if you do not use Godot: Projects 1 and 2 need only Leveldot.</p>
+<h2 id="preparation">Preparation</h2>
+<p><strong>You need:</strong> Leveldot, and from Project 3 on <strong>Godot 4.4 or later</strong>. A numpad helps with texture settings but is not required.</p>
+<p>Make one folder for everything:</p>
+<pre><code>Documents\Leveldot Tutorial\
+   levels\     your Leveldot projects
+   game\       the Godot project (made in Project 3)
+</code></pre>
+<p>Create the <code>levels</code> folder now.</p>
+<hr />
+<h2 id="part-0-first-steps">Part 0: First steps</h2>
+<h3 id="what-leveldot-does">What Leveldot does</h3>
+<p>You build level geometry (rooms, corridors, stairs), place <strong>entities</strong> (doors, coins, lamps) and write the level's <strong>logic</strong> as "when this happens, do that". Then you send the level to Godot:</p>
+<pre><code>Leveldot project  --Export (Ctrl+E)--&gt;  your Godot game
+geometry, entities, logic               a level scene, built by the Leveldot Bridge addon
+</code></pre>
+<p>The addon builds a level scene from each export. You put that scene into a scene of your own. When you export again, the level scene updates by itself; your own scene and scripts stay as they were.</p>
+<h3 id="opening-it">Opening it</h3>
+<p>Run <code>LeveldotEditor.exe</code>. A new project opens with a selected 2 m <strong>Cube</strong> and a <strong>New level</strong> card. Click an empty spot in the 3D view to close the card.</p>
+<h3 id="the-screen">The screen</h3>
+<ul>
+<li>Menus (very top) — File, Edit, Select, Mesh, Texture, Create, Window, Help. Modelling tools are in <strong>Mesh</strong>; panels and windows (Level Logic, Logic Graph, Recovery…) are in <strong>Window</strong></li>
+<li><strong>Toolbar</strong> (below the menus) — Undo / Redo, the project name, <strong>Modeling</strong> / <strong>Logic</strong>, <strong>W E R</strong>, <strong>Play</strong>, <strong>Export</strong></li>
+<li>Selection bar (second row) — Selection icons that stay in the same place in every mode; unavailable ones are grey</li>
+<li>Blockout bar (third row) — Drawing tools, <strong>Height</strong> and <strong>Draw on</strong></li>
+<li><strong>Tools</strong> (left column) — <strong>1 2 3 4</strong> (selection modes) and the edit and modify commands; <strong>More tools</strong> holds the rest</li>
+<li><strong>3D view</strong> (centre) — Where you build. Its header has <strong>View</strong>, <strong>Snap</strong>, the grid step, <strong>Checker</strong> and <strong>Overlays</strong></li>
+<li><strong>Outliner</strong> (top right) — Every object, the level picker, search, Show and Lock columns</li>
+<li><strong>Details</strong> (bottom right) — The selection's name, Position, Rotation, Size, entity properties and events</li>
+<li><strong>Status bar</strong> (very bottom) — <strong>Entities</strong> and <strong>Props</strong> drawers, a hint for what you can do now, the selection and the result of the last action. When nothing happens, look here first</li>
+</ul>
+<h3 id="the-camera">The camera</h3>
+<ul>
+<li>Hold the <strong>right mouse button</strong> and move — Look around</li>
+<li><strong>W A S D</strong> with the right button held — Fly; <strong>Q / E</strong> down / up; <strong>Shift</strong> faster</li>
+<li>Middle mouse drag — Pan</li>
+<li>Alt + left mouse drag — Orbit the selection</li>
+<li><strong>Wheel</strong> — Zoom</li>
+<li><strong>F</strong> — Frame the selection (everything when nothing is selected)</li>
+<li><strong>Alt+T / Alt+F / Alt+S / Alt+P</strong> — Top / Front / Side / Perspective</li>
+</ul>
+<p>Lost? Click the cube and press <strong>F</strong>.</p>
+<h3 id="modes-and-tools">Modes and tools</h3>
+<p>Two questions: <strong>what</strong> do I select (the mode), and <strong>what</strong> do I do with it (the tool).</p>
+<ul>
+<li><strong>Modes</strong> (fixed keys): <strong>1</strong> Vertex, <strong>2</strong> Edge, <strong>3</strong> Face, <strong>4</strong> Object.</li>
+<li><strong>Tools:</strong> <strong>W</strong> Move, <strong>E</strong> Rotate, <strong>R</strong> Scale. The handles are red (X), green (Y, up) and blue (Z).</li>
+</ul>
+<p>Try it:</p>
+<ol>
+<li>Press <strong>4</strong>, click the cube, press <strong>W</strong> and drag the red arrow. It moves in 1 m steps because <strong>Snap</strong> is on and the grid step is 1 m.</li>
+<li>Press <strong>E</strong> and drag the green ring: 15° steps.</li>
+<li>Press <strong>R</strong> and drag a handle; with <strong>Shift</strong> held all three axes scale together.</li>
+<li>Press <strong>3</strong>, click the top face and pull the green arrow up with <strong>W</strong>. Only that face moves.</li>
+<li>Move an edge (<strong>2</strong>) and a vertex (<strong>1</strong>) too.</li>
+<li>Press <strong>Ctrl+Z</strong> until everything is undone. <strong>Ctrl+Y</strong> redoes.</li>
+</ol>
+<blockquote>
+<p><strong>Grab (G)</strong> moves the selection with the mouse. Press <strong>X / Y / Z</strong> to lock an axis and <strong>type a number</strong>: <code>G</code>, <code>Y</code>, <code>2</code>, Enter moves it 2 m up. Click or Enter confirms, <strong>Esc</strong> cancels. Many tools work this way: key, axis, number, Enter.</p>
+</blockquote>
+<h3 id="finding-a-command">Finding a command</h3>
+<ul>
+<li><strong>Ctrl+K</strong> opens <strong>Find Action</strong>: type a few letters (<code>bevel</code>, <code>export</code>) to see the command, its key and when it works.</li>
+<li>Right-click without moving in the 3D view opens the command menu of the current mode.</li>
+</ul>
+<h3 id="saving">Saving</h3>
+<p>A project is a folder, <code>name.leveldot</code>, with a <code>project.json</code> inside. <strong>Ctrl+S</strong> saves (the first time it asks for a folder). <strong>Ctrl+Shift+S</strong> saves a copy. Textures and export need a saved project. After a crash, <strong>Recovery Snapshots</strong> offers the last copy (made every 30 seconds) at the next start.</p>
+<p>Warm-up over: <strong>File → New Project</strong> (Ctrl+N), and choose <strong>Don't Save</strong> if asked.</p>
+<hr />
+<h2 id="project-1-the-first-room">Project 1: The first room</h2>
+<p><strong>Goal:</strong> an 8 × 8 m room without a ceiling, with a few crates and a table, in colour.</p>
+<p><strong>1. Save.</strong> <strong>File → Save As…</strong> → <code>Documents\Leveldot Tutorial\levels</code> → folder name <code>tutorial_1.leveldot</code>.</p>
+<p><strong>2. The floor.</strong> Select the cube and press <strong>Delete</strong>. Press <strong>Shift+P</strong> (Draw Plane) and drag an 8 × 8 cell area on the grid; the floor snaps to the grid. <strong>Esc</strong> ends the tool.</p>
+<p><strong>3. Walls.</strong> Pull the floor's outer edges up:</p>
+<ol>
+<li>With the floor selected, press <strong>2</strong> (Edge Mode). Open edges show as an orange dashed line.</li>
+<li><strong>Ctrl+A</strong> selects all four.</li>
+<li><strong>Shift+E</strong> (Extrude), <strong>Y</strong>, type <code>3</code>, <strong>Enter</strong>.</li>
+</ol>
+<p>The walls rise 3 m and face inward. From outside the near walls show as see-through blue stripes: those are the backs of the faces, and a click goes through them to what is behind. <strong>Overlays → Back Faces</strong> (Alt+Shift+B) turns the stripes off; then the near walls are simply not drawn.</p>
+<p><strong>4. A crate.</strong> Press <strong>4</strong>, then <strong>Shift+B</strong> (Draw Box). Drag a 1 × 1 cell base on the floor, click to set the height (one grid step), then <strong>Esc</strong>.</p>
+<p><strong>5. Duplicating.</strong> With the crate selected:
+- <strong>Ctrl+D</strong> copies it in place; move it with <code>G</code>, <code>X</code>, <code>2</code>, Enter.
+- <strong>Shift+D</strong> copies it and sticks it to the mouse; click to drop.</p>
+<p>Scatter four or five crates. To stack one, select it and press <code>G</code>, <code>Y</code>, <code>1</code>, Enter.</p>
+<p><strong>6. A table.</strong> Set <strong>Height</strong> in the Blockout bar to <strong>Custom…</strong> and type <code>0.8</code>. Draw a 2 × 1 cell box. Set Height back to <strong>Grid (Auto)</strong>.</p>
+<p><strong>7. Scale and rotate.</strong> Select a crate; press <strong>R</strong> and shrink it, press <strong>E</strong> and turn it 45°.</p>
+<p><strong>8. Colours.</strong> <strong>Alt+Shift+1…9</strong> pick ready-made flat colours (1 grey, 2 light, 3 dark, 4 orange, 5 red, 6 green, 7 blue, 8 yellow, 9 purple); <strong>Shift+T</strong> applies the active one to the selection.
+- Crates: select them with <strong>Shift+click</strong> in Object Mode, <strong>Alt+Shift+4</strong>, <strong>Shift+T</strong>.
+- Floor: the floor and walls are one object. Press <strong>3</strong>, click the floor face, <strong>Alt+Shift+3</strong>, <strong>Shift+T</strong>.
+- Walls: in Face Mode press <strong>Ctrl+A</strong>, <strong>Shift+click</strong> the floor to remove it, <strong>Alt+Shift+2</strong>, <strong>Shift+T</strong>.</p>
+<p><strong>9. Names.</strong> Select an object's row in the Outliner and press <strong>F2</strong>: <code>Room</code>, <code>Crate 1</code>…</p>
+<p><strong>10. Hide and lock.</strong> Press <strong>H</strong> to hide the selection, <strong>Alt+H</strong> to show everything. Click the lock in the Outliner's Lock column next to <code>Room</code>: it can no longer be selected by clicking, so you cannot move it by accident. Unlock it again.</p>
+<p><strong>11. Save</strong> with <strong>Ctrl+S</strong>.</p>
+<h3 id="you-should-see">You should see</h3>
+<p>a room with a dark floor and light walls, open at the top, with orange crates and a table, and no red message in the status bar.</p>
+<h3 id="try-it-yourself">Try it yourself</h3>
+<ul>
+<li><strong>Overlays → Edge Lengths</strong> (Alt+Shift+L) shows edge lengths in metres.</li>
+<li>Nudge a crate with <strong>Alt + arrow keys</strong>.</li>
+<li>Press <strong>[</strong> and <strong>]</strong> to change the grid to 0.5 m and 2 m and draw a crate: what changes?</li>
+</ul>
+<hr />
+<h2 id="project-2-two-rooms-joined-by-a-corridor">Project 2: Two rooms joined by a corridor</h2>
+<p><strong>Goal:</strong> room A, a 4 m corridor and room B, all one mesh, with a wall niche, a bevelled column and a tower.</p>
+<p><strong>You will learn:</strong> Flip Faces, Loop Cut, axis-locked Extrude, Inset, Bevel, Repeat Last.</p>
+<p>In a room the faces point inward, so from outside <strong>the nearest wall cannot be selected</strong>: it is drawn as blue stripes (or not at all, with <strong>Overlays → Back Faces</strong> off) and a click goes through it. To select a wall, look at it from the opposite side or fly into the room.</p>
+<p><strong>1. New project.</strong> <strong>File → New Project</strong>, then <strong>Save As…</strong> → <code>levels\tutorial_2.leveldot</code>.</p>
+<p><strong>2. Room A.</strong> Select the cube (<strong>4</strong>, click). In Details set <strong>Position</strong> <code>0, 0, 0</code> (the centre of the base) and <strong>Size</strong> W <code>6</code>, H <code>3</code>, D <code>6</code>. Press <strong>Shift+N</strong> (Flip Faces): the box is now a room seen from inside.</p>
+<blockquote>
+<p>The Size fields work only on boxes that have not been cut or flipped yet: set the size first.</p>
+</blockquote>
+<p><strong>3. A doorway (Loop Cut).</strong> The +X wall needs a part 2 m wide and 2.5 m tall.
+1. With the room selected press <strong>Ctrl+R</strong> (Loop Cut).
+2. Move the mouse over an edge that runs along Z, for example where the +X wall meets the floor. The ring is drawn in the view.
+3. Turn the <strong>mouse wheel</strong> to <strong>2</strong> cuts and click. The wall is cut at z = −1 and z = +1.
+4. Press <strong>[</strong> for a 0.5 m grid. Press <strong>Ctrl+R</strong>, hover a <strong>vertical</strong> corner edge, put the cut one cell below the ceiling and click: a cut at 2.5 m.</p>
+<p>The wall now has six parts; the lower middle one (2 × 2.5 m) is the doorway.</p>
+<p><strong>4. The corridor.</strong>
+1. Press <strong>3</strong> and then <strong>Esc</strong> (so the handle is not in the way). Look at the +X wall from inside and click the lower middle part.
+2. <strong>Shift+E</strong>, <strong>X</strong>, <code>4</code>, <strong>Enter</strong>. The part moves 4 m outward and leaves a corridor, with walls, floor and ceiling made automatically.</p>
+<p><strong>5. Room B.</strong>
+1. The corridor's end face is still selected: <strong>Shift+E</strong>, <strong>X</strong>, <code>6</code>, <strong>Enter</strong>.
+2. Select the −Z side wall of that last section, <strong>Shift+E</strong>, <strong>Z</strong>, <code>-2</code>, <strong>Enter</strong>. Then the +Z side wall, <strong>Shift+E</strong>, <strong>Z</strong>, <code>2</code>, <strong>Enter</strong>.</p>
+<p>Room B is 6 × 6 m and 2.5 m tall.</p>
+<p><strong>6. A niche (Inset + Extrude).</strong> Select the lower part of room A's −Z wall. <strong>I</strong>, <code>0.75</code>, <strong>Enter</strong>: a frame opens inside the wall. <strong>Shift+E</strong>, <strong>Z</strong>, <code>-0.5</code>, <strong>Enter</strong> pushes the middle face out.</p>
+<p><strong>7. A bevelled column.</strong> Press <strong>4</strong> and draw a small box in room B. In Details: Size <code>0.6, 2.5, 0.6</code>, Position <code>11.5, 0, -1.5</code>. Press <strong>2</strong>, click a vertical edge, press <strong>X</strong> (edge ring) to select all four, then <strong>B</strong>, <code>0.15</code>, <strong>Enter</strong>: the column becomes an octagon.</p>
+<p><strong>8. A tower with Repeat Last.</strong> Draw a 2 × 2 m box in a corner of room B. Press <strong>3</strong>, select its top face, <strong>Shift+E</strong>, <strong>Y</strong>, <code>0.5</code>, <strong>Enter</strong>, then <strong>Shift+R</strong> twice. Each Shift+R repeats the last extrude.</p>
+<p><strong>9. Colours.</strong> Room A floor dark (3), walls light (2), room B blue (7), column and tower orange (4). In Face Mode a <strong>double-click</strong> selects the connected faces; <strong>Shift + double-click</strong> only those on the same plane.</p>
+<p><strong>10. Save</strong> (Ctrl+S).</p>
+<h3 id="you-should-see_1">You should see</h3>
+<p>From above (<strong>Alt+T</strong>): room A, a corridor and room B, with a niche in A's back wall, an octagonal column and a stepped tower in B.</p>
+<h3 id="if-you-get-stuck">If you get stuck</h3>
+<ul>
+<li>The corridor grew inward and the walls overlap — <strong>Ctrl+Z</strong>, then flip the sign of the number</li>
+<li>I click one wall and another is selected — The near wall is only a back face (blue stripes): look from the opposite side</li>
+<li>A click on a face does not change the selection — You clicked the handle: press <strong>Esc</strong> or click elsewhere on the face</li>
+<li>Loop Cut does not go where I want — The ring runs perpendicular to the edge under the mouse: hover another edge</li>
+<li>The Size fields do nothing — The object was cut or flipped: use Ctrl+Z or scale with <strong>R</strong></li>
+</ul>
+<h3 id="try-it-yourself_1">Try it yourself</h3>
+<ul>
+<li>Press <strong>4</strong>, draw a new box and press <strong>Ctrl+Shift+W</strong> (Hollow): a room with walls 0.25 m thick. In Face Mode select a wall from inside and press <strong>Ctrl+Shift+O</strong> (Opening); set <strong>From floor</strong> to <code>0</code> on its card for a doorway.</li>
+<li>Draw a line across a wall with <strong>C</strong> (Cut) in the Front view (Alt+F).</li>
+</ul>
+<hr />
+<h2 id="project-3-walking-around-the-level-godot">Project 3: Walking around the level (Godot)</h2>
+<p><strong>Goal:</strong> send the level to Godot and walk around in it. Then change something in Leveldot and see it arrive with <strong>one key</strong>.</p>
+<p><strong>1. The Godot project.</strong> In Godot's Project Manager choose <strong>Create</strong>: name <code>Leveldot Tutorial Game</code>, folder <code>Documents\Leveldot Tutorial\game</code>, renderer <strong>Forward+</strong>. <strong>Create &amp; Edit</strong>.</p>
+<p><strong>2. Link the game.</strong> With <code>tutorial_2</code> open in Leveldot, choose <strong>File → Link Godot Project…</strong> and pick <code>Documents\Leveldot Tutorial\game</code> (the folder with <code>project.godot</code>). Leveldot installs and enables the Leveldot Bridge addon, chooses the export folder and exports. A summary tells you what was done. (<strong>Help → Link a Godot Project…</strong> has the details.)</p>
+<p><strong>3. Load the addon.</strong> In Godot choose <strong>Project → Reload Current Project</strong>. A <strong>Leveldot</strong> button now sits at the top, beside 2D / 3D / Script. Press it: on the <strong>Levels</strong> page <code>tutorial_2</code> shows a green mark (<strong>Up to date</strong>). If something goes wrong, the reason is written here.</p>
+<p><strong>4. The player.</strong> In Godot's FileSystem panel right-click <code>res://</code> → <strong>Create New → Script…</strong>, name it <code>player.gd</code>, <strong>Create</strong>, and replace its content with this walker (WASD, mouse, Space jumps, Esc releases the mouse):</p>
+<pre><code class="language-gdscript">extends CharacterBody3D
+## A small first-person walker. It is in the group &quot;player&quot; on physics layer 1:
+## that is what the Coin entity looks for.
+const SPEED := 4.5
+const JUMP := 4.5
+const LOOK := 0.0025
+var camera := Camera3D.new()
+var _settle := 0.0  # seconds after the mouse was captured during which its motion is ignored
+
+func _ready() -&gt; void:
+    add_to_group(&quot;player&quot;)
+    var shape := CapsuleShape3D.new()
+    shape.radius = 0.3
+    shape.height = 1.7
+    var collider := CollisionShape3D.new()
+    collider.shape = shape
+    collider.position.y = 0.85
+    add_child(collider)
+    camera.position.y = 1.6
+    add_child(camera)
+    camera.current = true
+    if DisplayServer.get_name() != &quot;headless&quot;:
+        _capture()
+
+## Capturing the mouse warps it to the window centre, which arrives as one
+## large motion: the view must not jump because of it.
+func _capture() -&gt; void:
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    _settle = 0.25
+
+func _unhandled_input(event: InputEvent) -&gt; void:
+    if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and _settle &lt;= 0.0:
+        rotation.y -= event.relative.x * LOOK
+        camera.rotation.x = clampf(camera.rotation.x - event.relative.y * LOOK, -1.4, 1.4)
+    elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
+        Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+    elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+        _capture()
+
+func _physics_process(delta: float) -&gt; void:
+    _settle = maxf(_settle - delta, 0.0)
+    var move := Vector2(
+        float(Input.is_physical_key_pressed(KEY_D)) - float(Input.is_physical_key_pressed(KEY_A)),
+        float(Input.is_physical_key_pressed(KEY_S)) - float(Input.is_physical_key_pressed(KEY_W)))
+    if move.length() &gt; 1.0:
+        move = move.normalized()
+    var direction := transform.basis * Vector3(move.x, 0, move.y)
+    velocity.x = direction.x * SPEED
+    velocity.z = direction.z * SPEED
+    if is_on_floor():
+        velocity.y = JUMP if Input.is_physical_key_pressed(KEY_SPACE) else 0.0
+    else:
+        velocity.y -= 12.0 * delta
+    move_and_slide()
+</code></pre>
+<p><strong>5. Your game scene.</strong> On the Leveldot screen → <strong>Levels</strong>, select <code>tutorial_2</code> and press <strong>Create Game Scene…</strong>. Accept the suggested file name (<code>res://leveldot/levels/tutorial_2.tscn</code>). The scene opens: it holds the level as a child called <code>World</code>. Now:
+1. Select the scene's root node, <strong>Add Child Node</strong> (Ctrl+A) → <strong>CharacterBody3D</strong>, name it <code>Player</code>. Drag <code>player.gd</code> from the FileSystem onto it. In the Inspector set <strong>Transform → Position</strong> to <code>0, 0.1, 0</code> (the middle of room A).
+2. In the 3D view's top bar open the <strong>⋮</strong> menu and choose <strong>Add Sun to Scene</strong> and <strong>Add Environment to Scene</strong>.
+3. <strong>Ctrl+S</strong>.</p>
+<blockquote>
+<p>A warning about a missing collision shape on <code>Player</code> can be ignored: the script adds its own capsule and camera.</p>
+</blockquote>
+<p><strong>6. Play.</strong> Press <strong>F6</strong>: it runs the scene that is open in the editor, here <code>tutorial_2</code>. Walk from room A through the corridor to room B.</p>
+<blockquote>
+<p>Why do you not walk through walls? Every object's <strong>Details → Collision</strong> is <strong>Generated Static</strong> by default: the game gets a solid collider for it. Set an object to <strong>None</strong> to walk through it.</p>
+</blockquote>
+<p><strong>7. Change and see.</strong> In Leveldot add a crate to room A and press <strong>Ctrl+E</strong>. Switch to Godot: within a few seconds a message says the level was refreshed, and the open scene shows the crate. Press <strong>F6</strong>. You do not need to save first: Export saves for you.</p>
+<blockquote>
+<p>If your game scene has unsaved changes, Godot leaves it alone and says so. Save it (Ctrl+S), then <strong>Scene → Reload Saved Scene</strong>.</p>
+</blockquote>
+<h3 id="you-should-see_2">You should see</h3>
+<p>you start in the middle of room A, the walls stop you, and you can walk through the corridor to room B. It may be dark: the ceilings block the sun. Project 5 adds a lamp.</p>
+<h3 id="if-you-get-stuck_1">If you get stuck</h3>
+<ul>
+<li>No <strong>Leveldot</strong> button, or no level scene — <strong>Project → Reload Current Project</strong>; check that <strong>Leveldot Bridge</strong> is on under <strong>Project Settings → Plugins</strong></li>
+<li>I fall through the floor — Set <code>Player</code>'s Position to <code>0, 0.1, 0</code></li>
+<li>An error code (A201, X402…) — See the common problems in <strong>Help → Link a Godot Project…</strong></li>
+</ul>
+<h3 id="try-it-yourself_2">Try it yourself</h3>
+<p>set the tower's Collision to <strong>None</strong>, export and walk through it. Paint room B's walls another colour and export.</p>
+<hr />
+<h2 id="project-4-coins-and-a-door">Project 4: Coins and a door</h2>
+<p><strong>Goal:</strong> a door closes the corridor. Collecting the three coins in room A opens it, and Godot's Output panel counts the coins.</p>
+<p><strong>You will learn:</strong> making entity types, placing entities, reactions, a level signal, "on the Nth time", Level Start, the log.</p>
+<h3 id="three-ideas-first">Three ideas first</h3>
+<ul>
+<li>An <strong>entity</strong> is an object in the level that does something in the game: a coin, a door, a lamp. You make entity types in Godot as scripts. A script's <code>signal collected</code> becomes an event the entity <strong>announces</strong> in Leveldot; its <code>func open()</code> becomes an action it <strong>performs</strong>.</li>
+<li>A <strong>reaction</strong> is the only building block of logic: "when this happens → do that". It belongs to an entity's event (Entity Details → Events) or to the level (Window → Level Logic…).</li>
+<li>A <strong>signal</strong> is a name for the level, such as "Coin collected". All coins raise the same signal; you write what happens once, on the signal.</li>
+</ul>
+<h3 id="make-the-entity-types-in-godot">Make the entity types in Godot</h3>
+<p><strong>1. Coin.</strong> On the Leveldot screen choose <strong>Entities → New Entity…</strong>. Name <code>Coin</code>, <strong>Starts as</strong> <code>Empty</code>, <strong>Create</strong>. Godot writes <code>res://leveldot/entities/coin.gd</code> and <code>coin.tscn</code>. Open <code>coin.gd</code> and replace its content with:</p>
+<pre><code class="language-gdscript">extends LeveldotEntity
+## A coin the player collects by walking into it.
+
+## Raised once, when the player walks into the coin.
+signal collected
+
+## Turns per second, in radians.
+@export var spin_speed := 2.5
+
+const LEVELDOT_EDITOR_SIZE := Vector3(0.4, 0.4, 0.4)
+
+var _done := false
+var _visual := MeshInstance3D.new()
+
+
+func _ready() -&gt; void:
+    var area := Area3D.new()
+    var collider := CollisionShape3D.new()
+    collider.shape = SphereShape3D.new()
+    collider.position.y = 0.9
+    area.add_child(collider)
+    area.collision_layer = 0
+    area.collision_mask = 1
+    area.body_entered.connect(_on_body_entered)
+    add_child(area)
+    var disc := CylinderMesh.new()
+    disc.top_radius = 0.28
+    disc.bottom_radius = 0.28
+    disc.height = 0.06
+    _visual.mesh = disc
+    _visual.position.y = 0.9
+    _visual.rotation.x = PI / 2
+    add_child(_visual)
+
+
+func _process(delta: float) -&gt; void:
+    _visual.rotation.y += spin_speed * delta
+
+
+func _on_body_entered(body: Node3D) -&gt; void:
+    if _done or not body.is_in_group(&quot;player&quot;):
+        return
+    _done = true
+    _visual.visible = false
+    collected.emit()
+</code></pre>
+<p>Save with <strong>Ctrl+S</strong>. The coin only reacts to bodies in the <code>player</code> group, which <code>player.gd</code> joins.</p>
+<p><strong>2. Door.</strong> The same way: <strong>New Entity…</strong>, name <code>Door</code>, <strong>Empty</strong>, <strong>Create</strong>. Replace <code>door.gd</code> with:</p>
+<pre><code class="language-gdscript">extends LeveldotEntity
+## A slab that blocks the way until it is opened; it slides up.
+
+## Raised when the door has finished opening.
+signal opened
+
+## Slab travel per second, as a fraction of its height.
+@export var open_speed := 1.5
+
+const LEVELDOT_EDITOR_SIZE := Vector3(1.2, 2.2, 0.16)
+
+var _amount := 0.0
+var _target := 0.0
+var _body := AnimatableBody3D.new()
+
+
+func _ready() -&gt; void:
+    var collider := CollisionShape3D.new()
+    var shape := BoxShape3D.new()
+    shape.size = LEVELDOT_EDITOR_SIZE
+    collider.shape = shape
+    collider.position.y = LEVELDOT_EDITOR_SIZE.y * 0.5
+    _body.add_child(collider)
+    var mesh := MeshInstance3D.new()
+    var box := BoxMesh.new()
+    box.size = LEVELDOT_EDITOR_SIZE
+    mesh.mesh = box
+    mesh.position.y = LEVELDOT_EDITOR_SIZE.y * 0.5
+    _body.add_child(mesh)
+    add_child(_body)
+
+
+func _physics_process(delta: float) -&gt; void:
+    var before := _amount
+    _amount = move_toward(_amount, _target, delta * maxf(open_speed, 0.1))
+    _body.position.y = (LEVELDOT_EDITOR_SIZE.y + 0.05) * _amount
+    if before &lt; 1.0 and _amount == 1.0:
+        opened.emit()
+
+
+## Slides the door open.
+func open() -&gt; void:
+    _target = 1.0
+</code></pre>
+<p>Save. Godot writes the game's entity types to a file by itself when a script or scene is saved; when you switch back to Leveldot, it reads them.</p>
+<h3 id="place-them-in-the-level">Place them in the level</h3>
+<p><strong>3. The types.</strong> In Leveldot press <strong>Entities</strong> in the status bar (or <strong>Shift+A</strong>). The Entities drawer should list <strong>Coin</strong> and <strong>Door</strong>. If not, switch to Godot and back, or use <strong>Entity Catalog…</strong> (Ctrl+Shift+A) → <strong>Import from Godot…</strong>. If the file was not written, press <strong>Write Types File</strong> on the Leveldot screen's <strong>Entities</strong> page in Godot first, then in Leveldot <strong>Import from Godot…</strong> and pick <code>res://leveldot/generated/entity_types.json</code> in your game folder.</p>
+<p><strong>4. The door.</strong> Drag <strong>Door</strong> onto the corridor floor. In Details set <strong>Position</strong> <code>5, 0, 0</code> and Rotation <code>0, 90, 0</code> (it now closes the corridor). Name it <code>Door</code> (<strong>F2</strong>).</p>
+<p><strong>5. The first coin.</strong> Drag <strong>Coin</strong> onto room A's floor: <strong>Position</strong> <code>-2, 0, 2</code>, name <code>Coin 1</code>. In Details press <strong>Entity Details…</strong>, open the <strong>Events</strong> tab, find <strong>collected</strong> and press <strong>Add action</strong>. Set <strong>Do</strong> = <strong>Raise a signal</strong>, <strong>Signal</strong> = <strong>New signal…</strong>, <strong>Name</strong> = <code>Coin collected</code>, <strong>Apply</strong>.</p>
+<p>The coin now tells the level "Coin collected". It does not know about the door.</p>
+<p><strong>6. The other coins.</strong> Select <code>Coin 1</code> and press <strong>Ctrl+D</strong> twice (copies keep their reactions). Positions <code>-2, 0, -2</code> and <code>2, 0, -2</code>; names <code>Coin 2</code>, <code>Coin 3</code>.</p>
+<p><strong>7. Open the door on the third coin.</strong> <strong>Window → Level Logic…</strong> (Ctrl+L). Select the signal <strong>Coin collected</strong>. Under <strong>When it is raised</strong> press <strong>Add reaction</strong>:
+- <strong>Do</strong> = <strong>Tell an entity</strong>, <strong>Entity</strong> = <code>Door</code>, <strong>Performs</strong> = <strong>open</strong>, <strong>When</strong> = <strong>On the N-th time, once</strong>, <strong>N</strong> = <code>3</code>, <strong>Apply</strong>.
+- Add another: <strong>Do</strong> = <strong>Write to the log</strong>, <strong>Message</strong> = <code>Coins: {count}/3</code>, <strong>When</strong> = <strong>Every time</strong>, <strong>Apply</strong>.</p>
+<p><strong>8. Level start.</strong> In the same window choose <strong>Level start</strong> → <strong>Add reaction</strong> → <strong>Write to the log</strong>: <code>Collect three coins to open the door.</code> <strong>Apply</strong>, <strong>Close</strong>.</p>
+<p><strong>9. When the door opens.</strong> Select <code>Door</code>; in Events, under <strong>opened</strong>, <strong>Add action</strong> → <strong>Write to the log</strong>: <code>Door opened!</code></p>
+<p><strong>10. Check it.</strong>
+- With <code>Door</code> selected, <strong>Reacts to</strong> in Events shows what opens it.
+- <strong>Window → All Reactions…</strong> lists every reaction in the level.
+- <strong>Window → Logic Graph…</strong> draws the connections of the selection, or the whole level with <strong>Whole Level</strong>. It only shows; nothing is changed there.
+- Selecting a coin shows a dashed arrow to the door in the 3D view.</p>
+<p><strong>11. Play.</strong> <strong>Ctrl+E</strong>, switch to Godot. <strong>New Entity…</strong> opened the scenes of Coin and Door in their own tabs, and <strong>F6</strong> runs the open one: click the <code>tutorial_2</code> tab first (or double-click <code>tutorial_2.tscn</code> in FileSystem), then press <strong>F6</strong>. Keep the <strong>Output</strong> panel open.</p>
+<h3 id="you-should-see_3">You should see</h3>
+<p>In Output: <code>Collect three coins to open the door.</code>, then <code>Coins: 1/3</code>, <code>Coins: 2/3</code>, <code>Coins: 3/3</code>. On the third the door slides up and <code>Door opened!</code> appears. You can pass through the corridor.</p>
+<h3 id="if-you-get-stuck_2">If you get stuck</h3>
+<ul>
+<li>The drawer shows no Coin or Door — Are the files in <code>res://leveldot/entities</code>? Check the Leveldot screen → <strong>Entities</strong> page: a yellow or red note says what was left out. Press <strong>Write Types File</strong> there, then in Leveldot <strong>Entity Catalog… → Import from Godot…</strong> and choose <code>entity_types.json</code> in the game's <code>leveldot/generated</code> folder</li>
+<li>I touch a coin and nothing happens — In Godot turn on <strong>Project Settings → Leveldot Bridge → Debug → Log Events</strong>: every reaction that runs is printed. No line at all means the coin never fired: is <code>Player</code> in the <code>player</code> group (does it have <code>player.gd</code>)?</li>
+<li>The door is turned the wrong way — Change Rotation Y between <code>0</code> and <code>90</code></li>
+<li><strong>E301</strong> in Godot — A placed entity has no scene in the game. Keep every entity's <code>.tscn</code> in <code>res://leveldot/entities</code></li>
+</ul>
+<h3 id="try-it-yourself_3">Try it yourself</h3>
+<ul>
+<li><strong>Entity Details… → Properties</strong> of the door: set <strong>open_speed</strong> to <code>0.3</code>. A changed value is coloured; the arrow beside it restores the default.</li>
+<li>Put two more coins in room B and use <strong>Every N-th time</strong> (N = 2) to log every second coin.</li>
+</ul>
+<hr />
+<h2 id="project-5-a-pressure-plate-lamps-and-an-alarm">Project 5: A pressure plate, lamps and an alarm</h2>
+<p><strong>Goal:</strong> a plate in room B turns the room lamp on while you stand on it (and off again 3 seconds after you leave it). The third coin starts a blinking red alarm lamp. Stepping on the plate during the alarm ends the level, and game code shows "Congratulations".</p>
+<p><strong>You will learn:</strong> more entity types, an entity's <strong>properties</strong>, <strong>After</strong> (delay), a flag, <strong>Only while</strong>, a timer, game code listening to the level.</p>
+<p>An entity script is read like this:</p>
+<ul>
+<li><code>signal pressed</code> — <strong>Announces</strong>: an event the entity raises</li>
+<li><code>func turn_on() -&gt; void:</code> — <strong>Performs</strong>: an action it can do</li>
+<li><code>@export var energy := 3.0</code> — a property (Entity Details → Properties)</li>
+<li><code>## description</code> lines — the description of the type, event or property</li>
+<li><code>const LEVELDOT_EDITOR_SIZE := Vector3(...)</code> — the size of the box drawn in Leveldot</li>
+</ul>
+<p>Functions that start with <code>_</code> are private. In Godot, the Leveldot screen → <strong>Entities</strong> page shows what was read from each script.</p>
+<p>The built-in entities (Signal, Counter, Timer, Light, Trigger Area, Mover and the others) are written the same way: each is a short, readable script in the addon's <code>runtime/entities</code> folder (effects in <code>runtime/effects</code>, Level Exit and Player Start in <code>runtime/levels</code>). Open one next to your own when you want to see how something is done; <code>godot-addon/README.md</code> lists what each one shows.</p>
+<h3 id="part-a-two-more-entity-types">Part A: Two more entity types</h3>
+<p><strong>1. The pressure plate.</strong> <strong>Entities → New Entity…</strong>, name <code>Pressure Plate</code>, <strong>Empty</strong>, <strong>Create</strong>. Replace <code>pressure_plate.gd</code> with:</p>
+<pre><code class="language-gdscript">extends LeveldotEntity
+## A plate on the floor. It is pressed while the player stands on it.
+
+## The player stepped onto the plate.
+signal pressed
+## The player has been off the plate for hold_time seconds.
+signal released
+
+## Seconds the plate stays &quot;on&quot; after the player steps off. Stepping back on in time keeps it on.
+@export var hold_time := 3.0
+
+const LEVELDOT_EDITOR_SIZE := Vector3(1.0, 0.1, 1.0)
+
+var _top := MeshInstance3D.new()
+var _release_in := -1.0  # seconds until released is raised; below 0 = not waiting
+
+
+func _ready() -&gt; void:
+    var area := Area3D.new()
+    var shape := BoxShape3D.new()
+    shape.size = Vector3(1.0, 0.6, 1.0)
+    var collider := CollisionShape3D.new()
+    collider.shape = shape
+    collider.position.y = 0.3
+    area.add_child(collider)
+    area.collision_layer = 0
+    area.collision_mask = 1
+    area.body_entered.connect(_on_body_entered)
+    area.body_exited.connect(_on_body_exited)
+    add_child(area)
+    var slab := BoxMesh.new()
+    slab.size = Vector3(1.0, 0.1, 1.0)
+    _top.mesh = slab
+    _top.position.y = 0.05
+    var paint := StandardMaterial3D.new()
+    paint.albedo_color = Color(0.2, 0.55, 0.95)
+    _top.material_override = paint
+    add_child(_top)
+
+
+func _process(delta: float) -&gt; void:
+    if _release_in &lt; 0.0:
+        return
+    _release_in -= delta
+    if _release_in &lt;= 0.0:
+        _release_in = -1.0
+        released.emit()
+
+
+func _on_body_entered(body: Node3D) -&gt; void:
+    if body.is_in_group(&quot;player&quot;):
+        _release_in = -1.0
+        _top.position.y = 0.02
+        pressed.emit()
+
+
+func _on_body_exited(body: Node3D) -&gt; void:
+    if body.is_in_group(&quot;player&quot;):
+        _release_in = maxf(hold_time, 0.0)
+        _top.position.y = 0.05
+</code></pre>
+<p><strong>2. The lamp.</strong> <strong>New Entity…</strong>, name <code>Lamp</code>, <strong>Empty</strong>, <strong>Create</strong>. Replace <code>lamp.gd</code> with:</p>
+<pre><code class="language-gdscript">extends LeveldotEntity
+## A lamp that lights the room around it.
+
+## The lamp was turned on.
+signal turned_on
+## The lamp was turned off.
+signal turned_off
+
+## Colour of the light.
+@export var color := Color(1.0, 0.85, 0.6)
+## Brightness of the light.
+@export_range(0.0, 16.0) var energy := 3.0
+## Lit when the level starts.
+@export var starts_on := false
+
+const LEVELDOT_EDITOR_SIZE := Vector3(0.4, 0.4, 0.4)
+
+var is_on := false
+var _light := OmniLight3D.new()
+var _bulb := StandardMaterial3D.new()
+
+
+func _ready() -&gt; void:
+    _light.light_color = color
+    _light.omni_range = 8.0
+    _light.shadow_enabled = true
+    _light.position.y = 0.2
+    add_child(_light)
+    var sphere := SphereMesh.new()
+    sphere.radius = 0.15
+    sphere.height = 0.3
+    var bulb := MeshInstance3D.new()
+    bulb.mesh = sphere
+    bulb.position.y = 0.2
+    _bulb.emission_enabled = true
+    _bulb.emission = color
+    bulb.material_override = _bulb
+    add_child(bulb)
+    _show(starts_on)
+
+
+## Turns the lamp on.
+func turn_on() -&gt; void:
+    if not is_on:
+        _show(true)
+        turned_on.emit()
+
+
+## Turns the lamp off.
+func turn_off() -&gt; void:
+    if is_on:
+        _show(false)
+        turned_off.emit()
+
+
+## On when it is off, off when it is on.
+func toggle() -&gt; void:
+    if is_on:
+        turn_off()
+    else:
+        turn_on()
+
+
+func _show(on: bool) -&gt; void:
+    is_on = on
+    _light.light_energy = energy if on else 0.0
+    _bulb.albedo_color = color if on else Color(0.2, 0.2, 0.2)
+    _bulb.emission_energy_multiplier = 2.0 if on else 0.0
+</code></pre>
+<p>Save both. In Leveldot the <strong>Entities</strong> drawer now has <strong>Lamp</strong> and <strong>Pressure Plate</strong> (if not, <strong>Entity Catalog… → Update from Godot</strong>, or <strong>Write Types File</strong> in Godot first). Click the Lamp tile to see its properties (<strong>color</strong>, <strong>energy</strong>, <strong>starts_on</strong>), what it performs (<strong>toggle</strong>, <strong>turn_off</strong>, <strong>turn_on</strong>) and what it announces (<strong>turned_off</strong>, <strong>turned_on</strong>). A changed script updates in Leveldot when you save it.</p>
+<h3 id="part-b-place-them">Part B: Place them</h3>
+<p><strong>3.</strong> Drag <strong>Pressure Plate</strong> onto room B's floor: Position <code>10, 0, 0</code>, name <code>Plate</code>.
+<strong>4.</strong> Drag <strong>Lamp</strong>: Position <code>10, 2, 0</code>, name <code>Room Lamp</code>; leave <strong>starts_on</strong> off.
+<strong>5.</strong> Select <code>Room Lamp</code>, <strong>Ctrl+D</strong>: Position <code>12, 2, 2</code>, name <code>Alarm Lamp</code>. In <strong>Entity Details… → Properties</strong> pick a red <strong>color</strong> and set <strong>energy</strong> <code>6</code>.</p>
+<h3 id="part-c-the-logic">Part C: The logic</h3>
+<p><strong>6. Plate → lamp.</strong> Press <strong>Logic</strong> in the toolbar (or <strong>F4</strong>): the level turns grey and clicking selects only entities.
+- Select <code>Plate</code>, press <strong>K</strong> (Connect), then click <code>Room Lamp</code>. In the form set <strong>When it announces</strong> = <strong>pressed</strong>, <strong>Performs</strong> = <strong>turn_on</strong>, <strong>Apply</strong>.
+- <strong>K</strong> again, <code>Room Lamp</code>: <strong>released</strong> → <strong>turn_off</strong>, <strong>Apply</strong>. The plate itself raises <strong>released</strong> only when you have been off it for its <strong>hold_time</strong> (3 seconds), so stepping back on in time keeps the lamp lit.</p>
+<p>Hover an arrow to read its reactions as sentences. Press <strong>F4</strong> to return to modelling.</p>
+<p><strong>7. The alarm flag.</strong> <strong>Window → Level Logic… → Flags → New flag</strong>: name <code>Alarm</code>, <strong>Create flag</strong>. A flag is an on / off value of the level, off at the start.</p>
+<p><strong>8. The third coin sets the alarm.</strong> <strong>Signals → Coin collected → Add reaction</strong>: <strong>Do</strong> = <strong>Set a flag</strong>, <strong>Flag</strong> = <code>Alarm</code>, <strong>Set to</strong> = <strong>On</strong>, <strong>When</strong> = <strong>On the N-th time, once</strong>, <strong>N</strong> = <code>3</code>, <strong>Apply</strong>. The door reaction from Project 4 still runs: an event can have any number of reactions.</p>
+<p><strong>9. The lamp blinks.</strong> <strong>Timers → Add timer</strong>: <strong>Every</strong> <code>0.5</code> s, <strong>Do</strong> = <strong>Tell an entity</strong>, <code>Alarm Lamp</code>, <strong>toggle</strong>, <strong>Only while</strong> = <strong>Alarm is on</strong>, <strong>Apply</strong>.</p>
+<p><strong>10. The plate ends the level.</strong> <strong>Close</strong>, select <code>Plate</code>, event <strong>pressed → Add action</strong>: <strong>Do</strong> = <strong>Raise a signal</strong>, <strong>Signal</strong> = <strong>New signal…</strong> <code>Level finished</code>, <strong>Only while</strong> = <strong>Alarm is on</strong>, <strong>Apply</strong>.</p>
+<p><strong>11. When the level finishes.</strong> <strong>Window → Level Logic… → Signals → Level finished</strong>, three reactions:
+- <strong>Set a flag</strong>: <code>Alarm</code> → <strong>Off</strong>.
+- <strong>Tell an entity</strong>: <code>Alarm Lamp</code> → <strong>turn_off</strong>, press <strong>More…</strong> and set <strong>After</strong> = <code>0.6</code>, <strong>Apply</strong>. <strong>After</strong> delays a reaction by that many seconds; here it makes the turn_off come after the timer's last tick.
+- <strong>Write to the log</strong>: <code>Level finished!</code></p>
+<p><strong>12. Ctrl+E.</strong></p>
+<h3 id="part-d-game-code-listens">Part D: Game code listens</h3>
+<p>Game code meets the level at named signals. The <code>Leveldot_Signals</code> node inside the level scene raises <code>raised(signal_name)</code> whenever one of the level's signals is raised.</p>
+<p><strong>13.</strong> In Godot, open your game scene, right-click its root node → <strong>Attach Script</strong> → <strong>Create</strong>, and use this content:</p>
+<pre><code class="language-gdscript">extends Node3D
+## Shows a message when the level raises &quot;Level finished&quot;.
+
+
+func _ready() -&gt; void:
+    var signals := find_child(&quot;Leveldot_Signals&quot;, true, false)
+    signals.raised.connect(_on_level_signal)
+
+
+func _on_level_signal(signal_name: String) -&gt; void:
+    if signal_name == &quot;Level finished&quot;:
+        var layer := CanvasLayer.new()
+        var label := Label.new()
+        label.text = &quot;Congratulations! Level complete.&quot;
+        label.position = Vector2(40, 40)
+        label.add_theme_font_size_override(&quot;font_size&quot;, 40)
+        layer.add_child(label)
+        add_child(layer)
+</code></pre>
+<p>Save, then <strong>F6</strong>.</p>
+<blockquote>
+<p>Every level signal is also a real Godot signal on <code>Leveldot_Signals</code> ("Level finished" → <code>level_finished</code>). <code>raise("Name")</code> raises one from code; <code>get_flag("Alarm")</code> and <code>set_flag("Alarm", true)</code> read and write a flag. In Level Logic, the <strong>In game code</strong> section of a signal or flag shows these lines ready to copy.</p>
+</blockquote>
+<h3 id="you-should-see_4">You should see</h3>
+<ol>
+<li>Room B is dark; stepping on the plate lights the room lamp, stepping off turns it off 3 seconds later, unless you step back on within those 3 seconds.</li>
+<li>The third coin opens the door and starts the red lamp blinking.</li>
+<li>Stepping on the plate during the alarm stops the lamp, logs <code>Level finished!</code> and shows <strong>Congratulations! Level complete.</strong></li>
+<li>Stepping on the plate before the alarm does not finish the level: its <strong>Only while</strong> condition is not met.</li>
+</ol>
+<h3 id="if-you-get-stuck_3">If you get stuck</h3>
+<ul>
+<li>Lamp or Pressure Plate is missing in Leveldot — Does the script say <code>extends LeveldotEntity</code> and is the scene in <code>res://leveldot/entities</code>? The Leveldot screen → <strong>Entities</strong> page lists what was read</li>
+<li>A function is missing from <strong>Performs</strong> — Names starting with <code>_</code> are private; a parameter must be a single typed one (bool, int, float, String, Vector3)</li>
+<li>The lamp never lights — Turn on <strong>Log Events</strong> (Project 4): does a <code>Plate · pressed</code> line appear? If not, the plate is not on the floor (Position Y = <code>0</code>)</li>
+<li>No "Congratulations" but the log line appears — Is the script attached to the root node of your game scene? Look for an error in Output</li>
+</ul>
+<h3 id="try-it-yourself_4">Try it yourself</h3>
+<ul>
+<li>Add <code>func set_energy(value: float) -&gt; void:</code> with a <code>## Sets the brightness.</code> line to <code>lamp.gd</code>, then use the <strong>Value</strong> field of a reaction that performs it.</li>
+<li>Select <code>Plate</code> → <strong>Entity Details… → Properties</strong> and change <strong>hold_time</strong> to <code>1</code>: the property comes from <code>@export var hold_time</code> in <code>pressure_plate.gd</code>.</li>
+<li>Add <code>@export var one_shot := false</code> to <code>pressure_plate.gd</code>: the property appears in Leveldot by itself.</li>
+</ul>
+<hr />
+<h2 id="project-6-a-second-level-the-cellar">Project 6: A second level, the Cellar</h2>
+<p><strong>Goal:</strong> a passage in room B leads to a second level, the <strong>Cellar</strong>; a passage in the Cellar leads back to room A. Both levels are in the same project and the same game.</p>
+<p><strong>You will learn:</strong> New Level, Player Start, Level Exit and its destination, Open Level.</p>
+<ul>
+<li><strong>A project holds several levels.</strong> The <strong>level picker</strong> at the top of the Outliner opens them and holds commands such as <strong>New Level</strong> and <strong>Rename Level…</strong>. Each level has its own objects and logic; materials and entity types are shared. One level knows another only through an exit's destination.</li>
+<li><strong>Player Start</strong> is where the player appears. <strong>Level Exit</strong> is a box that takes the player to another level. Both are built in (category <strong>Level</strong> in the Entities drawer): you do not make them in Godot.</li>
+</ul>
+<p><strong>1. A start in room A.</strong> Open <code>tutorial_2</code>. Press <strong>Shift+A</strong>, type <code>level</code> in the search, and drag <strong>Player Start</strong> onto room A's floor. Position <code>0, 0, 0</code>; rotate it with <strong>E</strong> so the arrow points into the corridor (+X); name it <code>Entry</code>. <strong>Ctrl+S</strong>. With one Player Start in a level, the game puts the player there (the node in the <code>player</code> group).</p>
+<p><strong>2. The Cellar.</strong>
+1. Level picker → <strong>New Level</strong>. An empty level opens. Level picker → <strong>Rename Level…</strong>, type <code>Cellar</code>, Enter.
+2. <strong>Create → Quick Box at View Centre</strong>. Position <code>0, 0, 0</code>, Size <code>8, 3, 8</code>, <strong>Shift+N</strong> to make it a room. Give it a blockout colour so you can tell it from room A.</p>
+<p><strong>Ctrl+PageUp / Ctrl+PageDown</strong> switch between levels.</p>
+<p><strong>3. The Cellar's start and exit.</strong>
+1. <strong>Shift+A</strong>, <code>level</code>: drop <strong>Player Start</strong>: Position <code>-2, 0, 0</code>, arrow facing +X, name <code>Stairs</code>.
+2. Drop <strong>Level Exit</strong>: Position <code>3.4, 0, 0</code>, Rotation <code>0, 90, 0</code>, name <code>Up</code>. It is a purple box; invisible in the game, it works when the player walks into it.
+3. With <code>Up</code> selected: <strong>Entity Details… → Properties → Destination</strong>. In the top list choose <code>tutorial_2</code>; the lower list holds its Player Starts: <strong>Default start (Entry)</strong> is fine.
+4. <strong>Ctrl+S</strong> saves both levels.</p>
+<p><strong>4. The passage in room B.</strong> <strong>Ctrl+PageUp</strong> opens <code>tutorial_2</code>. Drop a <strong>Level Exit</strong> at Position <code>12.4, 0, 0</code>, Rotation <code>0, 90, 0</code>, name <code>To Cellar</code>. In <strong>Entity Details… → Properties → Destination</strong> pick <code>Cellar</code> and <strong>Stairs</strong>. Press <strong>Open Level</strong> below the lists to check where the player will arrive: the Cellar opens with <code>Stairs</code> selected.</p>
+<p><strong>5. Export.</strong> <strong>Ctrl+E</strong> exports both levels, each into its own folder.</p>
+<p><strong>6. Play.</strong> In Godot click the <code>tutorial_2</code> tab (the game scene) and press <strong>F6</strong>. Open the door with the coins, go to room B and walk into the passage by the back wall.</p>
+<h3 id="you-should-see_5">You should see</h3>
+<p>the game starts in room A at <code>Entry</code>. Walking into the passage fades out and puts you in the Cellar at <code>Stairs</code>. Walking into the Cellar's exit returns you to room A at <code>Entry</code>, with the coins and the door as at the start. (The Cellar has no game scene of its own, so on the way in the game swaps the level inside your scene and your player, camera and lights stay. Room A has one, <code>tutorial_2</code>, so on the way back the game loads that scene again and builds player, camera and lights anew.)</p>
+<h3 id="if-you-get-stuck_4">If you get stuck</h3>
+<ul>
+<li><code>Cellar</code> is not in the Destination list — Are both levels in the same project? The level picker lists them</li>
+<li>No <strong>Open Level</strong> button — A destination level must be chosen</li>
+<li>I walk into the passage and nothing happens — Read Godot's <strong>Output</strong>: it says why (for example the Cellar was not exported). Check the exit's <strong>Enabled</strong> and <strong>On Touch</strong> boxes</li>
+<li>Wrong facing in the Cellar — Rotate <code>Stairs</code> with <strong>E</strong> and export again</li>
+<li>A yellow line below the lists — The destination has a problem; the text says which. <strong>Window → Validation Issues…</strong> (F8) lists all problems</li>
+</ul>
+<h3 id="try-it-yourself_5">Try it yourself</h3>
+<ul>
+<li>Turn off <strong>On Touch</strong> for <code>To Cellar</code> and add a reaction on <strong>Coin collected</strong>: <strong>Tell an entity</strong> <code>To Cellar</code> → <code>go</code>, <strong>On the N-th time, once</strong>, <code>3</code>. The third coin sends the player to the Cellar.</li>
+<li>In the Cellar, <strong>Level Logic → Level start → Add reaction → Go to a level</strong>: <code>tutorial_2</code>, <strong>After</strong> = <code>5</code>.</li>
+</ul>
+<hr />
+<h2 id="where-to-go-from-here">Where to go from here</h2>
+<p>You know the whole loop: <strong>build → place → connect → Ctrl+E → play</strong>. Next, in the User Manual (<strong>F1</strong>): real textures (Import Texture, Fit, Wrap, Hotspot), more modelling tools (Cut, Slice, Bridge, Boolean, Mirror), props and models, and the logic windows. <strong>Help → Keyboard Shortcuts…</strong> lists every key.</p>
+<h3 id="keys-used-in-this-tutorial">Keys used in this tutorial</h3>
+<ul>
+<li><strong>1 / 2 / 3 / 4</strong> — Vertex / Edge / Face / Object Mode</li>
+<li><strong>W / E / R / G</strong> — Move / Rotate / Scale / Grab</li>
+<li><strong>Shift+P / Shift+B</strong> — Draw Plane / Draw Box</li>
+<li><strong>Ctrl+D / Shift+D</strong> — Duplicate / duplicate and move</li>
+<li><strong>Shift+E / I / B</strong> — Extrude / Inset / Bevel</li>
+<li><strong>Ctrl+R / X</strong> — Loop Cut / select an edge ring</li>
+<li><strong>Shift+N</strong> — Flip Faces (box → room)</li>
+<li><strong>Shift+R</strong> — Repeat the last Extrude, Inset or Bevel</li>
+<li>Alt+Shift+1…9, Shift+T — Pick a blockout colour, apply it</li>
+<li><strong>H / Alt+H, F2</strong> — Hide / show all, rename</li>
+<li><strong>K, F4</strong> — Connect two entities, Logic view</li>
+<li><strong>Ctrl+Z / Ctrl+Y, Ctrl+K</strong> — Undo / redo, Find Action</li>
+<li><strong>Ctrl+S / Ctrl+E</strong> — Save / Export to Godot</li>
+</ul>
+  </main>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#preparation">Preparation</a></li><li><a href="#part-0-first-steps">Part 0: First steps</a></li><li><a href="#project-1-the-first-room">Project 1: The first room</a></li><li><a href="#project-2-two-rooms-joined-by-a-corridor">Project 2: Two rooms joined by a corridor</a></li><li><a href="#project-3-walking-around-the-level-godot">Project 3: Walking around the level (Godot)</a></li><li><a href="#project-4-coins-and-a-door">Project 4: Coins and a door</a></li><li><a href="#project-5-a-pressure-plate-lamps-and-an-alarm">Project 5: A pressure plate, lamps and an alarm</a></li><li><a href="#project-6-a-second-level-the-cellar">Project 6: A second level, the Cellar</a></li><li><a href="#where-to-go-from-here">Where to go from here</a></li></ul></aside>
+</div>
+<!-- footer (scripts/build.py writes this block) -->
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="../img/icon.png" alt="" width="24" height="24">
+    <span>Leveldot Editor, a level editor for Godot 4.</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">YouTube</a>
+      <a href="../docs/index.html">Docs</a>
+    </nav>
+  </div>
+</footer>
+<!-- /footer -->
+<script src="../docs.js"></script>
+</body>
+</html>

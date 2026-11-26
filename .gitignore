@@ -1,0 +1,7 @@
+.source-path
+.claude/worktrees/
+.claude/settings.local.json
+__pycache__/
+*.pyc
+.env
+*.key

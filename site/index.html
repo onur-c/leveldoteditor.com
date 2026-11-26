@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leveldot Editor · a level editor for Godot 4</title>
+<meta name="description" content="Leveldot Editor: block out, model, texture and wire up 3D levels, then play them in your Godot 4 game.">
+<meta property="og:title" content="Leveldot Editor">
+<meta property="og:description" content="A level editor for Godot 4: block out, model, texture and wire up levels, then play them in your game.">
+<meta property="og:image" content="img/shot-modeling.jpg">
+<link rel="icon" href="img/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- header (scripts/build.py writes this block) -->
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="index.html" aria-label="Leveldot home">
+      <picture>
+        <source srcset="img/logo-light.png" media="(prefers-color-scheme: light)">
+        <img src="img/logo-dark.png" alt="Leveldot" width="144" height="31">
+      </picture>
+    </a>
+    <nav class="top-nav" aria-label="Site">
+      <a class="nav-link" href="docs/index.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
+      <a class="nav-link" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg><span>Discord</span></a>
+      <a class="nav-link" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg><span>YouTube</span></a>
+      <a class="button primary small" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download</span></a>
+    </nav>
+  </div>
+</header>
+<!-- /header -->
+
+<main id="main">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Level editor for Godot 4</p>
+      <h1>Build levels fast. Play them in Godot.</h1>
+      <p class="lead">Leveldot Editor is a standalone 3D level editor. Block out rooms, shape them with real modeling tools, texture them, place entities and connect them with simple logic. Save, and the level is in your Godot game.</p>
+      <div class="actions">
+        <a class="button primary" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>
+          <span>Download on itch.io</span>
+        </a>
+        <a class="button" href="docs/index.html">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg>
+          <span>Read the docs</span>
+        </a>
+      </div>
+      <p class="fine">Windows 10 or 11 (64-bit), a Vulkan graphics card. Games need Godot 4.4 or later.</p>
+    </div>
+    <figure class="hero-shot">
+      <img src="img/shot-modeling.jpg" alt="Leveldot Editor with a textured yard: brick walls, crates and entities in the 3D view, the Outliner on the right" width="1600" height="900">
+    </figure>
+  </section>
+
+  <section class="features" aria-labelledby="features-title">
+    <h2 id="features-title">What it does</h2>
+    <div class="feature-grid">
+      <article class="feature">
+        <h3>Block out in minutes</h3>
+        <p>Draw boxes, planes, polygons, stairs, ramps, arches and cylinders on the grid or straight onto any surface, then pull up the height.</p>
+      </article>
+      <article class="feature">
+        <h3>Model where you build</h3>
+        <p>Vertex, edge, face and object modes on <kbd>1</kbd>–<kbd>4</kbd>, move, rotate and scale on <kbd>W</kbd> <kbd>E</kbd> <kbd>R</kbd>. Extrude, inset, bevel, loop cut, knife, booleans and openings for doors and windows.</p>
+      </article>
+      <article class="feature">
+        <h3>Texture as you go</h3>
+        <p>Materials from your images, a prototype blockout set, fit, wrap and flow textures across faces, hotspot atlases, a UV editor, decals and vertex colours.</p>
+      </article>
+      <article class="feature">
+        <h3>Logic without code</h3>
+        <p>Place entities from your game and the built-in set (lights, effects, doors, lifts). Connect them: “when the player takes the coin, open the door”. The Logic view shows every connection.</p>
+      </article>
+      <article class="feature">
+        <h3>Many levels, one project</h3>
+        <p>A project holds all your levels. A Player Start says where the player appears, a Level Exit sends them to the next level.</p>
+      </article>
+      <article class="feature">
+        <h3>Straight into Godot</h3>
+        <p>Link your game once. Every save exports the levels and Godot refreshes them by itself; <kbd>F5</kbd> plays the level you are editing. Your own scenes are never touched.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <h2 id="gallery-title">Screenshots</h2>
+    <div class="shots">
+      <figure>
+        <a href="img/shot-logic.jpg"><img src="img/shot-logic.jpg" alt="Logic view of the Coin Rooms sample: coins, doors and the connections between them" width="1600" height="900" loading="lazy"></a>
+        <figcaption>The Logic view: what triggers what, drawn in the level.</figcaption>
+      </figure>
+      <figure>
+        <a href="img/shot-four-views.jpg"><img src="img/shot-four-views.jpg" alt="Four views: perspective, top, front and side of the Coin Rooms sample" width="1600" height="900" loading="lazy"></a>
+        <figcaption>Four views at once: perspective, top, front and side.</figcaption>
+      </figure>
+      <figure>
+        <a href="img/shot-levels.jpg"><img src="img/shot-levels.jpg" alt="A hall with a Player Start and a Level Exit to the cellar, on a UV checker floor" width="1600" height="900" loading="lazy"></a>
+        <figcaption>Player Start and a Level Exit leading to the next level.</figcaption>
+      </figure>
+      <figure>
+        <a href="img/shot-faces.jpg"><img src="img/shot-faces.jpg" alt="Face mode with one face selected, its size and material shown in Details" width="1600" height="900" loading="lazy"></a>
+        <figcaption>Face mode: sizes in the view, material and surface in Details.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="steps" aria-labelledby="steps-title">
+    <h2 id="steps-title">Get started</h2>
+    <ol class="step-list">
+      <li>
+        <h3>Download</h3>
+        <p>Get the ZIP from <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>, extract it and run <code>LeveldotEditor.exe</code>. Nothing else to install.</p>
+      </li>
+      <li>
+        <h3>Link your game</h3>
+        <p>Save a project, then <strong>File → Link Godot Project…</strong> and pick your game’s folder. <a href="docs/link-godot.html">How linking works</a>.</p>
+      </li>
+      <li>
+        <h3>Build a level</h3>
+        <p>The <a href="docs/tutorial.html">tutorial</a> builds a small game step by step: rooms, coins, a door, a second level.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="community" aria-labelledby="community-title">
+    <h2 id="community-title">Follow along</h2>
+    <div class="community-links">
+      <a class="community-card" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">
+        <svg class="icon big" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg>
+        <span><strong>Discord</strong><span class="muted">Questions, bug reports, levels you made.</span></span>
+      </a>
+      <a class="community-card" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">
+        <svg class="icon big" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg>
+        <span><strong>YouTube</strong><span class="muted">Videos of the tools at work.</span></span>
+      </a>
+      <a class="community-card" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">
+        <svg class="icon big" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 5 4h14l2 5.5M3 9.5c0 1.4 1 2.5 2.25 2.5S7.5 10.9 7.5 9.5c0 1.4 1 2.5 2.25 2.5S12 10.9 12 9.5c0 1.4 1 2.5 2.25 2.5s2.25-1.1 2.25-2.5c0 1.4 1 2.5 2.25 2.5S21 10.9 21 9.5M5 12v8h14v-8M10 20v-4h4v4"/></svg>
+        <span><strong>itch.io</strong><span class="muted">Downloads and release notes.</span></span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<!-- footer (scripts/build.py writes this block) -->
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="img/icon.png" alt="" width="24" height="24">
+    <span>Leveldot Editor, a level editor for Godot 4.</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">YouTube</a>
+      <a href="docs/index.html">Docs</a>
+    </nav>
+  </div>
+</footer>
+<!-- /footer -->
+</body>
+</html>
