@@ -14,8 +14,8 @@ Current state only; replace, never append. History is `git log`, reasons are in 
 
 ## Not verified
 
-- Rendering checked with headless Edge (1440 px dark, 390 px in iframes); light theme of the new docs
-  components not looked at. Not seen on a real phone, Safari or Firefox.
+- Rendering checked with headless Edge (1440 px dark and light, 390 px in iframes). Not seen on a real
+  phone, Safari or Firefox.
 
 ## Open requests
 
