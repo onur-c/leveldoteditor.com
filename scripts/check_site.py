@@ -54,6 +54,8 @@ def main() -> int:
             problems.append(f"{rel}: the footer is not the one scripts/build.py writes (run it)")
         for src in page.images_without_alt:
             problems.append(f"{rel}: image without alt text: {src}")
+        if re.search(r'(href|src)="[./]*(style\.css|docs\.js)"', text):
+            problems.append(f"{rel}: style.css / docs.js without a version (browsers keep an old copy; run scripts/build.py)")
         if "{{" in text or "TODO" in text:
             problems.append(f"{rel}: unfinished placeholder text")
         if re.search(r"[A-Za-z]:\\\\?Users|@gmail\.com", text):
@@ -61,6 +63,11 @@ def main() -> int:
         for ref in page.refs:
             if re.match(r"(https?:|mailto:|data:)", ref):
                 continue
+            if "?" in ref.split("#")[0]:
+                ref, _, query = ref.partition("?")
+                name = ref.split("/")[-1]
+                if query != build.asset_url("", name).split("?")[1]:
+                    problems.append(f"{rel}: {name}?{query} is not the current file (run scripts/build.py)")
             path, _, anchor = ref.partition("#")
             target = (p.parent / unquote(path)).resolve() if path else p
             if not target.exists():

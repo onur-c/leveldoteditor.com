@@ -15,6 +15,7 @@ of `.source-path` in this repository (git-ignored, one per machine).
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import os
 import re
@@ -66,6 +67,13 @@ ICONS = {
     "arrow-left": '<path d="M19 12H5m0 0 6-6m-6 6 6 6"/>',
     "arrow-right": '<path d="M5 12h14m0 0-6-6m6 6-6 6"/>',
 }
+
+
+def asset_url(prefix: str, name: str) -> str:
+    """A site asset with its content hash, so a browser never keeps an old copy after a change
+    (GitHub Pages lets browsers cache for 10 minutes)."""
+    digest = hashlib.sha1((SITE / name).read_bytes()).hexdigest()[:10]
+    return f"{prefix}{name}?v={digest}"
 
 
 def icon(name: str) -> str:
@@ -125,6 +133,7 @@ def put_shared_blocks(page: Path, prefix: str, current: str) -> None:
                               ("<!-- footer ", "<!-- /footer -->", footer(prefix))]:
         a, b = text.index(start), text.index(end) + len(end)
         text = text[:a] + block + text[b:]
+    text = re.sub(r'href="style\.css(\?v=\w+)?"', 'href="' + asset_url(prefix, "style.css") + '"', text)
     page.write_text(text, encoding="utf-8", newline="\n")
 
 
@@ -261,7 +270,7 @@ def doc_page(index: int, title: str, body: str, toc: list[tuple[str, str]]) -> s
 <title>{html.escape(title)} · Leveldot Docs</title>
 <meta name="description" content="Leveldot Editor documentation: {html.escape(title.lower())}.">
 <link rel="icon" href="../img/icon.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="{asset_url("../", "style.css")}">
 </head>
 <body class="docs">
 {header("../", "docs")}
@@ -278,7 +287,7 @@ def doc_page(index: int, title: str, body: str, toc: list[tuple[str, str]]) -> s
   {toc_block}
 </div>
 {footer("../")}
-<script src="../docs.js"></script>
+<script src="{asset_url("../", "docs.js")}"></script>
 </body>
 </html>
 """
