@@ -19,8 +19,7 @@ Current state only; replace, never append. History is `git log`, reasons are in 
 
 ## Open requests
 
-- none. Optional: GitHub domain verification (a TXT record whose value only the user's GitHub settings
-  show: Settings → Pages → Add a verified domain).
+- none
 
 ## Uncommitted work
 

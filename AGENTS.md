@@ -86,6 +86,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   "proxy" önerisi uygulanmaz: turuncu bulutta GitHub HTTPS sertifikasını yenileyemez. Özel alan adı
   Pages ayarında (`gh api repos/onur-c/leveldoteditor.com/pages`, `cname`, `https_enforced: true`), repoda
   `CNAME` dosyası yok (Actions ile yayında gerekmez). `github.io` adresi ve `www` alan adına yönlenir.
+  Alan adı GitHub hesabına doğrulanmış (TXT `_github-pages-challenge-onur-c`); o kayıt silinmez.
 
 ## Tuzaklar
 
