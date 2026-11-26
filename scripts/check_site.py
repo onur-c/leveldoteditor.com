@@ -56,6 +56,8 @@ def main() -> int:
             problems.append(f"{rel}: image without alt text: {src}")
         if re.search(r'(href|src)="[./]*(style\.css|docs\.js|home\.js)"', text):
             problems.append(f"{rel}: style.css / docs.js without a version (browsers keep an old copy; run scripts/build.py)")
+        if "<!--" in text:
+            problems.append(f"{rel}: an HTML comment is published (comments belong in content/, run scripts/build.py)")
         if "{{" in text or "TODO" in text:
             problems.append(f"{rel}: unfinished placeholder text")
         if re.search(r"[A-Za-z]:\\\\?Users|@gmail\.com", text):

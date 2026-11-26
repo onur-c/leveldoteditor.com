@@ -29,7 +29,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 | İş | Komut |
 |---|---|
 | Sayfaları üret | `python scripts/build.py` (editör reposunun `master`'ındaki `docs/SHORTCUTS.md`'yi okur; yol: `--source`, `$env:LEVELDOT_EDITOR_REPO` ya da git-ignored `.source-path` ilk satırı) |
-| Yalnız ortak üst / alt bloğu yaz | `python scripts/build.py --shared-only` |
+| Yalnız ana sayfayı yaz | `python scripts/build.py --shared-only` |
 | Tam kapı (commit öncesi) | `powershell -ExecutionPolicy Bypass -File scripts/ci.ps1` → `CI: ALL GATES PASSED` |
 | Yayın | `master`'a push → `.github/workflows/pages.yml` denetler ve `site/`'ı yayımlar |
 
@@ -64,14 +64,16 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   `.ui-strip` (uygulamadan kesilmiş küçük arayüz şeridi), `.keycards`, `.cards`. Tema renklerini
   kullanırlar, ikisinde de okunur. Arayüz görüntüleri `site/img/ui-*.jpg`: kullanıcının verdiği gerçek
   ekran kesitleri; `.pin` konumları görüntüdeki yüzde koordinatlarıdır, görüntü değişince güncellenir.
-- **Ortak üst bar ve alt bilgi** `build.py`'deki `header()` / `footer()`'dadır; `site/index.html`'de
-  `<!-- header -->` / `<!-- footer -->` işaretleri arasına o yazar. Logonun sağ üstündeki **Alpha** hapı
-  orada. Bağlantılar (itch.io, Discord, YouTube) yalnız `build.py` `LINKS`'te ve `index.html` gövdesinde;
+- **Ortak üst bar ve alt bilgi** `build.py`'deki `header()` / `footer()`'dadır; ana sayfanın
+  kaynağında (`content/index.html`) `<!-- header -->` / `<!-- footer -->` işaretlerinin yerine o yazar. Logonun sağ üstündeki **Alpha** hapı
+  orada. Bağlantılar (itch.io, Discord, YouTube) yalnız `build.py` `LINKS`'te ve `content/index.html` gövdesinde;
   değişince ikisi birlikte.
 - **Mantık (logic) sistemi deneyseldir** (kullanıcı, 2026-11-26: henüz olgunlaşmadı): sitede az yer alır,
   geçtiği yerde `.tag-exp` "Experimental" etiketi taşır (Tools'ta iki cümle, ana sayfada yarım cümle,
   kısayol kartlarında başlık etiketi). Tanıtımda öne çıkarılmaz, ekran görüntüsü yok.
-- Ana sayfa (`site/index.html`) elle yazılır, İngilizce; özellik metinleri editörün kılavuzunda olanı
+- Yayınlanan HTML'de yorum yok (kullanıcı, 2026-11-26): işaret ve notlar `content/`'te kalır, `build.py`
+  siler, `check_site.py` reddeder.
+- Ana sayfa `content/index.html`'de elle yazılır (`site/index.html` üretilir, elle düzenlenmez), İngilizce; özellik metinleri editörün kılavuzunda olanı
   söyler, olmayan özellik ya da fiyat iddiası yazılmaz.
 - Dış kütüphane, web fontu, izleme betiği yok; yalnız `site/` altındaki HTML / CSS / JS.
 - **Galeri** (ana sayfa): görüntüler `a.zoom` içinde; `site/home.js` onları sayfadan çıkmadan
@@ -99,7 +101,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - GitHub Pages tarayıcıya 10 dakika önbellek izni verir: CSS değişip HTML yenilenince eski CSS ile yeni
   sayfa karışır (2026-11-26: işaretler resmin altına "1234567" diye düştü). `style.css` / `docs.js`
   bağlantıları bu yüzden `?v=<içerik özeti>` taşır; `build.py` yazar, `check_site.py` sürümsüz ya da eski
-  özeti reddeder. CSS / JS değişince `build.py` koş. `build.py` `site/index.html`'i de yeniden yazar: commit'e `site/` bütünüyle girer (2026-11-26: yalnız `site/docs` stage edildi, GitHub denetimi yayını durdurdu).
+  özeti reddeder. CSS / JS değişince `build.py` koş. `build.py` `site/index.html`'i de yazar: commit'e `site/` bütünüyle girer (2026-11-26: yalnız `site/docs` stage edildi, GitHub denetimi yayını durdurdu).
 
 - Başsız Edge `--window-size=390,…` ile telefonu göstermez (pencere ~500 px'ten daraltılmaz, sayfa kesik
   görünür). Telefon görünümü için sayfayı 390 px genişliğinde bir `<iframe>` içinde render et.

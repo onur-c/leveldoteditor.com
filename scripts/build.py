@@ -90,8 +90,7 @@ def header(prefix: str, current: str) -> str:
         attrs = ' target="_blank" rel="noopener"' if external else ""
         here = ' aria-current="page"' if key == current else ""
         return f'<a class="nav-link" href="{href}"{attrs}{here}>{icon(name)}<span>{label}</span></a>'
-    return f"""<!-- header (scripts/build.py writes this block) -->
-<header class="top">
+    return f"""<header class="top">
   <div class="top-inner">
     <a class="brand" href="{prefix}index.html" aria-label="Leveldot home, alpha">
       <picture>
@@ -107,13 +106,11 @@ def header(prefix: str, current: str) -> str:
       <a class="button primary small" href="{LINKS["itch"]}" target="_blank" rel="noopener">{icon("download")}<span>Download</span></a>
     </nav>
   </div>
-</header>
-<!-- /header -->"""
+</header>"""
 
 
 def footer(prefix: str) -> str:
-    return f"""<!-- footer (scripts/build.py writes this block) -->
-<footer class="foot">
+    return f"""<footer class="foot">
   <div class="foot-inner">
     <img src="{prefix}img/icon.png" alt="" width="24" height="24">
     <span>Leveldot Editor, a level editor for Godot 4. Alpha: things still change.</span>
@@ -124,19 +121,18 @@ def footer(prefix: str) -> str:
       <a href="{prefix}docs/index.html">Docs</a>
     </nav>
   </div>
-</footer>
-<!-- /footer -->"""
+</footer>"""
 
 
-def put_shared_blocks(page: Path, prefix: str, current: str) -> None:
-    text = page.read_text(encoding="utf-8")
-    for start, end, block in [("<!-- header ", "<!-- /header -->", header(prefix, current)),
-                              ("<!-- footer ", "<!-- /footer -->", footer(prefix))]:
-        a, b = text.index(start), text.index(end) + len(end)
-        text = text[:a] + block + text[b:]
-    text = re.sub(r'href="style\.css(\?v=\w+)?"', 'href="' + asset_url(prefix, "style.css") + '"', text)
-    text = re.sub(r'src="home\.js(\?v=\w+)?"', 'src="' + asset_url(prefix, "home.js") + '"', text)
-    page.write_text(text, encoding="utf-8", newline="\n")
+def write_home() -> None:
+    """content/index.html (hand-written) -> site/index.html: the shared header and footer go in
+    at the <!-- header --> / <!-- footer --> marks, assets get their versions, comments stay out."""
+    text = (ROOT / "content" / "index.html").read_text(encoding="utf-8")
+    text = text.replace("<!-- header -->", header("", "home")).replace("<!-- footer -->", footer(""))
+    text = re.sub(r"<!--.*?-->\n?", "", text, flags=re.S)
+    text = re.sub(r'href="style\.css(\?v=\w+)?"', 'href="' + asset_url("", "style.css") + '"', text)
+    text = re.sub(r'src="home\.js(\?v=\w+)?"', 'src="' + asset_url("", "home.js") + '"', text)
+    (SITE / "index.html").write_text(text, encoding="utf-8", newline="\n")
 
 
 # ---- keys
@@ -319,10 +315,10 @@ def main() -> int:
     parser.add_argument("--source", help="the Leveldot editor repository")
     parser.add_argument("--ref", default="master", help="the editor commit to read (default: master)")
     parser.add_argument("--shared-only", action="store_true",
-                        help="only rewrite the header and footer of site/index.html (no editor repository needed)")
+                        help="only write site/index.html from content/index.html (no editor repository needed)")
     args = parser.parse_args()
 
-    put_shared_blocks(SITE / "index.html", "", "home")
+    write_home()
     if args.shared_only:
         print("BUILD: OK (shared blocks only)")
         return 0
