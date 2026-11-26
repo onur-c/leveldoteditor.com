@@ -6,7 +6,7 @@
 <title>Tools · Leveldot Docs</title>
 <meta name="description" content="Leveldot Editor documentation: tools.">
 <link rel="icon" href="../img/icon.png">
-<link rel="stylesheet" href="../style.css?v=39a75e5640">
+<link rel="stylesheet" href="../style.css?v=0de49c08c2">
 </head>
 <body class="docs">
 <!-- header (scripts/build.py writes this block) -->
@@ -263,44 +263,8 @@
 <li><strong>Movers</strong> make a group move on its own, without code: a door, a lift, a platform, a spinner (<strong>Add Mover to Group</strong>).</li>
 <li>A <strong>Physics Body</strong> falls and can be pushed in the game; <strong>Settle</strong> drops it where it comes to rest.</li>
 </ul>
-<h2 id="logic">Logic</h2>
-<p>One building block: <strong>when this happens, do this.</strong></p>
-<div class="flow">
-  <div class="node"><p class="node-kicker">When</p><p class="node-title">Coin 1 is collected</p></div>
-  <div class="edge"><span>then</span></div>
-  <div class="node accent"><p class="node-kicker">Do</p><p class="node-title">Door 1 opens</p></div>
-</div>
-
-<table>
-<thead>
-<tr>
-<th>Do</th>
-<th>Key</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Connect the selected entity to another</td>
-<td><span class="keys"><span class="combo"><kbd>K</kbd></span></span></td>
-</tr>
-<tr>
-<td>See the connections in the level</td>
-<td><span class="keys"><span class="combo"><kbd>F4</kbd></span></span></td>
-</tr>
-<tr>
-<td>The level's own logic: start, timers, signals</td>
-<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>L</kbd></span></span></td>
-</tr>
-<tr>
-<td>A list of all connections in the level</td>
-<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span></span></td>
-</tr>
-<tr>
-<td>The connections as a graph</td>
-<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>G</kbd></span></span></td>
-</tr>
-</tbody>
-</table>
+<h2 id="logic-experimental">Logic <span class="tag-exp">Experimental</span></h2>
+<p>Entities can trigger each other, for example a collected coin opens a door. This part is still changing. To try it, select an entity and press <span class="keys"><span class="combo"><kbd>K</kbd></span></span> (Connect); <span class="keys"><span class="combo"><kbd>F4</kbd></span></span> shows the connections.</p>
 <h2 id="levels">Levels</h2>
 <div class="flow">
   <div class="node"><p class="node-kicker">Level</p><p class="node-title">Hall</p><p class="node-text">Player Start · Level Exit</p></div>
@@ -334,7 +298,7 @@
 <p>If something looks wrong, the status bar says so in yellow; <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span></span> undoes it.</p>
     <nav class="pager" aria-label="Pages"><a class="pager-prev" href="basics.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Basics</span></a><a class="pager-next" href="shortcuts.html"><span><small>Next</small>Shortcuts</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
   </main>
-  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#blockout">Blockout</a></li><li><a href="#modeling">Modeling</a></li><li><a href="#texture-and-uv">Texture and UV</a></li><li><a href="#props">Props</a></li><li><a href="#entities">Entities</a></li><li><a href="#logic">Logic</a></li><li><a href="#levels">Levels</a></li><li><a href="#check-your-level">Check your level</a></li></ul></aside>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#blockout">Blockout</a></li><li><a href="#modeling">Modeling</a></li><li><a href="#texture-and-uv">Texture and UV</a></li><li><a href="#props">Props</a></li><li><a href="#entities">Entities</a></li><li><a href="#logic-experimental">Logic</a></li><li><a href="#levels">Levels</a></li><li><a href="#check-your-level">Check your level</a></li></ul></aside>
 </div>
 <!-- footer (scripts/build.py writes this block) -->
 <footer class="foot">

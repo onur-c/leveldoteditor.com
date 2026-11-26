@@ -6,7 +6,7 @@ Link connects your Leveldot project to your Godot game. After that, every save p
 ## How it fits together
 
 <div class="flow">
-  <div class="node"><p class="node-kicker">Leveldot Editor</p><p class="node-title">You build the level</p><p class="node-text">Rooms, textures, entities, logic.</p></div>
+  <div class="node"><p class="node-kicker">Leveldot Editor</p><p class="node-title">You build the level</p><p class="node-text">Rooms, textures, entities.</p></div>
   <div class="edge"><span>Save [[Ctrl+S]]</span></div>
   <div class="node"><p class="node-kicker">Your Godot game</p><p class="node-title">The level arrives</p><p class="node-text">Godot refreshes it by itself.</p></div>
   <div class="edge"><span>Play [[F5]]</span></div>

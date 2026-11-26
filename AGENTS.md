@@ -68,6 +68,9 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   `<!-- header -->` / `<!-- footer -->` işaretleri arasına o yazar. Logonun sağ üstündeki **Alpha** hapı
   orada. Bağlantılar (itch.io, Discord, YouTube) yalnız `build.py` `LINKS`'te ve `index.html` gövdesinde;
   değişince ikisi birlikte.
+- **Mantık (logic) sistemi deneyseldir** (kullanıcı, 2026-11-26: henüz olgunlaşmadı): sitede az yer alır,
+  geçtiği yerde `.tag-exp` "Experimental" etiketi taşır (Tools'ta iki cümle, ana sayfada yarım cümle,
+  kısayol kartlarında başlık etiketi). Tanıtımda öne çıkarılmaz, ekran görüntüsü yok.
 - Ana sayfa (`site/index.html`) elle yazılır, İngilizce; özellik metinleri editörün kılavuzunda olanı
   söyler, olmayan özellik ya da fiyat iddiası yazılmaz.
 - Dış kütüphane, web fontu, izleme betiği yok; yalnız `site/` altındaki HTML / CSS / JS.

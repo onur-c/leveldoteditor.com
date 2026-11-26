@@ -201,7 +201,8 @@ def shortcuts_body(shortcuts) -> str:
             items.append(
                 f'<li class="sc{"" if r["keys"] else " unbound"}" title="{html.escape(what)}">'
                 f'<span class="sc-name">{html.escape(r["command"])}{mode}</span>{keys}</li>')
-        cards.append(f'<section class="sc-card"><h2 id="{slug(title)}">{html.escape(title)}</h2>'
+        tag = ' <span class="tag-exp">Experimental</span>' if 'Logic' in title else ''
+        cards.append(f'<section class="sc-card"><h2 id="{slug(title)}">{html.escape(title)}{tag}</h2>'
                      f'<ul class="sc-list">{"".join(items)}</ul></section>')
     return (
         '<p class="lead">The default keys. Change them in the app: <strong>Help → Keyboard Shortcuts…</strong> '
@@ -244,7 +245,8 @@ def render_content(text: str, known: set[str] | None, name: str) -> tuple[str, s
     md = markdown.Markdown(extensions=["tables", "fenced_code", "sane_lists", "toc", "attr_list"],
                            extension_configs={"toc": {"slugify": slug, "toc_depth": "2-2"}})
     body = md.convert(text)
-    toc = [(t["id"], html.unescape(t["name"])) for t in md.toc_tokens if t["level"] == 2]
+    toc = [(t["id"], re.sub(r"\s*Experimental$", "", re.sub(r"<[^>]+>", "", html.unescape(t["name"]))).strip())
+           for t in md.toc_tokens if t["level"] == 2]
     return title, body, toc
 
 
