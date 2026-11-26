@@ -87,7 +87,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - GitHub Pages tarayıcıya 10 dakika önbellek izni verir: CSS değişip HTML yenilenince eski CSS ile yeni
   sayfa karışır (2026-11-26: işaretler resmin altına "1234567" diye düştü). `style.css` / `docs.js`
   bağlantıları bu yüzden `?v=<içerik özeti>` taşır; `build.py` yazar, `check_site.py` sürümsüz ya da eski
-  özeti reddeder. CSS / JS değişince `build.py` koş.
+  özeti reddeder. CSS / JS değişince `build.py` koş. `build.py` `site/index.html`'i de yeniden yazar: commit'e `site/` bütünüyle girer (2026-11-26: yalnız `site/docs` stage edildi, GitHub denetimi yayını durdurdu).
 
 - Başsız Edge `--window-size=390,…` ile telefonu göstermez (pencere ~500 px'ten daraltılmaz, sayfa kesik
   görünür). Telefon görünümü için sayfayı 390 px genişliğinde bir `<iframe>` içinde render et.
