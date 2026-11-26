@@ -1,6 +1,6 @@
 # Leveldot Editor website
 
-Leveldot Editor'ün herkese açık statik sitesi (hedef alan adı `leveldoteditor.com`): tanıtım ana sayfası
+Leveldot Editor'ün herkese açık statik sitesi (<https://leveldoteditor.com>): tanıtım ana sayfası
 (özet, ekran görüntüleri, itch.io / Discord / YouTube bağlantıları) ve kısa dokümantasyon. GitHub Pages'te
 `site/` klasöründen yayımlanır.
 
@@ -81,9 +81,11 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   iniş koşmuyorken. Logo ve ikon editörün `editor-app/ui/brand/`'ından.
 - Arayüz durumları dolgu ile gösterilir, renkli kenarlıkla değil. Telefon genişliği (390 px) yatay
   kaydırmasız çalışır.
-- **Alan adı** `leveldoteditor.com`: alan adı kullanıcıya ait olup DNS'i GitHub Pages'e yönelmeden
-  Pages'e özel alan adı (`site/CNAME`, `gh api …/pages -f cname=`) verilmez; verilirse `github.io`
-  adresi var olmayan alan adına yönlenir ve site kapanır.
+- **Alan adı** `leveldoteditor.com` (kullanıcının, Cloudflare Registrar; DNS Cloudflare'de): dört A kaydı
+  `185.199.108–111.153` ve `www` CNAME `onur-c.github.io`, hepsi **DNS only** (gri bulut). Cloudflare'in
+  "proxy" önerisi uygulanmaz: turuncu bulutta GitHub HTTPS sertifikasını yenileyemez. Özel alan adı
+  Pages ayarında (`gh api repos/onur-c/leveldoteditor.com/pages`, `cname`, `https_enforced: true`), repoda
+  `CNAME` dosyası yok (Actions ile yayında gerekmez). `github.io` adresi ve `www` alan adına yönlenir.
 
 ## Tuzaklar
 

@@ -1,7 +1,7 @@
 # Leveldot Editor website
 
-Leveldot Editor'ün tanıtım ve dokümantasyon sitesi: <https://onur-c.github.io/leveldoteditor.com/>
-(alan adı `leveldoteditor.com` alınıp bağlanınca orada).
+Leveldot Editor'ün tanıtım ve dokümantasyon sitesi: <https://leveldoteditor.com>
+(alan adı Cloudflare'de; DNS kayıtları AGENTS.md'de).
 
 ## Kullanım
 

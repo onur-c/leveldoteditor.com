@@ -1,16 +1,16 @@
 # Handoff
 
-> Updated: 2026-11-26 · Verified against: `ba4473b` + docs-v2 · Status: idle
+> Updated: 2026-11-26 · Verified against: live site · Status: idle
 
 Current state only; replace, never append. History is `git log`, reasons are in DECISIONS.md.
 
 ## Where it stands
 
-- Docs rewritten short and hand-written (ADR-002): Install, Link Godot (flow diagram, file tree, problem
-  accordions), Basics (window map, key cards, camera table), Tools (chips, tables, entity / logic / level
-  diagrams), Shortcuts (cheat sheet from the editor's SHORTCUTS.md at `034c99cc`: key caps, filter, keyless
-  commands hidden by default). Tutorial page removed. Alpha pill on the logo.
-- Repo renamed to `onur-c/leveldoteditor.com`; live at `https://onur-c.github.io/leveldoteditor.com/`.
+- Live at `https://leveldoteditor.com` (GitHub Pages, HTTPS enforced, certificate until 2027-02-24, renewed
+  by GitHub). `www` and the old `onur-c.github.io/leveldoteditor.com/` redirect to it.
+- Docs short and hand-written (ADR-002): Install, Link Godot, Basics (annotated app screenshots, Caps
+  Lock snapping), Tools (Shape / Cut / Join tables, texture, props, entities, movers, physics), Shortcuts
+  (cheat sheet from the editor's SHORTCUTS.md). Logic is marked Experimental and kept short.
 
 ## Not verified
 
@@ -19,10 +19,8 @@ Current state only; replace, never append. History is `git log`, reasons are in 
 
 ## Open requests
 
-- Custom domain `leveldoteditor.com`: not registered (no DNS on 2026-11-26). Once the user owns it and
-  its DNS points at GitHub Pages (A 185.199.108.153 / .109.153 / .110.153 / .111.153, `www` CNAME
-  `onur-c.github.io`), set it: `gh api -X PUT repos/onur-c/leveldoteditor.com/pages -f cname=leveldoteditor.com`,
-  then `https_enforced=true` once the certificate is issued.
+- none. Optional: GitHub domain verification (a TXT record whose value only the user's GitHub settings
+  show: Settings → Pages → Add a verified domain).
 
 ## Uncommitted work
 
