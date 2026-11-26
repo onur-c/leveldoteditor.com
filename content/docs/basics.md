@@ -1,6 +1,6 @@
 # Basics
 
-The screen, selecting, moving things and the camera. Ten minutes here saves hours later.
+The screen, selecting, moving things and the camera.
 {: .lead }
 
 ## The screen

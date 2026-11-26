@@ -27,7 +27,7 @@ You need a Godot game on **Godot 4.4 or later** and a saved Leveldot project.
 
 ## After linking
 
-From now on these keys carry your levels into the game.
+Once the game is linked, these keys do the rest.
 
 | Key | What happens |
 |---|---|
@@ -55,21 +55,7 @@ Keep your own scenes and scripts outside `generated/`.
 
 <details><summary>“Save the project first”</summary><p>Press [[Ctrl+S]], then link again.</p></details>
 <details><summary>Godot does not react to an export</summary><p>The game must be open in Godot with <strong>Leveldot Bridge</strong> switched on (<strong>Project → Project Settings → Plugins</strong>). Reload the project once after linking, or press <strong>Refresh</strong> on the Leveldot screen.</p></details>
-<details><summary>The level is not in the game</summary><p>Only a scene that contains the level shows it. Make one with <strong>Create Game Scene…</strong> (step 4 of Link it).</p></details>
+<details><summary>The level is not in the game</summary><p>Only a scene that contains the level shows it. Make one with <strong>Create Game Scene…</strong>.</p></details>
 <details><summary>My Godot is older than 4.4</summary><p>The addon needs Godot 4.4 or later. Open the game in a newer Godot.</p></details>
-<details><summary>An error code (A201, X40x, E30x)</summary>
-<table>
-<thead><tr><th>Code</th><th>Meaning</th><th>Fix</th></tr></thead>
-<tbody>
-<tr><td>A201</td><td>A file the export needs is missing or not imported yet.</td><td>Let Godot finish importing, then export again.</td></tr>
-<tr><td>X401</td><td>A refresh stopped with an error.</td><td>Read Godot's Output panel, export again.</td></tr>
-<tr><td>X402</td><td>The export and the addon do not match.</td><td>Export again from Leveldot; it updates the addon.</td></tr>
-<tr><td>X403</td><td>A <code>generated_world.tscn</code> Leveldot did not write is in the way.</td><td>Move or rename it.</td></tr>
-<tr><td>E301</td><td>An entity type's scene is missing in the game.</td><td>Leveldot screen → Levels → <strong>Create …</strong> next to it.</td></tr>
-<tr><td>E302</td><td>A reaction is broken, or an entity script lacks the event functions.</td><td>Make the entity extend <code>LeveldotEntity</code>, export again.</td></tr>
-<tr><td>E303</td><td>A stored value no longer fits the entity's setting.</td><td>Set it again in the level or the script.</td></tr>
-</tbody>
-</table>
-</details>
 
-A failed export keeps the level's previous export, so the game never breaks halfway.
+If Leveldot or Godot shows a message, it says what to fix.

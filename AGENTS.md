@@ -53,7 +53,8 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - **Doküman sayfaları** `content/docs/*.md`'den üretilir (`site/docs/*.html` elle düzenlenmez). Yazım:
   İngilizce, sade; her bölüm başlıklı, kısa maddeler / tablolar, üst üste uzun paragraf yok. Anlatılan şey
   editörün kılavuzunda (editör reposu `docs/MANUAL.md`, `LINK-GODOT.md`) olandır; site onu kısaltır,
-  yeni iddia eklemez. Sayfa listesi ve sırası: `build.py` `PAGES`. Öğretici (Tutorial) sitede yok;
+  yeni iddia eklemez. Kafa karıştıran şey yazılmaz: hata kodları, iç terimler (reaction, export
+  schema…), ne anlattığını söylemeyen başlıklar (“Every day”); başlık bölümün işini söyler. Sayfa listesi ve sırası: `build.py` `PAGES`. Öğretici (Tutorial) sitede yok;
   uygulamada **Help → Tutorial**.
 - **Tuşlar** `[[Ctrl+S]]` diye yazılır (`/` ile alternatif: `[[F7 / Alt+O]]`); `build.py` onları tuş
   kapakçığına çevirir ve editörün `SHORTCUTS.md`'sinde olmayan bir tuşta durur (fare hareketleri ve araç

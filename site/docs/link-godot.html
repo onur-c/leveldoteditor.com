@@ -61,7 +61,7 @@
 <div class="note"><p><strong>What Link changes in your game:</strong> it adds the Leveldot Bridge addon and switches it on, then exports once. Your own scenes and scripts are never changed.</p></div>
 
 <h2 id="after-linking">After linking</h2>
-<p>From now on these keys carry your levels into the game.</p>
+<p>Once the game is linked, these keys do the rest.</p>
 <table>
 <thead>
 <tr>
@@ -100,24 +100,10 @@ res://
 <h2 id="common-problems">Common problems</h2>
 <details><summary>“Save the project first”</summary><p>Press <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></span></span>, then link again.</p></details>
 <details><summary>Godot does not react to an export</summary><p>The game must be open in Godot with <strong>Leveldot Bridge</strong> switched on (<strong>Project → Project Settings → Plugins</strong>). Reload the project once after linking, or press <strong>Refresh</strong> on the Leveldot screen.</p></details>
-<details><summary>The level is not in the game</summary><p>Only a scene that contains the level shows it. Make one with <strong>Create Game Scene…</strong> (step 4 of Link it).</p></details>
+<details><summary>The level is not in the game</summary><p>Only a scene that contains the level shows it. Make one with <strong>Create Game Scene…</strong>.</p></details>
 <details><summary>My Godot is older than 4.4</summary><p>The addon needs Godot 4.4 or later. Open the game in a newer Godot.</p></details>
-<details><summary>An error code (A201, X40x, E30x)</summary>
-<table>
-<thead><tr><th>Code</th><th>Meaning</th><th>Fix</th></tr></thead>
-<tbody>
-<tr><td>A201</td><td>A file the export needs is missing or not imported yet.</td><td>Let Godot finish importing, then export again.</td></tr>
-<tr><td>X401</td><td>A refresh stopped with an error.</td><td>Read Godot's Output panel, export again.</td></tr>
-<tr><td>X402</td><td>The export and the addon do not match.</td><td>Export again from Leveldot; it updates the addon.</td></tr>
-<tr><td>X403</td><td>A <code>generated_world.tscn</code> Leveldot did not write is in the way.</td><td>Move or rename it.</td></tr>
-<tr><td>E301</td><td>An entity type's scene is missing in the game.</td><td>Leveldot screen → Levels → <strong>Create …</strong> next to it.</td></tr>
-<tr><td>E302</td><td>A reaction is broken, or an entity script lacks the event functions.</td><td>Make the entity extend <code>LeveldotEntity</code>, export again.</td></tr>
-<tr><td>E303</td><td>A stored value no longer fits the entity's setting.</td><td>Set it again in the level or the script.</td></tr>
-</tbody>
-</table>
-</details>
 
-<p>A failed export keeps the level's previous export, so the game never breaks halfway.</p>
+<p>If Leveldot or Godot shows a message, it says what to fix.</p>
     <nav class="pager" aria-label="Pages"><a class="pager-prev" href="index.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Install</span></a><a class="pager-next" href="basics.html"><span><small>Next</small>Basics</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
   </main>
   <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#how-it-fits-together">How it fits together</a></li><li><a href="#link-it-once">Link it (once)</a></li><li><a href="#after-linking">After linking</a></li><li><a href="#where-files-go">Where files go</a></li><li><a href="#common-problems">Common problems</a></li></ul></aside>

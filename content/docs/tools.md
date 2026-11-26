@@ -25,7 +25,7 @@ Pick a shape on the Blockout bar, drag on the grid or on any surface, then pull 
 
 ## Modeling
 
-Tools work on the selection. Their values sit in a card at the bottom left of the 3D view; the mouse wheel changes the main count.
+Select something first, then use a tool. Its settings show at the bottom left of the 3D view.
 
 | Tool | Key | What it does |
 |---|---|---|
@@ -63,7 +63,7 @@ Hotspot atlases, a UV editor, decals and vertex colours are in the **Texture** m
 
 ## Entities
 
-Entities are the things your game gives life to: lights, doors, coins, triggers, effects.
+Entities are objects that do something in the game: lights, doors, coins, triggers, effects.
 
 <div class="flow">
   <div class="node"><p class="node-kicker">In Godot</p><p class="node-title">A script that extends <code>LeveldotEntity</code></p></div>
@@ -82,7 +82,7 @@ One building block: **when this happens, do this.**
 
 <div class="flow">
   <div class="node"><p class="node-kicker">When</p><p class="node-title">Coin 1 is collected</p></div>
-  <div class="edge"><span>reaction</span></div>
+  <div class="edge"><span>then</span></div>
   <div class="node accent"><p class="node-kicker">Do</p><p class="node-title">Door 1 opens</p></div>
 </div>
 
@@ -91,7 +91,7 @@ One building block: **when this happens, do this.**
 | Connect the selected entity to another | [[K]] |
 | See the connections in the level | [[F4]] |
 | The level's own logic: start, timers, signals | [[Ctrl+L]] |
-| Every reaction of the level, searchable | [[Ctrl+Shift+L]] |
+| A list of all connections in the level | [[Ctrl+Shift+L]] |
 | The connections as a graph | [[Alt+G]] |
 
 ## Levels
@@ -112,4 +112,4 @@ One building block: **when this happens, do this.**
 | List problems: missing destinations, broken links | [[F8]] |
 | Show what the player collides with | [[Alt+Shift+K]] |
 
-Risky modeling is allowed: the status bar warns in yellow, and [[Ctrl+Z]] takes it back.
+If something looks wrong, the status bar says so in yellow; [[Ctrl+Z]] undoes it.
