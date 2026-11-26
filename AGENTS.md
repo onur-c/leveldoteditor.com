@@ -1,8 +1,8 @@
-# Leveldot site
+# Leveldot Editor website
 
-Leveldot Editor'ün herkese açık statik sitesi: tanıtım ana sayfası (özet, ekran görüntüleri, itch.io /
-Discord / YouTube bağlantıları) ve editörün kendi kullanıcı belgelerinden üretilen dokümantasyon. GitHub
-Pages'te `site/` klasöründen yayımlanır.
+Leveldot Editor'ün herkese açık statik sitesi (hedef alan adı `leveldoteditor.com`): tanıtım ana sayfası
+(özet, ekran görüntüleri, itch.io / Discord / YouTube bağlantıları) ve kısa dokümantasyon. GitHub Pages'te
+`site/` klasöründen yayımlanır.
 
 Bu dosya bu projede çalışan her ajanın (Claude Code, Codex, diğerleri) ortak sözleşmesidir. Proje kuralları
 yalnız burada durur; CLAUDE.md yalnız `@AGENTS.md` satırıdır.
@@ -19,12 +19,16 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 | `README.md` | kullanıcı için: nasıl çalıştırılır, nasıl kullanılır |
 | `docs/HANDOFF.md` | şu anki durum, doğrulanmayanlar, bekleyen istekler (değiştirilir, eklenmez) |
 | `docs/DECISIONS.md` | kararlar ve nedenleri (ADR) |
+| `content/docs/install.md` | site sayfası kaynağı: Install (`site/docs/index.html`) |
+| `content/docs/link-godot.md` | site sayfası kaynağı: Link Godot |
+| `content/docs/basics.md` | site sayfası kaynağı: Basics (ekran, seçim, dönüşüm, kamera) |
+| `content/docs/tools.md` | site sayfası kaynağı: Tools |
 
 ## Komutlar
 
 | İş | Komut |
 |---|---|
-| Belgeleri yeniden üret | `python scripts/build.py` (editör reposunun `master`'ından okur; yol: `--source`, `$env:LEVELDOT_EDITOR_REPO` ya da git-ignored `.source-path` ilk satırı) |
+| Sayfaları üret | `python scripts/build.py` (editör reposunun `master`'ındaki `docs/SHORTCUTS.md`'yi okur; yol: `--source`, `$env:LEVELDOT_EDITOR_REPO` ya da git-ignored `.source-path` ilk satırı) |
 | Yalnız ortak üst / alt bloğu yaz | `python scripts/build.py --shared-only` |
 | Tam kapı (commit öncesi) | `powershell -ExecutionPolicy Bypass -File scripts/ci.ps1` → `CI: ALL GATES PASSED` |
 | Yayın | `master`'a push → `.github/workflows/pages.yml` denetler ve `site/`'ı yayımlar |
@@ -46,12 +50,21 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 
 - **Repo herkese açık.** Yerel yol, kullanıcı adı, e-posta, editörün özel kaynak kodu buraya girmez
   (`check_site.py` sayfalarda yerel yol ve e-posta arar). Editör reposunun yeri yalnız git-ignored `.source-path`'te.
-- **Belgelerin tek kaynağı editör reposudur** (`docs/MANUAL.md`, `LINK-GODOT.md`, `SHORTCUTS.md`,
-  `TUTORIAL.md`; F1'de de onlar görünür). `site/docs/*.html` üretilir, elle düzenlenmez; metin hatası
-  editör reposunda düzeltilir, sonra `build.py` koşulur. Hangi belgeden hangi sayfa: `build.py` `PAGES`.
+- **Doküman sayfaları** `content/docs/*.md`'den üretilir (`site/docs/*.html` elle düzenlenmez). Yazım:
+  İngilizce, sade; her bölüm başlıklı, kısa maddeler / tablolar, üst üste uzun paragraf yok. Anlatılan şey
+  editörün kılavuzunda (editör reposu `docs/MANUAL.md`, `LINK-GODOT.md`) olandır; site onu kısaltır,
+  yeni iddia eklemez. Sayfa listesi ve sırası: `build.py` `PAGES`. Öğretici (Tutorial) sitede yok;
+  uygulamada **Help → Tutorial**.
+- **Tuşlar** `[[Ctrl+S]]` diye yazılır (`/` ile alternatif: `[[F7 / Alt+O]]`); `build.py` onları tuş
+  kapakçığına çevirir ve editörün `SHORTCUTS.md`'sinde olmayan bir tuşta durur (fare hareketleri ve araç
+  içi tuşlar `EXTRA_KEYS`'te). Shortcuts sayfası tümüyle `SHORTCUTS.md`'den üretilir.
+- **Diyagramlar** HTML + CSS'tir, resim değil: `.flow` (kutular ve oklar; telefonda alt alta), `.tree`
+  (dosya ağacı), `.screen-map` (pencere yerleşimi), `.keycards`, `.chips`, `.cards`. Tema renklerini
+  kullanırlar, ikisinde de okunur.
 - **Ortak üst bar ve alt bilgi** `build.py`'deki `header()` / `footer()`'dadır; `site/index.html`'de
-  `<!-- header -->` / `<!-- footer -->` işaretleri arasına o yazar. Bağlantılar (itch.io, Discord,
-  YouTube) yalnız `build.py` `LINKS`'te ve `index.html` gövdesinde; değişince ikisi birlikte.
+  `<!-- header -->` / `<!-- footer -->` işaretleri arasına o yazar. Logonun sağ üstündeki **Alpha** hapı
+  orada. Bağlantılar (itch.io, Discord, YouTube) yalnız `build.py` `LINKS`'te ve `index.html` gövdesinde;
+  değişince ikisi birlikte.
 - Ana sayfa (`site/index.html`) elle yazılır, İngilizce; özellik metinleri editörün kılavuzunda olanı
   söyler, olmayan özellik ya da fiyat iddiası yazılmaz.
 - Dış kütüphane, web fontu, izleme betiği yok; yalnız `site/` altındaki HTML / CSS / JS.
@@ -62,6 +75,9 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   iniş koşmuyorken. Logo ve ikon editörün `editor-app/ui/brand/`'ından.
 - Arayüz durumları dolgu ile gösterilir, renkli kenarlıkla değil. Telefon genişliği (390 px) yatay
   kaydırmasız çalışır.
+- **Alan adı** `leveldoteditor.com`: alan adı kullanıcıya ait olup DNS'i GitHub Pages'e yönelmeden
+  Pages'e özel alan adı (`site/CNAME`, `gh api …/pages -f cname=`) verilmez; verilirse `github.io`
+  adresi var olmayan alan adına yönlenir ve site kapanır.
 
 ## Tuzaklar
 

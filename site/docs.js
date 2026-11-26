@@ -2,26 +2,30 @@
 (function () {
   var input = document.getElementById("filter");
   if (input) {
-    var tables = Array.prototype.slice.call(document.querySelectorAll(".doc table"));
+    var unbound = document.getElementById("show-unbound");
+    var cards = Array.prototype.slice.call(document.querySelectorAll(".sc-card"));
     var empty = document.getElementById("filter-empty");
-    input.addEventListener("input", function () {
+    var apply = function () {
       var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+      var showUnbound = unbound.checked || words.length > 0;
       var any = false;
-      tables.forEach(function (table) {
+      cards.forEach(function (card) {
         var shown = 0;
-        table.querySelectorAll("tbody tr").forEach(function (row) {
-          var text = row.textContent.toLowerCase();
+        card.querySelectorAll(".sc").forEach(function (item) {
+          var text = (item.textContent + " " + (item.getAttribute("title") || "")).toLowerCase();
           var match = words.every(function (w) { return text.indexOf(w) !== -1; });
-          row.hidden = !match;
-          if (match) shown++;
+          var visible = match && (showUnbound || !item.classList.contains("unbound"));
+          item.hidden = !visible;
+          if (visible) shown++;
         });
-        table.hidden = shown === 0;
-        var heading = table.previousElementSibling;
-        if (heading && heading.tagName === "H2") heading.hidden = shown === 0;
+        card.hidden = shown === 0;
         if (shown) any = true;
       });
       empty.hidden = any;
-    });
+    };
+    input.addEventListener("input", apply);
+    unbound.addEventListener("change", apply);
+    apply();
   }
 
   var links = document.querySelectorAll(".toc a");

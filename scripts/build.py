@@ -1,11 +1,13 @@
-"""Builds the documentation pages of the Leveldot site from the editor's own user docs.
+"""Builds the documentation pages of the Leveldot site and the shared header / footer.
 
-The docs have one source: docs/*.md in the Leveldot editor repository (the same text the
-editor shows on F1). This script reads them from that repository's committed `master`
-(never its working copy), turns them into site/docs/*.html and puts the shared header into
-every page, site/index.html included. Run it after the editor's docs changed:
+- content/docs/*.md (written for the site, short) become site/docs/*.html. Keys are written
+  [[Ctrl+S]] (alternatives with " / ") and become key caps; a key the editor does not have stops
+  the build, so the pages cannot drift from the app.
+- The Shortcuts page is generated whole from docs/SHORTCUTS.md of the Leveldot editor repository,
+  read from its committed `master` (never its working copy).
+- The header and footer are written into every page, site/index.html included.
 
-    python scripts/build.py [--source <editor repo>] [--ref master]
+    python scripts/build.py [--source <editor repo>] [--ref master] [--shared-only]
 
 The editor repository is found by --source, else $LEVELDOT_EDITOR_REPO, else the first line
 of `.source-path` in this repository (git-ignored, one per machine).
@@ -24,6 +26,7 @@ import markdown
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
+CONTENT = ROOT / "content" / "docs"
 
 LINKS = {
     "itch": "https://onur-c.itch.io/leveldot-editor",
@@ -31,17 +34,28 @@ LINKS = {
     "youtube": "https://www.youtube.com/@LeveldotEditor",
 }
 
-# (output file, nav label, page title, source in the editor repo, part of it)
+# (output file, nav label, source: a file in content/docs or "shortcuts")
 PAGES = [
-    ("index.html", "Install", "Install and first steps", "docs/MANUAL.md", "getting-started"),
-    ("link-godot.html", "Link Godot", "Link a Godot project", "docs/LINK-GODOT.md", "all"),
-    ("tools.html", "Tools", "Tools", "docs/MANUAL.md", "tools"),
-    ("shortcuts.html", "Shortcuts", "Commands and keyboard shortcuts", "docs/SHORTCUTS.md", "all"),
-    ("tutorial.html", "Tutorial", "Tutorial", "docs/TUTORIAL.md", "all"),
+    ("index.html", "Install", "install.md"),
+    ("link-godot.html", "Link Godot", "link-godot.md"),
+    ("basics.html", "Basics", "basics.md"),
+    ("tools.html", "Tools", "tools.md"),
+    ("shortcuts.html", "Shortcuts", "shortcuts"),
 ]
-# Links between the editor's docs become links between the pages.
-DOC_TARGETS = {"MANUAL.md": "tools.html", "LINK-GODOT.md": "link-godot.html",
-               "SHORTCUTS.md": "shortcuts.html", "TUTORIAL.md": "tutorial.html"}
+
+# Keys the pages may name that are not commands of SHORTCUTS.md: mouse gestures and the keys
+# that work inside a tool (manual: Transform, Camera and mouse, Modeling tools).
+EXTRA_KEYS = {
+    "Enter", "Esc", "Ctrl", "Shift", "X", "Y", "Z", "A", "S", "D", "Q",
+    "Right mouse", "Middle mouse", "Wheel", "Alt+Left drag", "Shift+Click",
+    "Shift+Right-click", "Alt+Right-click",
+}
+
+KEY_NAMES = {
+    "Comma": ",", "Period": ".", "Minus": "−", "Equal": "=", "Slash": "/", "BracketLeft": "[",
+    "BracketRight": "]", "Delete": "Del", "PageUp": "PgUp", "PageDown": "PgDn",
+    "Up": "↑", "Down": "↓", "Left": "←", "Right": "→", "Space": "Space", "Escape": "Esc",
+}
 
 ICONS = {
     "download": '<path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/>',
@@ -49,6 +63,8 @@ ICONS = {
     "discord": '<path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/>',
     "youtube": '<rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/>',
     "itch": '<path d="M3 9.5 5 4h14l2 5.5M3 9.5c0 1.4 1 2.5 2.25 2.5S7.5 10.9 7.5 9.5c0 1.4 1 2.5 2.25 2.5S12 10.9 12 9.5c0 1.4 1 2.5 2.25 2.5s2.25-1.1 2.25-2.5c0 1.4 1 2.5 2.25 2.5S21 10.9 21 9.5M5 12v8h14v-8M10 20v-4h4v4"/>',
+    "arrow-left": '<path d="M19 12H5m0 0 6-6m-6 6 6 6"/>',
+    "arrow-right": '<path d="M5 12h14m0 0-6-6m6 6-6 6"/>',
 }
 
 
@@ -56,6 +72,8 @@ def icon(name: str) -> str:
     return ('<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" '
             f'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{ICONS[name]}</svg>')
 
+
+# ---- shared blocks
 
 def header(prefix: str, current: str) -> str:
     """The bar on top of every page; `prefix` leads from the page to the site root."""
@@ -66,11 +84,12 @@ def header(prefix: str, current: str) -> str:
     return f"""<!-- header (scripts/build.py writes this block) -->
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="{prefix}index.html" aria-label="Leveldot home">
+    <a class="brand" href="{prefix}index.html" aria-label="Leveldot home, alpha">
       <picture>
         <source srcset="{prefix}img/logo-light.png" media="(prefers-color-scheme: light)">
         <img src="{prefix}img/logo-dark.png" alt="Leveldot" width="144" height="31">
       </picture>
+      <span class="pill" aria-hidden="true">Alpha</span>
     </a>
     <nav class="top-nav" aria-label="Site">
       {nav(prefix + "docs/index.html", "Docs", "docs", "book")}
@@ -83,127 +102,12 @@ def header(prefix: str, current: str) -> str:
 <!-- /header -->"""
 
 
-def find_source(arg: str | None) -> Path:
-    candidates = [arg, os.environ.get("LEVELDOT_EDITOR_REPO")]
-    path_file = ROOT / ".source-path"
-    if path_file.exists():
-        candidates.append(path_file.read_text(encoding="utf-8-sig").splitlines()[0].strip().strip('"'))
-    for c in candidates:
-        if c and (Path(c) / ".git").exists():
-            return Path(c)
-    sys.exit("build: the Leveldot editor repository was not found. Pass --source, set "
-             "LEVELDOT_EDITOR_REPO, or put its path on the first line of .source-path.")
-
-
-def read_doc(source: Path, ref: str, path: str) -> str:
-    out = subprocess.run(["git", "-C", str(source), "show", f"{ref}:{path}"],
-                         capture_output=True, check=True)
-    return out.stdout.decode("utf-8").replace("\r\n", "\n")
-
-
-def sections(text: str) -> tuple[str, list[tuple[str, str]]]:
-    """Splits a document into its intro (title and text before the first ##) and its ## sections."""
-    parts = re.split(r"(?m)^## ", text)
-    intro, rest = parts[0], parts[1:]
-    out = []
-    for p in rest:
-        title, _, body = p.partition("\n")
-        out.append((title.strip(), "## " + p))
-    return intro, out
-
-
-def select(text: str, part: str) -> str:
-    intro, secs = sections(text)
-    intro_body = re.sub(r"(?m)^# .*\n", "", intro).strip()
-    if part == "getting-started":
-        gs = next(body for title, body in secs if title == "Getting started")
-        return re.sub(r"(?m)^## Getting started\n", "", gs).strip()
-    if part == "tools":
-        return intro_body + "\n\n" + "\n".join(body for title, body in secs if title != "Getting started")
-    return re.sub(r"(?m)\A# .*\n", "", text.strip()).strip()
-
-
-def clean(text: str) -> str:
-    # Notes for the editor's developers are not for the site.
-    text = re.sub(r"Generated from the editor's action catalog .*?out of date\)\. ", "", text)
-    # The in-app pointers "F1 opens this manual" stay true for the app; links between docs are rewritten.
-    def link(m: re.Match) -> str:
-        label, target = m.group(1), m.group(2)
-        if re.match(r"https?://", target):
-            return m.group(0)
-        file, _, anchor = target.partition("#")
-        page = DOC_TARGETS.get(Path(file).name)
-        if page is None:
-            return label  # a developer document: keep the words, drop the link
-        return f"[{label}]({page}{'#' + anchor if anchor else ''})"
-    return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", link, text)
-
-
-def slug(value: str, separator: str = "-") -> str:
-    value = re.sub(r"[^\w\s-]", "", value.lower()).strip()
-    return re.sub(r"[\s_-]+", separator, value)
-
-
-def render(text: str) -> tuple[str, list[tuple[str, str]]]:
-    md = markdown.Markdown(extensions=["tables", "fenced_code", "sane_lists", "toc"],
-                           extension_configs={"toc": {"slugify": slug, "toc_depth": "2-2"}})
-    body = md.convert(text)
-    toc = [(t["id"], html.unescape(t["name"])) for t in md.toc_tokens if t["level"] == 2]
-    return body, toc
-
-
-def doc_page(out: str, label: str, title: str, body: str, toc: list[tuple[str, str]]) -> str:
-    current = ' aria-current="page"'
-    side = "\n    ".join(
-        f'<a href="{o}"{current if o == out else ""}>{html.escape(l)}</a>' for o, l, *_ in PAGES)
-    on_page = "".join(f'<li><a href="#{i}">{html.escape(n)}</a></li>' for i, n in toc)
-    filter_box = ""
-    if out == "index.html":
-        filter_box = (f'<p class="callout">{icon("download")}<span>Download Leveldot Editor from '
-                      f'<a href="{LINKS["itch"]}" target="_blank" rel="noopener">itch.io</a>. '
-                      'Then link your game: <a href="link-godot.html">Link a Godot project</a>.</span></p>')
-    if out == "shortcuts.html":
-        filter_box = ('<label class="filter"><span class="visually-hidden">Filter commands</span>'
-                      '<input id="filter" type="search" placeholder="Filter commands or keys…" autocomplete="off"></label>'
-                      '<p id="filter-empty" class="muted" hidden>No command matches.</p>')
-    toc_block = f'<aside class="toc"><p class="toc-title">On this page</p><ul>{on_page}</ul></aside>' if toc else ""
-    return f"""<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{html.escape(title)} · Leveldot Docs</title>
-<meta name="description" content="Leveldot Editor documentation: {html.escape(title.lower())}.">
-<link rel="icon" href="../img/icon.png">
-<link rel="stylesheet" href="../style.css">
-</head>
-<body class="docs">
-{header("../", "docs")}
-<div class="docs-layout">
-  <nav class="sidebar" aria-label="Documentation">
-    <p class="side-title">Documentation</p>
-    {side}
-  </nav>
-  <main class="doc page-{out.removesuffix('.html')}" id="main">
-    <h1>{html.escape(title)}</h1>
-    {filter_box}
-    {body}
-  </main>
-  {toc_block}
-</div>
-{footer("../")}
-<script src="../docs.js"></script>
-</body>
-</html>
-"""
-
-
 def footer(prefix: str) -> str:
     return f"""<!-- footer (scripts/build.py writes this block) -->
 <footer class="foot">
   <div class="foot-inner">
     <img src="{prefix}img/icon.png" alt="" width="24" height="24">
-    <span>Leveldot Editor, a level editor for Godot 4.</span>
+    <span>Leveldot Editor, a level editor for Godot 4. Alpha: things still change.</span>
     <nav aria-label="Elsewhere">
       <a href="{LINKS["itch"]}" target="_blank" rel="noopener">itch.io</a>
       <a href="{LINKS["discord"]}" target="_blank" rel="noopener">Discord</a>
@@ -224,6 +128,179 @@ def put_shared_blocks(page: Path, prefix: str, current: str) -> None:
     page.write_text(text, encoding="utf-8", newline="\n")
 
 
+# ---- keys
+
+def key_cap(part: str) -> str:
+    name = part
+    if part.startswith("Numpad "):
+        rest = part[len("Numpad "):]
+        rest = {"Add": "+", "Subtract": "−", "Multiply": "*", "Divide": "/", "Period": "."}.get(rest, rest)
+        name = "Num " + rest
+    else:
+        name = KEY_NAMES.get(part, part)
+    return f"<kbd>{html.escape(name)}</kbd>"
+
+
+def keys_html(combo_text: str) -> str:
+    """'Ctrl+Shift+E / Alt+E' -> key caps; alternatives joined by 'or'."""
+    alts = []
+    for combo in combo_text.split(" / "):
+        parts = [p for p in combo.strip().split("+") if p]
+        alts.append('<span class="combo">' + '<span class="plus">+</span>'.join(key_cap(p) for p in parts) + "</span>")
+    return '<span class="keys">' + '<span class="or">or</span>'.join(alts) + "</span>"
+
+
+# ---- editor shortcuts
+
+def read_shortcuts(text: str) -> list[tuple[str, list[dict]]]:
+    """SHORTCUTS.md -> [(category, [{keys, command, mode, where, what}])]."""
+    out: list[tuple[str, list[dict]]] = []
+    for block in re.split(r"(?m)^## ", text)[1:]:
+        title, _, body = block.partition("\n")
+        rows = []
+        for line in body.splitlines():
+            if not line.startswith("| ") or line.startswith("| Keys") or line.startswith("|---"):
+                continue
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if len(cells) < 5:
+                continue
+            rows.append({"keys": "" if cells[0] == "—" else cells[0], "command": cells[1],
+                         "mode": cells[2], "where": cells[3], "what": cells[4]})
+        out.append((title.strip(), rows))
+    return out
+
+
+def known_keys(shortcuts) -> set[str]:
+    known = set(EXTRA_KEYS)
+    for _, rows in shortcuts:
+        for r in rows:
+            if r["keys"]:
+                known.add(r["keys"])
+                known.update(k.strip() for k in r["keys"].split(" / "))
+    return known
+
+
+def shortcuts_body(shortcuts) -> str:
+    cards = []
+    for title, rows in shortcuts:
+        items = []
+        for r in sorted(rows, key=lambda r: (r["keys"] == "", r["command"].lower())):
+            mode = "" if r["mode"] == "Any" else f'<span class="mode">{html.escape(r["mode"])}</span>'
+            keys = keys_html(r["keys"]) if r["keys"] else '<span class="nokey">no key</span>'
+            what = re.sub(r"[*`]", "", r["what"])
+            items.append(
+                f'<li class="sc{"" if r["keys"] else " unbound"}" title="{html.escape(what)}">'
+                f'<span class="sc-name">{html.escape(r["command"])}{mode}</span>{keys}</li>')
+        cards.append(f'<section class="sc-card"><h2 id="{slug(title)}">{html.escape(title)}</h2>'
+                     f'<ul class="sc-list">{"".join(items)}</ul></section>')
+    return (
+        '<p class="lead">The default keys. Change them in the app: <strong>Help → Keyboard Shortcuts…</strong> '
+        f'(the selection modes {keys_html("1")} to {keys_html("4")} are fixed). Hover a command to see what it does.</p>'
+        '<div class="sc-tools">'
+        '<label class="filter"><span class="visually-hidden">Filter commands</span>'
+        '<input id="filter" type="search" placeholder="Filter: extrude, ctrl+s…" autocomplete="off"></label>'
+        '<label class="toggle"><input id="show-unbound" type="checkbox"> Show commands without a key</label>'
+        '</div>'
+        '<p id="filter-empty" class="muted" hidden>No command matches.</p>'
+        f'<div class="sc-grid">{"".join(cards)}</div>')
+
+
+# ---- pages
+
+def slug(value: str, separator: str = "-") -> str:
+    value = re.sub(r"[^\w\s-]", "", value.lower()).strip()
+    return re.sub(r"[\s_-]+", separator, value)
+
+
+def render_content(text: str, known: set[str] | None, name: str) -> tuple[str, str, list[tuple[str, str]]]:
+    title_match = re.match(r"# (.+)\n", text)
+    if not title_match:
+        sys.exit(f"build: {name} must start with '# Title'")
+    title = title_match.group(1).strip()
+    text = text[title_match.end():]
+    unknown = []
+
+    def key(m: re.Match) -> str:
+        combo = m.group(1).strip()
+        if known is not None:
+            for alt in combo.split(" / "):
+                if alt.strip() not in known and combo not in known:
+                    unknown.append(alt.strip())
+        return keys_html(combo)
+    text = re.sub(r"\[\[([^\]]+)\]\]", key, text)
+    if unknown:
+        sys.exit(f"build: {name} names keys the editor does not have: {', '.join(sorted(set(unknown)))} "
+                 "(check SHORTCUTS.md, or add a gesture to EXTRA_KEYS)")
+    md = markdown.Markdown(extensions=["tables", "fenced_code", "sane_lists", "toc", "attr_list"],
+                           extension_configs={"toc": {"slugify": slug, "toc_depth": "2-2"}})
+    body = md.convert(text)
+    toc = [(t["id"], html.unescape(t["name"])) for t in md.toc_tokens if t["level"] == 2]
+    return title, body, toc
+
+
+def doc_page(index: int, title: str, body: str, toc: list[tuple[str, str]]) -> str:
+    out = PAGES[index][0]
+    current = ' aria-current="page"'
+    side = "\n    ".join(f'<a href="{o}"{current if o == out else ""}>{html.escape(l)}</a>' for o, l, _ in PAGES)
+    on_page = "".join(f'<li><a href="#{i}">{html.escape(n)}</a></li>' for i, n in toc)
+    toc_block = (f'<aside class="toc"><p class="toc-title">On this page</p><ul>{on_page}</ul></aside>'
+                 if toc and out != "shortcuts.html" else "")
+    pager = []
+    if index > 0:
+        o, l, _ = PAGES[index - 1]
+        pager.append(f'<a class="pager-prev" href="{o}">{icon("arrow-left")}<span><small>Previous</small>{html.escape(l)}</span></a>')
+    if index + 1 < len(PAGES):
+        o, l, _ = PAGES[index + 1]
+        pager.append(f'<a class="pager-next" href="{o}"><span><small>Next</small>{html.escape(l)}</span>{icon("arrow-right")}</a>')
+    wide = " wide" if out == "shortcuts.html" else ""
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{html.escape(title)} · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: {html.escape(title.lower())}.">
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="docs">
+{header("../", "docs")}
+<div class="docs-layout{wide}">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="side-title">Documentation</p>
+    {side}
+  </nav>
+  <main class="doc page-{out.removesuffix('.html')}" id="main">
+    <h1>{html.escape(title)}</h1>
+    {body}
+    <nav class="pager" aria-label="Pages">{"".join(pager)}</nav>
+  </main>
+  {toc_block}
+</div>
+{footer("../")}
+<script src="../docs.js"></script>
+</body>
+</html>
+"""
+
+
+def find_source(arg: str | None) -> Path:
+    candidates = [arg, os.environ.get("LEVELDOT_EDITOR_REPO")]
+    path_file = ROOT / ".source-path"
+    if path_file.exists():
+        candidates.append(path_file.read_text(encoding="utf-8-sig").splitlines()[0].strip().strip('"'))
+    for c in candidates:
+        if c and (Path(c) / ".git").exists():
+            return Path(c)
+    sys.exit("build: the Leveldot editor repository was not found. Pass --source, set "
+             "LEVELDOT_EDITOR_REPO, or put its path on the first line of .source-path.")
+
+
+def read_editor_doc(source: Path, ref: str, path: str) -> str:
+    out = subprocess.run(["git", "-C", str(source), "show", f"{ref}:{path}"], capture_output=True, check=True)
+    return out.stdout.decode("utf-8").replace("\r\n", "\n")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--source", help="the Leveldot editor repository")
@@ -239,13 +316,22 @@ def main() -> int:
     source = find_source(args.source)
     commit = subprocess.run(["git", "-C", str(source), "rev-parse", "--short", args.ref],
                             capture_output=True, text=True, check=True).stdout.strip()
-    (SITE / "docs").mkdir(exist_ok=True)
-    cache: dict[str, str] = {}
-    for out, label, title, path, part in PAGES:
-        text = cache.setdefault(path, read_doc(source, args.ref, path))
-        body, toc = render(clean(select(text, part)))
-        (SITE / "docs" / out).write_text(doc_page(out, label, title, body, toc), encoding="utf-8", newline="\n")
-    print(f"BUILD: OK ({len(PAGES)} doc pages from the editor's {args.ref} at {commit})")
+    shortcuts = read_shortcuts(read_editor_doc(source, args.ref, "docs/SHORTCUTS.md"))
+    known = known_keys(shortcuts)
+    docs = SITE / "docs"
+    docs.mkdir(exist_ok=True)
+    written = set()
+    for i, (out, label, src) in enumerate(PAGES):
+        if src == "shortcuts":
+            title, body, toc = "Keyboard shortcuts", shortcuts_body(shortcuts), []
+        else:
+            title, body, toc = render_content((CONTENT / src).read_text(encoding="utf-8"), known, src)
+        (docs / out).write_text(doc_page(i, title, body, toc), encoding="utf-8", newline="\n")
+        written.add(out)
+    for stale in docs.glob("*.html"):
+        if stale.name not in written:
+            stale.unlink()
+    print(f"BUILD: OK ({len(PAGES)} doc pages; shortcuts from the editor's {args.ref} at {commit})")
     return 0
 
 

@@ -12,11 +12,12 @@
 <!-- header (scripts/build.py writes this block) -->
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="../index.html" aria-label="Leveldot home">
+    <a class="brand" href="../index.html" aria-label="Leveldot home, alpha">
       <picture>
         <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
         <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
       </picture>
+      <span class="pill" aria-hidden="true">Alpha</span>
     </a>
     <nav class="top-nav" aria-label="Site">
       <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
@@ -32,198 +33,240 @@
     <p class="side-title">Documentation</p>
     <a href="index.html">Install</a>
     <a href="link-godot.html">Link Godot</a>
+    <a href="basics.html">Basics</a>
     <a href="tools.html" aria-current="page">Tools</a>
     <a href="shortcuts.html">Shortcuts</a>
-    <a href="tutorial.html">Tutorial</a>
   </nav>
   <main class="doc page-tools" id="main">
     <h1>Tools</h1>
-    
-    <p>What each thing does, grouped by job. Press <strong>F1</strong> to open this manual; type in its filter field to find a topic. <strong>Ctrl+K</strong> (Find Action) runs any command by name. <strong>Help → Keyboard Shortcuts…</strong> lists every key and lets you change it. For a guided first hour, open <strong>Help → Tutorial</strong>.</p>
-<h2 id="selection-modes">Selection modes</h2>
+    <p class="lead">A short tour, grouped by job. Every command and its key is on the <a href="shortcuts.html">Shortcuts</a> page; in the app <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>K</kbd></span><span class="or">or</span><span class="combo"><kbd>F3</kbd></span></span> finds any of them.</p>
+<h2 id="blockout">Blockout</h2>
+<p>Pick a shape on the Blockout bar, drag on the grid or on any surface, then pull up the height. <span class="keys"><span class="combo"><kbd>Enter</kbd></span></span> confirms, <span class="keys"><span class="combo"><kbd>Esc</kbd></span></span> cancels.</p>
+<div class="chips">
+  <span class="chip">Box <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>B</kbd></span></span></span>
+  <span class="chip">Plane <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>P</kbd></span></span></span>
+  <span class="chip">Polygon</span>
+  <span class="chip">Spline</span>
+  <span class="chip">Cylinder</span>
+  <span class="chip">Cone</span>
+  <span class="chip">Sphere</span>
+  <span class="chip">Ramp</span>
+  <span class="chip">Stairs</span>
+  <span class="chip">Arch</span>
+  <span class="chip">Decal</span>
+</div>
+
+<p><strong>Draw on</strong> chooses where a shape starts: the surface under the mouse, or the grid.</p>
+<h2 id="modeling">Modeling</h2>
+<p>Tools work on the selection. Their values sit in a card at the bottom left of the 3D view; the mouse wheel changes the main count.</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Key</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Extrude</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>E</kbd></span></span></td>
+<td>Grows faces out, or walls from open edges</td>
+</tr>
+<tr>
+<td>Inset</td>
+<td><span class="keys"><span class="combo"><kbd>I</kbd></span></span></td>
+<td>Shrinks faces and adds a frame around them</td>
+</tr>
+<tr>
+<td>Bevel</td>
+<td><span class="keys"><span class="combo"><kbd>B</kbd></span></span></td>
+<td>Rounds or chamfers edges and corners</td>
+</tr>
+<tr>
+<td>Loop Cut</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>R</kbd></span></span></td>
+<td>Adds a ring of edges around the mesh</td>
+</tr>
+<tr>
+<td>Knife</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span></span></td>
+<td>Cuts new edges point by point</td>
+</tr>
+<tr>
+<td>Opening</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>O</kbd></span></span></td>
+<td>Cuts a door or window through a wall</td>
+</tr>
+<tr>
+<td>Hollow</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>W</kbd></span></span></td>
+<td>Turns a solid block into a room</td>
+</tr>
+<tr>
+<td>Bridge</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>C</kbd></span></span></td>
+<td>Joins two rows of edges with faces</td>
+</tr>
+<tr>
+<td>Fill Hole</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>F</kbd></span></span></td>
+<td>Closes an opening</td>
+</tr>
+<tr>
+<td>Boolean difference</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>−</kbd></span><span class="or">or</span><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>Num −</kbd></span></span></td>
+<td>Cuts one object out of another</td>
+</tr>
+<tr>
+<td>Merge Objects</td>
+<td><span class="keys"><span class="combo"><kbd>M</kbd></span></span></td>
+<td>Joins objects into one</td>
+</tr>
+<tr>
+<td>Jumble</td>
+<td><span class="keys"><span class="combo"><kbd>J</kbd></span></span></td>
+<td>Moves vertices by a pattern: hills, ridges, cells</td>
+</tr>
+</tbody>
+</table>
+<h2 id="texture-and-uv">Texture and UV</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open the Material Browser</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>M</kbd></span></span></td>
+</tr>
+<tr>
+<td>Apply the active material</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>T</kbd></span></span></td>
+</tr>
+<tr>
+<td>Make a material from an image</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>I</kbd></span></span>, or drop the image on the window</td>
+</tr>
+<tr>
+<td>Pick a face's material</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>Right-click</kbd></span></span></td>
+</tr>
+<tr>
+<td>Continue a texture across an edge</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Right-click</kbd></span></span></td>
+</tr>
+<tr>
+<td>Fit the texture to a face</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>Num 5</kbd></span></span></td>
+</tr>
+<tr>
+<td>Show a UV checker</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>U</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Hotspot atlases, a UV editor, decals and vertex colours are in the <strong>Texture</strong> menu.</p>
+<h2 id="props">Props</h2>
 <ul>
-<li><strong>1 Vertex, 2 Edge, 3 Face, 4 Object</strong> — what a click selects. These four keys are fixed. Switching mode converts the selection.</li>
-<li><strong>Click</strong> — selects; <strong>Shift+click</strong> or <strong>Ctrl+click</strong> adds or removes. Dragging a rectangle takes every face it overlaps (turned toward you), every edge it crosses, every corner inside it, and in Object Mode every object it touches.</li>
-<li><strong>Paint Select</strong> (Ctrl+Shift / Ctrl+Alt + left drag) — adds or removes by painting over elements.</li>
-<li><strong>Double-click</strong> — Face Mode: all connected faces (Shift: same plane only). Edge Mode: the edge loop.</li>
-<li><strong>Select All / None / Invert</strong> (Ctrl+A / Alt+A / Ctrl+I) — Hint: <strong>Esc</strong> clears elements first, then objects.</li>
-<li><strong>Grow / Shrink Selection</strong> (Ctrl+Numpad +/−) — adds the neighbours or drops the border.</li>
-<li><strong>Select Connected</strong> (Shift+L) — extends to the whole connected piece of mesh.</li>
-<li><strong>Select Edge Loop / Ring</strong> (L / X) — follows a loop of edges or a ring of quads; in Face Mode a strip of faces.</li>
-<li><strong>Faces with Same Material</strong> (Shift+G) — Face Mode: selects every face with the same material as the selected faces. <strong>Faces with Same Surface</strong> also compares the surface settings and has no key.</li>
-<li><strong>Hide / Show</strong> (H, Ctrl+H show only selected, Alt+H show all) — hides objects without deleting them.</li>
-<li><strong>Lock</strong> — the Outliner's Lock column makes an object unselectable. Hint: you can still draw on it.</li>
-<li><strong>Click again in the same spot</strong> — selects the next face (or object) behind the cursor.</li>
-</ul>
-<h2 id="transform">Transform</h2>
-<ul>
-<li><strong>Move (W), Rotate (E), Scale (R)</strong> — gizmo tools. Drag an arrow or ring for one axis, a square for a plane, the centre for all. Hint: while dragging, type a number (a minus works, <strong>Backspace</strong> edits) for an exact distance, angle or factor, then <strong>Enter</strong> or release; <strong>Esc</strong> cancels. A ring keeps turning past 180°.</li>
-<li><strong>Grab (G)</strong> — moves the selection with the mouse, no gizmo. Hint: <strong>X / Y / Z</strong> lock the axis (press again for the orientation axis, a third time to free it); type a number for an exact value. <strong>Ctrl</strong> or Caps Lock snaps to visible geometry.</li>
-<li><strong>Orientation</strong> — <strong>World</strong>, <strong>Local</strong> or <strong>Normal</strong> (Comma cycles). Sets which way the gizmo handles point and which axes Grab uses.</li>
-<li><strong>Pivot to Corner</strong> (P) — puts the transform pivot on the corner under the mouse. <strong>Object Pivot to Selection</strong> (Ctrl+P) moves an object's pivot.</li>
-<li><strong>Nudge</strong> (Alt+Arrow keys) — moves the selection one grid step along the world axis nearest to the arrow.</li>
-<li><strong>Snap</strong> (Snap in the 3D view header) — snaps to the grid. <strong>Snap to Grid</strong> (Shift+S) snaps the selection once; <strong>Vertices to Grid</strong> moves vertices onto grid points.</li>
-<li><strong>Ctrl while dragging</strong> — snaps to a vertex; the target shows as a yellow dot.</li>
-<li><strong>Duplicate</strong> (Ctrl+D), <strong>Duplicate and Grab</strong> (Shift+D), <strong>Duplicate Linked</strong> (Ctrl+Shift+D) — copies (they stay in the collections of the original); linked copies share one mesh, <strong>Make Unique</strong> separates them.</li>
-<li><strong>Copy / Cut / Paste Objects</strong> (Ctrl+C / Ctrl+X / Ctrl+V) — objects keep their materials, entities and settings.</li>
-<li><strong>Delete</strong> (Delete) — removes the selection; in Face / Edge / Vertex Mode it removes the elements.</li>
-<li><strong>Repeat Last</strong> (Shift+R) — repeats the last confirmed Extrude, Inset or Bevel.</li>
-</ul>
-<h2 id="modeling-tools">Modeling tools</h2>
-<p>Tools run on the selection and show their values in a card at the bottom left of the 3D view. <strong>Enter</strong> confirms, <strong>Esc</strong> cancels, the mouse wheel changes the main count.</p>
-<ul>
-<li><strong>Extrude Faces</strong> (Shift+E) — grows new geometry from the selection: faces move out, open edges grow walls. Hint: <strong>T</strong> while extruding toggles Push Through; dragging a gizmo arrow with <strong>Shift</strong> held extrudes too.</li>
-<li><strong>Inset Faces</strong> (I) — shrinks the selected faces and fills the border with a frame.</li>
-<li><strong>Bevel</strong> (B) — rounds or chamfers a corner or edge.</li>
-<li><strong>Push Through</strong> — pushes faces into a wall; when they reach the far side the wall is pierced. Hint: <strong>Ctrl+Shift</strong> while dragging the Move arrow does the same.</li>
-<li><strong>Opening</strong> (Ctrl+Shift+O) — cuts a window or door through the wall behind each selected face. Its size (width, height, from floor, offset, sides) is on the card: <strong>From floor</strong> <code>0</code> makes a door; <strong>Sides</strong> 4 is a rectangle, 8 an octagon, 24 or more round.</li>
-<li><strong>Solidify</strong> — gives selected faces a thickness. <strong>Hollow</strong> (Ctrl+Shift+W) turns solid objects into rooms with walls.</li>
-<li><strong>Loop Cut</strong> (Ctrl+R) — adds a ring of edges around the mesh; the wheel sets how many.</li>
-<li><strong>Cut</strong> (C) — drag a line across faces to cut new edges. <strong>Knife</strong> (Shift+K) — click points on faces and edges to cut by hand. While cutting: <strong>E</strong> starts a new line, <strong>Backspace</strong> takes a point back, <strong>Z</strong> cuts through hidden faces, <strong>C</strong> steps 45°, <strong>Ctrl</strong> snaps to edge middles, <strong>Shift</strong> turns snapping off.</li>
-<li><strong>Connect</strong> (V) — connects the selection with new edges. <strong>Subdivide</strong> (Alt+V) — splits each face through its middles; the mouse wheel sets the cuts (7 cuts make an 8 × 8 grid).</li>
-<li><strong>Slice</strong> (Shift+X) — splits whole objects along a dragged line.</li>
-<li><strong>Slide</strong> (Shift+V) — slides the selection along neighbouring edges.</li>
-<li><strong>Bridge</strong> (Shift+C) — joins two edge rows with new faces.</li>
-<li><strong>Fill Hole</strong> (Ctrl+F) — closes the opening an open edge borders.</li>
-<li><strong>Dissolve</strong> (Ctrl+Backspace), <strong>Collapse</strong> (Alt+M), <strong>Merge Faces</strong> (Backspace), <strong>Weld Vertices</strong> — remove or merge mesh elements.</li>
-<li><strong>Detach Faces</strong> (N) — moves faces into a new object; <strong>Extract Faces</strong> (Alt+N) copies them.</li>
-<li><strong>Align X / Y / Z</strong>, <strong>Make Planar</strong> — line up or flatten selected vertices.</li>
-<li><strong>Jumble</strong> (J) — moves vertices by a pattern (noise hills, ridges, cells). <strong>Jumble: New Seed</strong> rolls another pattern.</li>
-<li><strong>Boolean</strong> — <strong>Difference</strong> (Ctrl+Minus), <strong>Union</strong>, <strong>Intersect</strong> of the selected objects; the last one selected is the target. <strong>Boolean: Keep Cutters</strong> keeps the cutter objects.</li>
-<li><strong>Mirror X / Y / Z</strong> (Shift+Z for X) — mirrors objects along a level axis.</li>
-<li><strong>Merge Objects</strong> (M) — joins several objects into one.</li>
-<li><strong>Array</strong> — copies of the selection: <strong>Linear</strong> (count and spacing) or <strong>Radial</strong> (count, angle, axis); Enter confirms.</li>
-<li><strong>Triangulate</strong> (Ctrl+T), <strong>Split Edges</strong>, <strong>Clean Up</strong> — mesh housekeeping.</li>
-<li><strong>Normals</strong> — <strong>Flip Faces</strong> (Shift+N), <strong>Conform Normals</strong>, <strong>Recalculate Normals Outside / Inside</strong> fix which way faces point. Back faces show with <strong>Overlays → Back Faces</strong>.</li>
-<li><strong>Groups</strong> (Ctrl+G, Ctrl+Shift+G) — parts that select and move together; a group becomes one parent node in Godot. In Details, <strong>Motion → Moving</strong> makes the group (or one object) movable by game code, such as a lift or door.</li>
-<li><strong>Mover</strong> — an entity that moves a group on its own (kinds: door, elevator, platform, spinner) without code; <strong>Add Mover to Group</strong> adds one. What it can be told follows its mode: a door or elevator (move) takes open / close / toggle / stops, a platform (ping_pong) or spinner (spin) takes start / stop.</li>
-<li><strong>Physics Body</strong> — shapes and props that fall and can be pushed. <strong>Settle</strong> drops them where they come to rest.</li>
-</ul>
-<h2 id="creating-shapes">Creating shapes</h2>
-<ul>
-<li><strong>Draw Box</strong> (Shift+B), <strong>Draw Plane</strong> (Shift+P), <strong>Draw Cylinder</strong>, <strong>Draw Cone</strong>, <strong>Draw Sphere</strong>, <strong>Draw Stairs</strong>, <strong>Draw Ramp</strong>, <strong>Draw Arch</strong> — drag on the grid or a surface, then the height. The Blockout bar and the <strong>Create</strong> menu hold them all.</li>
-<li><strong>Draw Polygon</strong> — click the corners of any outline. <strong>Draw Spline</strong> — click points; a mesh follows the curve; <strong>Convert Spline to Mesh</strong> makes it ordinary.</li>
-<li><strong>Draw on</strong> (Surface / Grid) — starts shapes on the face under the mouse or on the grid. <strong>Height</strong> sets the starting height (Grid (Auto) follows the grid step).</li>
-<li><strong>Grid</strong> — <strong>Horizontal</strong>, <strong>Vertical XY</strong>, <strong>Vertical ZY</strong> planes, height and tilt; <strong>Raise / Lower Grid</strong>, <strong>Reset Grid</strong>. <strong>Align Grid to Face</strong> puts the grid on a selected face.</li>
-<li><strong>Quick Box / Quick Plane at View Centre</strong> — adds a shape without dragging.</li>
-<li><strong>Confirm / Cancel Drawing</strong> — Enter and Esc.</li>
-</ul>
-<h2 id="texture-material-and-uv">Texture, material and UV</h2>
-<ul>
-<li><strong>Browse Materials</strong> (Ctrl+M) — opens the Material Browser: the project's materials; the active one is painted onto faces. <strong>Apply Active Material</strong> (Shift+T) applies it to the selection.</li>
-<li><strong>Blockout materials</strong> (Alt+Shift+1…9) — nine built-in prototype materials; <strong>Add Blockout Set</strong> adds them to a project.</li>
-<li><strong>Import Texture…</strong> (Ctrl+Shift+I) — makes a material from an image. Hint: dropping an image on the window does the same.</li>
-<li><strong>Material Defaults…</strong> — project-wide sampling (Linear / Nearest), transparency and other defaults (project defaults also apply to faces without a material). <strong>Material Sampling</strong> changes selected materials.</li>
-<li><strong>Eyedropper</strong> (Shift + right-click) — picks the material of the face under the mouse.</li>
-<li><strong>Wrap</strong> (Alt + right-click) — copies the selected face's material and UV to the clicked face, continuing the texture across a shared edge.</li>
-<li><strong>Flow Texture</strong> (Ctrl+Alt + right-click a neighbouring face) — carries the texture along a strip of quads, such as an arch or a pipe. It is also under <strong>Texture → Flow Texture</strong>: select the faces with the source face last.</li>
-<li><strong>Fit</strong> — <strong>Fit to Face</strong> (Ctrl+Alt+Numpad 5), <strong>Fit Width / Height</strong>; <strong>Treat Faces as One</strong> fits the whole selection together.</li>
-<li><strong>Justify, Shift, Rotate, Flip, Texture size ×2 / ÷2</strong> — numpad-based texture placement (see Help → Keyboard Shortcuts…).</li>
-<li><strong>Align to Grid</strong> (Ctrl+Alt+G) — texture behaves as world-aligned. <strong>World-Align UVs</strong> / <strong>Object-Align UVs</strong> project from world or object positions.</li>
-<li><strong>Copy UV / Paste UV</strong> (Ctrl+Alt+C / Ctrl+Alt+V), <strong>Reset UV</strong> (Ctrl+Alt+F).</li>
-<li><strong>UV Editor…</strong> — edit UVs by hand. Placement tools (Fit, Hotspot, Flow) never block the next one.</li>
-<li><strong>Hotspot</strong> (Shift+H) — picks a rectangle of an atlas texture that fits each face. <strong>Hotspot Each Face</strong> (Shift+F) gives every face its own rectangle. <strong>Hotspot Rectangles…</strong> draws the rectangles of a texture.</li>
-<li><strong>Lightmap Resolution</strong> (Details) — ×2 gives twice the pixels each way; <strong>Lightmap Texel Size</strong> (Level Settings → Lightmap) sets the project's metres per pixel.</li>
-<li><strong>Vertex Color…</strong> — paints vertex colours that multiply the material. <strong>Clear Vertex Colors</strong> removes them.</li>
-<li><strong>Decals</strong> — <strong>Draw Decal</strong> drags a rectangle on a face; the active material becomes a stain, poster, sign or crack.</li>
-<li><strong>UV Checker Texture</strong> (Alt+Shift+U) — shows a checker instead of materials to judge stretching.</li>
-</ul>
-<h2 id="props-and-models">Props and models</h2>
-<ul>
-<li><strong>Import Models…</strong> — copies GLB, glTF or FBX files into the project; each becomes a tile in the <strong>Props Drawer</strong> (Shift+M). Hint: drop files or a folder on the window. With Blender installed, <code>.blend</code> and <code>.obj</code> work too.</li>
-<li><strong>Placing</strong> — drag a tile into the 3D view; the wheel rotates the model before you drop it.</li>
-<li><strong>Mark as Prop</strong> — turns selected meshes into a reusable model. <strong>Edit Base Mesh</strong> edits it; <strong>Finish Editing Prop</strong> (Ctrl+Enter) applies the change to every copy. <strong>Convert Prop to Mesh</strong> makes one prop plain geometry.</li>
+<li><strong>File → Import Models…</strong> brings in GLB, glTF or FBX files (with Blender installed, <code>.blend</code> and <code>.obj</code> too). Dropping files on the window does the same.</li>
+<li>Each model becomes a tile in the <strong>Props</strong> drawer <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>M</kbd></span></span>. Drag a tile into the level; the wheel turns it before you drop it.</li>
 </ul>
 <h2 id="entities">Entities</h2>
+<p>Entities are the things your game gives life to: lights, doors, coins, triggers, effects.</p>
+<div class="flow">
+  <div class="node"><p class="node-kicker">In Godot</p><p class="node-title">A script that extends <code>LeveldotEntity</code></p></div>
+  <div class="edge"><span>Leveldot reads it</span></div>
+  <div class="node"><p class="node-kicker">In Leveldot</p><p class="node-title">A tile in the Entities drawer</p></div>
+  <div class="edge"><span>drag</span></div>
+  <div class="node accent"><p class="node-kicker">In the level</p><p class="node-title">An entity with its settings</p></div>
+</div>
+
 <ul>
-<li><strong>Entities Drawer</strong> (Shift+A) — the entity types of your game plus the built-in ones, ready to place by dragging. The <strong>Effects</strong> category holds ready particle effects: smoke, ground fog, drips, dust, fire, sparks, embers, steam and rain. <strong>Entity Catalog…</strong> (Ctrl+Shift+A) searches every type.</li>
-<li><strong>Entity types come from your Godot game</strong> — you make a type in Godot (Leveldot screen → Entities → <strong>New Entity…</strong>, or any script that extends <code>LeveldotEntity</code>) and the editor reads it: <strong>Import from Godot…</strong> in the Entity Catalog the first time, <strong>Update from Godot</strong> afterwards. Linking a game imports its types for you.</li>
-<li><strong>Built-in entities are examples</strong> — Signal, Counter, Timer, lights, volumes, effects, Level Exit and the rest are ordinary <code>LeveldotEntity</code> scripts in the addon (<code>addons/leveldot_bridge/runtime/entities</code>, <code>effects</code>, <code>levels</code>). Open one and copy it to make your own; commands, events and settings are all snake_case (<code>enable</code>, <code>start</code>, <code>toggle</code>, <code>entered</code>, <code>timeout</code>, <code>light_energy</code>).</li>
-<li><strong>Entity Details…</strong> (Alt+Enter) — the selected entity's properties, its own events and its type.</li>
-<li><strong>Player Start</strong> — where the player appears (built-in under <strong>Level</strong>); its arrow is the facing direction (rotate with E). With a Player Start in the level, the game puts the player there (starts in collections with Export to Godot off are skipped). <strong>Level Exit</strong> — a volume that sends the player to another level; scale it with R.</li>
-<li><strong>Overlays → Entity Names</strong> (Alt+Shift+N) — writes every entity's name above it.</li>
+<li>Open the <strong>Entities</strong> drawer with <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span></span>. It also holds the built-in set: lights, effects (smoke, fire, rain…), doors and lifts, Player Start, Level Exit.</li>
+<li><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Enter</kbd></span></span> shows the selected entity's settings and events.</li>
 </ul>
-<h2 id="events-and-logic">Events and logic</h2>
-<ul>
-<li><strong>Reaction</strong> — the one building block: "when this happens, do this". The trigger is something an entity announces, a level signal, the level starting or a timer; the action is something an entity does, raising a signal, setting a flag, writing to the log or going to a level.</li>
-<li><strong>Connect to Entity…</strong> (K) — makes one entity tell another to do something. The lists offer only what the entity does with its current settings; a reaction made before a setting changed is kept and marked with "!".</li>
-<li><strong>Copy game code</strong> (Entity Details → Events) — copies the lines a Godot script uses to reach this entity: fetch it by its id, tell it one of its commands (<code>invoke_input</code> with that entity's own command name) and listen to its events (<code>output_emitted</code>).</li>
-<li><strong>Level Logic…</strong> (Ctrl+L) — the level's own logic: level start, timers, signals and flags. Hint: a signal is only a name, like "Alarm".</li>
-<li><strong>All Reactions…</strong> (Ctrl+Shift+L) — every reaction in the level, searchable. <strong>Go to</strong> opens the place where a reaction is edited (Entity Details → Events, or Level Logic); <strong>Delete</strong> removes it.</li>
-<li><strong>Logic View</strong> (F4) — the level seen for logic: surfaces go grey and connections are drawn. The context bar's <strong>Show</strong> menu chooses <strong>Selected</strong>, <strong>Chain</strong> or <strong>All</strong> connections.</li>
-<li><strong>Logic Graph…</strong> (Alt+G) — the same connections as a graph. It only shows; <strong>Go to</strong> opens the place where a reaction is edited. <strong>Trace</strong> → <strong>Import Trace…</strong> replays a log recorded in the game (up to 2 MB and 2048 events).</li>
-<li><strong>Convert Logic Parts…</strong> (Window) — turns the old logic-part objects (Signal, Level Start, Counter, Log) of the open level into reactions. It is unavailable when the level has none.</li>
-<li><strong>Overlays → Connection Lines</strong> (Alt+Shift+C) — draws the selected entities' connections in the 3D view.</li>
-</ul>
+<h2 id="logic">Logic</h2>
+<p>One building block: <strong>when this happens, do this.</strong></p>
+<div class="flow">
+  <div class="node"><p class="node-kicker">When</p><p class="node-title">Coin 1 is collected</p></div>
+  <div class="edge"><span>reaction</span></div>
+  <div class="node accent"><p class="node-kicker">Do</p><p class="node-title">Door 1 opens</p></div>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connect the selected entity to another</td>
+<td><span class="keys"><span class="combo"><kbd>K</kbd></span></span></td>
+</tr>
+<tr>
+<td>See the connections in the level</td>
+<td><span class="keys"><span class="combo"><kbd>F4</kbd></span></span></td>
+</tr>
+<tr>
+<td>The level's own logic: start, timers, signals</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>L</kbd></span></span></td>
+</tr>
+<tr>
+<td>Every reaction of the level, searchable</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span></span></td>
+</tr>
+<tr>
+<td>The connections as a graph</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>G</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
 <h2 id="levels">Levels</h2>
+<div class="flow">
+  <div class="node"><p class="node-kicker">Level</p><p class="node-title">Hall</p><p class="node-text">Player Start · Level Exit</p></div>
+  <div class="edge"><span>the player walks into the exit</span></div>
+  <div class="node accent"><p class="node-kicker">Level</p><p class="node-title">Cellar</p><p class="node-text">Player Start</p></div>
+</div>
+
 <ul>
-<li><strong>Level picker</strong> (top of the Outliner) — switches level and holds the level commands.</li>
-<li><strong>New Level</strong>, <strong>Duplicate Level</strong>, <strong>Rename Level…</strong>, <strong>Delete Level</strong> — each is one undo step.</li>
-<li><strong>Previous / Next Level</strong> (Ctrl+PageUp / Ctrl+PageDown) — a view change; nothing is saved or undone.</li>
-<li><strong>Open Destination Level</strong> — opens the level a selected Level Exit leads to, with its Player Start selected.</li>
-<li><strong>Import Level from Project…</strong> — copies the levels of another project into this one.</li>
-<li><strong>Collections…</strong> (Edit) — a window for collections of objects; a collection can be hidden or locked as a whole.</li>
+<li>A project holds many levels. Switch with the level picker on top of the Outliner, or <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>PgUp</kbd></span></span> and <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>PgDn</kbd></span></span>.</li>
+<li>A <strong>Player Start</strong> says where the player appears; a <strong>Level Exit</strong> sends them to another level.</li>
 </ul>
-<h2 id="validation">Validation</h2>
-<ul>
-<li><strong>Validation Issues…</strong> (F8) — lists problems the editor found: missing destinations, broken links, empty references. Double-click an issue to go to the object.</li>
-<li><strong>Warnings in the status bar</strong> — the editor allows risky modeling (flipped faces, open meshes) and tells you in yellow; <strong>Ctrl+Z</strong> undoes it.</li>
-<li><strong>Overlays → Collision</strong> (Alt+Shift+K) — shows what the player will collide with. <strong>Edge Lengths</strong> (Alt+Shift+L), <strong>Physics Bodies</strong> (Alt+Shift+P), <strong>Lightmap Density</strong> help check scale and lighting.</li>
-</ul>
-<h2 id="godot-link-export-play">Godot: link, export, play</h2>
-<p>Your game needs <strong>Godot 4.4 or later</strong>. Leveldot itself is a separate program; it does not need Godot installed to edit.</p>
-<ul>
-<li><strong>Link Godot Project…</strong> (File) — choose your game's folder (the one with <code>project.godot</code>). Leveldot installs and enables the Leveldot Bridge addon there, chooses where levels are exported, reads your entity types and exports once. Your own scenes are never overwritten. The project must be saved first.</li>
-<li><strong>Save</strong> (Ctrl+S) — after you link a game, saves and exports every level in the background. Godot refreshes the levels after import. If an export is running, the latest saved version is queued.</li>
-<li><strong>Export to Godot</strong> (Ctrl+E) — saves unsaved changes and exports every level. Also works when there are no edits. If an export fails, the message says what to fix. If the export goes outside a Godot game, Leveldot shows how to link it.</li>
-<li><strong>Export to Folder…</strong> (Ctrl+Shift+E) — writes to a folder you choose, for a game you have not linked.</li>
-<li><strong>Play Level</strong> (F5) — saves, exports and starts the game at the current level. It needs one successful export and a game scene that shows the level (in Godot: Leveldot → Levels → <strong>Create Game Scene…</strong>); without one it uses the game's main scene when it shows a level (or its script loads one) and the target level is in the game's level list. A single Player Start in your selection sets where you start.</li>
-<li><strong>Open in Godot</strong> — opens the linked game in the Godot editor. <strong>Choose Godot Editor…</strong> picks which program.</li>
-<li><strong>In Godot</strong> — the Leveldot Bridge adds a <strong>Leveldot</strong> screen beside 2D / 3D (levels and their status, entity types, settings) and a compact refresh status button on Godot's top toolbar showing when and which level refreshed, warnings, or failures (click it to open that level). Leveldot's own status bar also reports when Godot finishes refreshing the export or reminds you if Godot has not picked it up yet. Put your own nodes and scripts in a scene of your own that contains the generated level, never in the generated files.</li>
-<li><strong>Collision</strong> — set per object in Details → Collision: Generated Static (default), None or Physics Body. Generated collision is static unless the object's group is Moving.</li>
-<li><strong>After updating</strong> — the built-in entities were renamed to snake_case (<code>turn_on</code>, <code>entered</code>, <code>one_shot</code>, <code>light_color</code>...). An old level opens and keeps its data: a link to an old built-in port (<code>TurnOn</code>, <code>OnEnter</code>...) blocks export with error E302 until you choose that port again from the list in Logic; a renamed setting shows the stale-value warning in Details and runs on its default until you set it again (an old light baked as static becomes dynamic until you set its bake mode).</li>
-</ul>
-<h2 id="camera-and-mouse">Camera and mouse</h2>
-<ul>
-<li><strong>Right mouse + move</strong> — look around. <strong>Right mouse + W A S D</strong> — fly; <strong>Q / E</strong> down / up; <strong>Shift</strong> faster.</li>
-<li><strong>Middle mouse drag</strong> — pan. <strong>Wheel</strong> — zoom toward the point under the cursor. <strong>Right mouse held + wheel</strong> — change the fly speed (the Camera Speed list in the header follows).</li>
-<li><strong>Alt + left drag</strong> — orbit around the selection (without one, around the surface under the cursor).</li>
-<li><strong>F</strong> — frame the selection: selected vertices, edges or faces in those modes, else the objects (everything when nothing is selected); it fits narrow Four Views panes too. <strong>Home</strong> — frame in all views.</li>
-<li><strong>Axis gizmo</strong> (top right) — click Y, Z or X for Top, Front or Side; <strong>Persp</strong> returns to the perspective camera. <strong>Alt+P / Alt+T / Alt+F / Alt+S</strong> do the same from the keyboard.</li>
-<li><strong>Four Views</strong> (Alt+Q) — Perspective, Top, Front and Side at once; the keys and tools work in the view under the mouse. <strong>Wireframe</strong> (Alt+Z) shows only edges.</li>
-<li><strong>Resize box</strong> — in Top / Front / Side views with Move active, a dashed box with handles resizes the selection by dragging.</li>
-<li><strong>Right-click without moving</strong> — opens the context menu of the current mode.</li>
-<li><strong>Hover</strong> — shows a thin outline of what a click would select.</li>
-</ul>
-<h2 id="panels-and-windows">Panels and windows</h2>
-<ul>
-<li><strong>Tools panel</strong> (left, F6) — the four selection modes and the edit and modify buttons. <strong>More tools</strong> holds the rest; <strong>Surface</strong> shows materials and UV controls.</li>
-<li><strong>Outliner and Details</strong> (right, F7 or Alt+O) — objects, level picker and the selected object's properties. Details also holds Collision, Rendering and Group settings.</li>
-<li><strong>Blockout bar</strong> — drawing tools, Height and Draw on. <strong>Selection bar</strong> — selection icons that stay in one place in every mode.</li>
-<li><strong>Status bar</strong> — a hint for what you can do now, the selection summary and its size, warnings and drawer buttons for <strong>Entities</strong> and <strong>Props</strong>.</li>
-<li><strong>Maximize Viewport</strong> (Ctrl+Space) — folds both side columns. Press again to restore.</li>
-<li><strong>Modeling | Logic</strong> — switches between the modeling view and the logic view.</li>
-<li><strong>Find Action…</strong> (Ctrl+K / F3) — type a command name; the list shows its keys and why it is unavailable.</li>
-<li><strong>Floating windows</strong> — Logic Graph, Level Logic, Entity Details, Validation Issues, Material Browser and the others stay beside the main window and reopen where you left them. <strong>Esc</strong> closes them.</li>
-<li><strong>Help</strong> — <strong>User Manual</strong> (F1) opens this page; <strong>Tutorial</strong> builds a small game step by step; <strong>Link a Godot Project…</strong> connects a game; <strong>Keyboard Shortcuts…</strong>; <strong>About Leveldot Editor</strong> shows the version and where your personal settings are, with a <strong>Licenses…</strong> button for copyright and third-party notices.</li>
-</ul>
-<h2 id="preferences">Preferences</h2>
-<ul>
-<li><strong>Window → Theme</strong> — Leveldot Dark (default), Leveldot Light, Godot 3, Retro 95, Steam, Workstation and XP. Remembered for you, not the project.</li>
-<li><strong>Window → UI Scale</strong> and <strong>UI Density</strong> (Compact / Relaxed) — make the interface larger or tighter.</li>
-<li><strong>Use Windows Title Bar</strong> — swaps the editor's own title bar for the system's.</li>
-<li><strong>Reset Personal Layout</strong> — puts panels back where they started; the linked Godot game, Godot executable, imported model sources and your Jumble presets stay.</li>
-<li><strong>Keyboard Shortcuts…</strong> (Ctrl+Shift+K) — click a command, press a new key. The four selection mode keys cannot change. <strong>Reset</strong> on a command gives its default keys back, taking them from the command that took them.</li>
-<li><strong>Personal settings</strong> (theme, scale, window, keys, recovery copies) belong to you, not the project. Panel widths are remembered per project.</li>
-</ul>
+<h2 id="check-your-level">Check your level</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List problems: missing destinations, broken links</td>
+<td><span class="keys"><span class="combo"><kbd>F8</kbd></span></span></td>
+</tr>
+<tr>
+<td>Show what the player collides with</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>K</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>Risky modeling is allowed: the status bar warns in yellow, and <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span></span> takes it back.</p>
+    <nav class="pager" aria-label="Pages"><a class="pager-prev" href="basics.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Basics</span></a><a class="pager-next" href="shortcuts.html"><span><small>Next</small>Shortcuts</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
   </main>
-  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#selection-modes">Selection modes</a></li><li><a href="#transform">Transform</a></li><li><a href="#modeling-tools">Modeling tools</a></li><li><a href="#creating-shapes">Creating shapes</a></li><li><a href="#texture-material-and-uv">Texture, material and UV</a></li><li><a href="#props-and-models">Props and models</a></li><li><a href="#entities">Entities</a></li><li><a href="#events-and-logic">Events and logic</a></li><li><a href="#levels">Levels</a></li><li><a href="#validation">Validation</a></li><li><a href="#godot-link-export-play">Godot: link, export, play</a></li><li><a href="#camera-and-mouse">Camera and mouse</a></li><li><a href="#panels-and-windows">Panels and windows</a></li><li><a href="#preferences">Preferences</a></li></ul></aside>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#blockout">Blockout</a></li><li><a href="#modeling">Modeling</a></li><li><a href="#texture-and-uv">Texture and UV</a></li><li><a href="#props">Props</a></li><li><a href="#entities">Entities</a></li><li><a href="#logic">Logic</a></li><li><a href="#levels">Levels</a></li><li><a href="#check-your-level">Check your level</a></li></ul></aside>
 </div>
 <!-- footer (scripts/build.py writes this block) -->
 <footer class="foot">
   <div class="foot-inner">
     <img src="../img/icon.png" alt="" width="24" height="24">
-    <span>Leveldot Editor, a level editor for Godot 4.</span>
+    <span>Leveldot Editor, a level editor for Godot 4. Alpha: things still change.</span>
     <nav aria-label="Elsewhere">
       <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
       <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>

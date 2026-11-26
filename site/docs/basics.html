@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basics · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: basics.">
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="docs">
+<!-- header (scripts/build.py writes this block) -->
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="../index.html" aria-label="Leveldot home, alpha">
+      <picture>
+        <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
+        <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
+      </picture>
+      <span class="pill" aria-hidden="true">Alpha</span>
+    </a>
+    <nav class="top-nav" aria-label="Site">
+      <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
+      <a class="nav-link" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg><span>Discord</span></a>
+      <a class="nav-link" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg><span>YouTube</span></a>
+      <a class="button primary small" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download</span></a>
+    </nav>
+  </div>
+</header>
+<!-- /header -->
+<div class="docs-layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="side-title">Documentation</p>
+    <a href="index.html">Install</a>
+    <a href="link-godot.html">Link Godot</a>
+    <a href="basics.html" aria-current="page">Basics</a>
+    <a href="tools.html">Tools</a>
+    <a href="shortcuts.html">Shortcuts</a>
+  </nav>
+  <main class="doc page-basics" id="main">
+    <h1>Basics</h1>
+    <p class="lead">The screen, selecting, moving things and the camera. Ten minutes here saves hours later.</p>
+<h2 id="the-screen">The screen</h2>
+<div class="screen-map" role="img" aria-label="The editor window: menu and toolbar on top, Blockout bar below it, Tools panel on the left, 3D view in the middle, Outliner and Details on the right, status bar at the bottom">
+  <div class="area a-top">Menu and toolbar</div>
+  <div class="area a-bar">Blockout bar: shapes</div>
+  <div class="area a-left">Tools<small><span class="keys"><span class="combo"><kbd>F6</kbd></span></span></small></div>
+  <div class="area a-view">3D view</div>
+  <div class="area a-right">Outliner and Details<small><span class="keys"><span class="combo"><kbd>F7</kbd></span><span class="or">or</span><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>O</kbd></span></span></small></div>
+  <div class="area a-status">Status bar: hints, Entities and Props drawers</div>
+</div>
+
+<ul>
+<li><strong>Tools</strong> on the left: the four selection modes and the tools for what is selected.</li>
+<li><strong>Outliner</strong> on the right lists the objects of the level; <strong>Details</strong> shows the selected one.</li>
+<li><strong>Status bar</strong> at the bottom always says what you can do now. Read it when a step does not work.</li>
+</ul>
+<h2 id="selection-modes">Selection modes</h2>
+<div class="keycards">
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>1</kbd></span></span><span>Vertex</span></div>
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>2</kbd></span></span><span>Edge</span></div>
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>3</kbd></span></span><span>Face</span></div>
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>4</kbd></span></span><span>Object</span></div>
+</div>
+
+<p>The mode decides what a click selects. These four keys never change.</p>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Select</td>
+<td>Click</td>
+</tr>
+<tr>
+<td>Add or remove</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>Click</kbd></span></span></td>
+</tr>
+<tr>
+<td>Select many</td>
+<td>Drag a rectangle</td>
+</tr>
+<tr>
+<td>Connected faces, or an edge loop</td>
+<td>Double-click</td>
+</tr>
+<tr>
+<td>Everything, nothing</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>A</kbd></span></span>, <span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>A</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="move-rotate-scale">Move, rotate, scale</h2>
+<div class="keycards">
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>W</kbd></span></span><span>Move</span></div>
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>E</kbd></span></span><span>Rotate</span></div>
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>R</kbd></span></span><span>Scale</span></div>
+  <div class="keycard"><span class="keys"><span class="combo"><kbd>G</kbd></span></span><span>Grab</span></div>
+</div>
+
+<ul>
+<li>Drag an arrow or ring of the gizmo for one axis, a square for a plane.</li>
+<li><strong>Exact values:</strong> while dragging, type a number and press <span class="keys"><span class="combo"><kbd>Enter</kbd></span></span>. <span class="keys"><span class="combo"><kbd>Esc</kbd></span></span> cancels.</li>
+<li><strong>Grab</strong> moves with the mouse. Press <span class="keys"><span class="combo"><kbd>X</kbd></span></span>, <span class="keys"><span class="combo"><kbd>Y</kbd></span></span> or <span class="keys"><span class="combo"><kbd>Z</kbd></span></span> to lock an axis.</li>
+<li>Hold <span class="keys"><span class="combo"><kbd>Ctrl</kbd></span></span> while dragging to snap to a vertex.</li>
+</ul>
+<h2 id="camera">Camera</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>How</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Look around</td>
+<td>Hold <span class="keys"><span class="combo"><kbd>Right mouse</kbd></span></span> and move</td>
+</tr>
+<tr>
+<td>Fly</td>
+<td>Hold <span class="keys"><span class="combo"><kbd>Right mouse</kbd></span></span> and press <span class="keys"><span class="combo"><kbd>W</kbd></span></span> <span class="keys"><span class="combo"><kbd>A</kbd></span></span> <span class="keys"><span class="combo"><kbd>S</kbd></span></span> <span class="keys"><span class="combo"><kbd>D</kbd></span></span>; <span class="keys"><span class="combo"><kbd>Q</kbd></span></span> and <span class="keys"><span class="combo"><kbd>E</kbd></span></span> go down and up</td>
+</tr>
+<tr>
+<td>Pan</td>
+<td>Drag with <span class="keys"><span class="combo"><kbd>Middle mouse</kbd></span></span></td>
+</tr>
+<tr>
+<td>Zoom</td>
+<td><span class="keys"><span class="combo"><kbd>Wheel</kbd></span></span></td>
+</tr>
+<tr>
+<td>Orbit</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Left drag</kbd></span></span></td>
+</tr>
+<tr>
+<td>Frame the selection</td>
+<td><span class="keys"><span class="combo"><kbd>F</kbd></span></span></td>
+</tr>
+<tr>
+<td>Four views</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Q</kbd></span><span class="or">or</span><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>Q</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="undo-and-repeat">Undo and repeat</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undo</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span></span></td>
+</tr>
+<tr>
+<td>Redo</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></span></td>
+</tr>
+<tr>
+<td>Repeat the last Extrude, Inset or Bevel</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>R</kbd></span></span></td>
+</tr>
+<tr>
+<td>Duplicate</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>D</kbd></span></span></td>
+</tr>
+<tr>
+<td>Delete</td>
+<td><span class="keys"><span class="combo"><kbd>Del</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+    <nav class="pager" aria-label="Pages"><a class="pager-prev" href="link-godot.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Link Godot</span></a><a class="pager-next" href="tools.html"><span><small>Next</small>Tools</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
+  </main>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#the-screen">The screen</a></li><li><a href="#selection-modes">Selection modes</a></li><li><a href="#move-rotate-scale">Move, rotate, scale</a></li><li><a href="#camera">Camera</a></li><li><a href="#undo-and-repeat">Undo and repeat</a></li></ul></aside>
+</div>
+<!-- footer (scripts/build.py writes this block) -->
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="../img/icon.png" alt="" width="24" height="24">
+    <span>Leveldot Editor, a level editor for Godot 4. Alpha: things still change.</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">YouTube</a>
+      <a href="../docs/index.html">Docs</a>
+    </nav>
+  </div>
+</footer>
+<!-- /footer -->
+<script src="../docs.js"></script>
+</body>
+</html>

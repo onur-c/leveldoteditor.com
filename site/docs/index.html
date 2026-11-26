@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Install and first steps · Leveldot Docs</title>
-<meta name="description" content="Leveldot Editor documentation: install and first steps.">
+<title>Install · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: install.">
 <link rel="icon" href="../img/icon.png">
 <link rel="stylesheet" href="../style.css">
 </head>
@@ -12,11 +12,12 @@
 <!-- header (scripts/build.py writes this block) -->
 <header class="top">
   <div class="top-inner">
-    <a class="brand" href="../index.html" aria-label="Leveldot home">
+    <a class="brand" href="../index.html" aria-label="Leveldot home, alpha">
       <picture>
         <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
         <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
       </picture>
+      <span class="pill" aria-hidden="true">Alpha</span>
     </a>
     <nav class="top-nav" aria-label="Site">
       <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
@@ -32,32 +33,86 @@
     <p class="side-title">Documentation</p>
     <a href="index.html" aria-current="page">Install</a>
     <a href="link-godot.html">Link Godot</a>
+    <a href="basics.html">Basics</a>
     <a href="tools.html">Tools</a>
     <a href="shortcuts.html">Shortcuts</a>
-    <a href="tutorial.html">Tutorial</a>
   </nav>
   <main class="doc page-index" id="main">
-    <h1>Install and first steps</h1>
-    <p class="callout"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download Leveldot Editor from <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>. Then link your game: <a href="link-godot.html">Link a Godot project</a>.</span></p>
-    <ul>
-<li><strong>Install</strong> — extract the ZIP into a folder you can write to and run <code>LeveldotEditor.exe</code>. It needs Windows 10 or 11 (64-bit) and a graphics card with Vulkan support. Nothing else has to be installed.</li>
-<li><strong>First launch</strong> — an empty level with one cube and a <strong>New level</strong> card (recent projects, <strong>Open Project…</strong>). Click an empty spot in the 3D view to close the card. Draw shapes with the Blockout bar or <strong>Shift+B</strong> (Draw Box).</li>
-<li><strong>Save</strong> (Ctrl+S) — asks for a folder and writes a project: a <code>.leveldot</code> folder with a <code>project.json</code> inside. <strong>Save As…</strong> (Ctrl+Shift+S) copies it to a new folder. A project holds one or more levels.</li>
-<li><strong>Open</strong> (Ctrl+O) — choose the <code>project.json</code> inside a <code>.leveldot</code> folder, or drop the folder on the window.</li>
-<li><strong>Link a Godot game</strong> — save the project, then choose <strong>File → Link Godot Project…</strong> and pick the folder that holds <code>project.godot</code>. Once linked, <strong>Save</strong> (Ctrl+S) also exports every level. To play with <strong>F5</strong>, make a game scene once in Godot via <strong>Leveldot</strong> screen → <strong>Levels</strong> → <strong>Create Game Scene…</strong>. Needs Godot 4.4 or later in the game. <strong>Help → Link a Godot Project…</strong> has the full steps.</li>
-<li><strong>Your files</strong> — projects stay where you saved them. Personal settings (theme, scale, window layout, key bindings) and recovery copies are stored per Windows user, never inside a project; <strong>Help → About Leveldot Editor</strong> shows the folder.</li>
-<li><strong>Recovery</strong> — unsaved work is copied every 30 seconds. If copies exist after a crash, <strong>Recovery Snapshots</strong> opens at the next start; <strong>Restore Selected</strong> brings one back. <strong>Window → Recovery Snapshots…</strong> opens it any time; <strong>Snapshot Now</strong> takes a copy at once. A copy holds the level data, not your texture files.</li>
-<li><strong>Undo / Redo</strong> (Ctrl+Z / Ctrl+Y) — every edit is one step, selection included.</li>
-<li><strong>Quick Tips</strong> — short hints for beginners; <strong>Dismiss Quick Tips</strong> hides them.</li>
+    <h1>Install</h1>
+    <p class="lead">Leveldot Editor is a standalone program for Windows. You build levels in it; your game runs in Godot.</p>
+<h2 id="what-you-need">What you need</h2>
+<div class="cards three">
+  <div class="card"><p class="card-title">Windows 10 or 11</p><p>64-bit.</p></div>
+  <div class="card"><p class="card-title">A Vulkan graphics card</p><p>Most cards from the last ten years.</p></div>
+  <div class="card"><p class="card-title">Godot 4.4 or later</p><p>Only for your game. The editor does not need it.</p></div>
+</div>
+
+<h2 id="install">Install</h2>
+<ol>
+<li>Download the ZIP from <a href="https://onur-c.itch.io/leveldot-editor">itch.io</a>.</li>
+<li>Extract it into a folder you can write to.</li>
+<li>Run <code>LeveldotEditor.exe</code>. Nothing else to install.</li>
+</ol>
+<h2 id="first-launch">First launch</h2>
+<ul>
+<li>An empty level opens with one cube and a <strong>New level</strong> card.</li>
+<li>Click an empty spot in the 3D view to close the card.</li>
+<li>Press <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>B</kbd></span></span> and drag on the grid to draw your first box.</li>
 </ul>
+<h2 id="projects">Projects</h2>
+<p>A project is one folder. It holds every level of your game, with its materials and models.</p>
+<div class="tree"><pre>
+My Game.leveldot/
+└─ project.json      <span>← open this file</span>
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Save</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></span></span></td>
+</tr>
+<tr>
+<td>Save to a new folder</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>S</kbd></span></span></td>
+</tr>
+<tr>
+<td>Open (pick <code>project.json</code>, or drop the folder on the window)</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>O</kbd></span></span></td>
+</tr>
+<tr>
+<td>New project</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>N</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="safety-nets">Safety nets</h2>
+<ul>
+<li><strong>Undo and redo:</strong> <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span></span> and <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></span>. Every edit is one step, selection included.</li>
+<li><strong>Recovery:</strong> unsaved work is copied every 30 seconds. After a crash the copies are offered at the next start.</li>
+<li><strong>Your settings</strong> (theme, scale, layout, keys) belong to you, not to the project.</li>
+</ul>
+<h2 id="find-anything">Find anything</h2>
+<ul>
+<li><span class="keys"><span class="combo"><kbd>F1</kbd></span></span> opens the manual inside the app.</li>
+<li><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>K</kbd></span><span class="or">or</span><span class="combo"><kbd>F3</kbd></span></span> finds any command by name and shows its key.</li>
+<li><strong>Help → Tutorial</strong> builds a small game with you, step by step.</li>
+</ul>
+    <nav class="pager" aria-label="Pages"><a class="pager-next" href="link-godot.html"><span><small>Next</small>Link Godot</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
   </main>
-  
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#what-you-need">What you need</a></li><li><a href="#install">Install</a></li><li><a href="#first-launch">First launch</a></li><li><a href="#projects">Projects</a></li><li><a href="#safety-nets">Safety nets</a></li><li><a href="#find-anything">Find anything</a></li></ul></aside>
 </div>
 <!-- footer (scripts/build.py writes this block) -->
 <footer class="foot">
   <div class="foot-inner">
     <img src="../img/icon.png" alt="" width="24" height="24">
-    <span>Leveldot Editor, a level editor for Godot 4.</span>
+    <span>Leveldot Editor, a level editor for Godot 4. Alpha: things still change.</span>
     <nav aria-label="Elsewhere">
       <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
       <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
