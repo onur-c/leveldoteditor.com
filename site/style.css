@@ -146,7 +146,7 @@ section > h2 { font-size: 28px; margin-bottom: 24px; }
 .feature .exp-line { margin-top: 10px; }
 .exp-line .tag-exp { margin: 0 6px 0 0; }
 
-.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .shots figure { margin: 0; }
 .shots figcaption { color: var(--text-muted); font-size: 15px; margin-top: 10px; }
 
