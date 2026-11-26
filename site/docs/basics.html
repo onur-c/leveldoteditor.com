@@ -109,7 +109,22 @@
 <li>Drag an arrow or ring of the gizmo for one axis, a square for a plane.</li>
 <li><strong>Exact values:</strong> while dragging, type a number and press <span class="keys"><span class="combo"><kbd>Enter</kbd></span></span>. <span class="keys"><span class="combo"><kbd>Esc</kbd></span></span> cancels.</li>
 <li><strong>Grab</strong> moves with the mouse. Press <span class="keys"><span class="combo"><kbd>X</kbd></span></span>, <span class="keys"><span class="combo"><kbd>Y</kbd></span></span> or <span class="keys"><span class="combo"><kbd>Z</kbd></span></span> to lock an axis.</li>
-<li>Hold <span class="keys"><span class="combo"><kbd>Ctrl</kbd></span></span> while dragging to snap to a vertex.</li>
+</ul>
+<h3 id="snap-to-corners-edges-and-faces">Snap to corners, edges and faces</h3>
+<p>Hold <span class="keys"><span class="combo"><kbd>Caps Lock</kbd></span></span> while you drag a gizmo or Grab, and point the mouse at something in the level. The selection lines up with it.</p>
+<div class="flow">
+  <div class="node"><p class="node-kicker">1 · Drag</p><p class="node-title">Move a selection</p><p class="node-text">With the gizmo, or <span class="keys"><span class="combo"><kbd>G</kbd></span></span>.</p></div>
+  <div class="edge"><span>hold <span class="keys"><span class="combo"><kbd>Caps Lock</kbd></span></span></span></div>
+  <div class="node"><p class="node-kicker">2 · Point</p><p class="node-title">At a corner, edge or face</p><p class="node-text">A yellow dot marks the spot.</p></div>
+  <div class="edge"><span>release the mouse</span></div>
+  <div class="node accent"><p class="node-kicker">3 · Done</p><p class="node-title">Lined up exactly</p></div>
+</div>
+
+<ul>
+<li><strong>What it catches</strong>, first match wins: a corner, the middle of an edge, the centre of a face, any point along an edge, any point on a face.</li>
+<li>Only what you can see counts; a corner hidden behind a wall is skipped.</li>
+<li>The status bar names what it lined up with.</li>
+<li>Press or release <span class="keys"><span class="combo"><kbd>Caps Lock</kbd></span></span> mid-drag: it takes effect at once. <span class="keys"><span class="combo"><kbd>Ctrl</kbd></span></span> does the same.</li>
 </ul>
 <h2 id="camera">Camera</h2>
 <table>

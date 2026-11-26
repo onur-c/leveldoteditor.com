@@ -54,7 +54,23 @@ The mode decides what a click selects. These four keys never change.
 - Drag an arrow or ring of the gizmo for one axis, a square for a plane.
 - **Exact values:** while dragging, type a number and press [[Enter]]. [[Esc]] cancels.
 - **Grab** moves with the mouse. Press [[X]], [[Y]] or [[Z]] to lock an axis.
-- Hold [[Ctrl]] while dragging to snap to a vertex.
+
+### Snap to corners, edges and faces
+
+Hold [[Caps Lock]] while you drag a gizmo or Grab, and point the mouse at something in the level. The selection lines up with it.
+
+<div class="flow">
+  <div class="node"><p class="node-kicker">1 · Drag</p><p class="node-title">Move a selection</p><p class="node-text">With the gizmo, or [[G]].</p></div>
+  <div class="edge"><span>hold [[Caps Lock]]</span></div>
+  <div class="node"><p class="node-kicker">2 · Point</p><p class="node-title">At a corner, edge or face</p><p class="node-text">A yellow dot marks the spot.</p></div>
+  <div class="edge"><span>release the mouse</span></div>
+  <div class="node accent"><p class="node-kicker">3 · Done</p><p class="node-title">Lined up exactly</p></div>
+</div>
+
+- **What it catches**, first match wins: a corner, the middle of an edge, the centre of a face, any point along an edge, any point on a face.
+- Only what you can see counts; a corner hidden behind a wall is skipped.
+- The status bar names what it lined up with.
+- Press or release [[Caps Lock]] mid-drag: it takes effect at once. [[Ctrl]] does the same.
 
 ## Camera
 
