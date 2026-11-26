@@ -3,19 +3,9 @@
 Link connects your Leveldot project to your Godot game. After that, every save puts your levels into the game.
 {: .lead }
 
-## How it fits together
-
-<div class="flow">
-  <div class="node"><p class="node-kicker">Leveldot Editor</p><p class="node-title">You build the level</p><p class="node-text">Rooms, textures, entities.</p></div>
-  <div class="edge"><span>Save [[Ctrl+S]]</span></div>
-  <div class="node"><p class="node-kicker">Your Godot game</p><p class="node-title">The level arrives</p><p class="node-text">Godot refreshes it by itself.</p></div>
-  <div class="edge"><span>Play [[F5]]</span></div>
-  <div class="node accent"><p class="node-kicker">Your game scene</p><p class="node-title">You walk through it</p><p class="node-text">With your player and scripts.</p></div>
-</div>
+## Link it (once)
 
 You need a Godot game on **Godot 4.4 or later** and a saved Leveldot project.
-
-## Link it (once)
 
 1. **Save** the project with [[Ctrl+S]]. Link needs a saved project.
 2. **Link:** choose **File → Link Godot Project…** and pick the folder that holds `project.godot`.
@@ -36,6 +26,16 @@ Once the game is linked, these keys do the rest.
 | [[F5]] | Saves, exports and starts the game at the level you are editing. |
 
 Both programs tell you when the level has arrived: a status button on Godot's top toolbar, and the status bar in Leveldot.
+
+## How it fits together
+
+<div class="flow">
+  <div class="node"><p class="node-kicker">Leveldot Editor</p><p class="node-title">You build the level</p><p class="node-text">Rooms, textures, entities.</p></div>
+  <div class="edge"><span>Save [[Ctrl+S]]</span></div>
+  <div class="node"><p class="node-kicker">Your Godot game</p><p class="node-title">The level arrives</p><p class="node-text">Godot refreshes it by itself.</p></div>
+  <div class="edge"><span>Play [[F5]]</span></div>
+  <div class="node accent"><p class="node-kicker">Your game scene</p><p class="node-title">You walk through it</p><p class="node-text">With your player and scripts.</p></div>
+</div>
 
 ## Where files go
 

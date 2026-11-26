@@ -71,6 +71,10 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - **Mantık (logic) sistemi deneyseldir** (kullanıcı, 2026-11-26: henüz olgunlaşmadı): sitede az yer alır,
   geçtiği yerde `.tag-exp` "Experimental" etiketi taşır (Tools'ta iki cümle, ana sayfada yarım cümle,
   kısayol kartlarında başlık etiketi). Tanıtımda öne çıkarılmaz, ekran görüntüsü yok.
+- **Öncelik yukarıda** (kullanıcı, 2026-11-26): her sayfada en çok gereken önce gelir. Ana sayfa:
+  tanıtım → Get started → özellikler → görüntüler → temalar → topluluk. Dokümanlarda adımlar diyagram ve
+  ayrıntıdan önce; deneysel bölümler en sonda. Kısayol kartları `build.py` `CARD_ORDER`, kart içi
+  `FIRST_KEYS` sonra tek tuşlular, sonra kombinasyonlar.
 - Yayınlanan HTML'de yorum yok (kullanıcı, 2026-11-26): işaret ve notlar `content/`'te kalır, `build.py`
   siler, `check_site.py` reddeder.
 - Ana sayfa `content/index.html`'de elle yazılır (`site/index.html` üretilir, elle düzenlenmez), İngilizce; özellik metinleri editörün kılavuzunda olanı

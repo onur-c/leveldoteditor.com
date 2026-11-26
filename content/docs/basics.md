@@ -19,6 +19,18 @@ The screen, selecting, moving things and the camera.
 
 Hide or show the side panels: Tools [[F6]], Outliner and Details [[F7 / Alt+O]].
 
+## Camera
+
+| Do | How |
+|---|---|
+| Look around | Hold [[Right mouse]] and move |
+| Fly | Hold [[Right mouse]] and press [[W]] [[A]] [[S]] [[D]]; [[Q]] and [[E]] go down and up |
+| Pan | Drag with [[Middle mouse]] |
+| Zoom | [[Wheel]] |
+| Orbit | [[Alt+Left drag]] |
+| Frame the selection | [[F]] |
+| Four views | [[Alt+Q / Ctrl+Alt+Q]] |
+
 ## Selection modes
 
 <figure class="ui-strip"><img src="../img/ui-modes.jpg" alt="The four selection mode buttons, 1 to 4, at the top of the Tools panel" width="227" height="49" loading="lazy"><figcaption>Top of the Tools panel</figcaption></figure>
@@ -71,18 +83,6 @@ Hold [[Caps Lock]] while you drag a gizmo or Grab, and point the mouse at someth
 - Only what you can see counts; a corner hidden behind a wall is skipped.
 - The status bar names what it lined up with.
 - Press or release [[Caps Lock]] mid-drag: it takes effect at once. [[Ctrl]] does the same.
-
-## Camera
-
-| Do | How |
-|---|---|
-| Look around | Hold [[Right mouse]] and move |
-| Fly | Hold [[Right mouse]] and press [[W]] [[A]] [[S]] [[D]]; [[Q]] and [[E]] go down and up |
-| Pan | Drag with [[Middle mouse]] |
-| Zoom | [[Wheel]] |
-| Orbit | [[Alt+Left drag]] |
-| Frame the selection | [[F]] |
-| Four views | [[Alt+Q / Ctrl+Alt+Q]] |
 
 ## Undo and repeat
 

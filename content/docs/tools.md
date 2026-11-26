@@ -93,10 +93,6 @@ Entities are objects that do something in the game: lights, doors, coins, trigge
 - **Movers** make a group move on its own, without code: a door, a lift, a platform, a spinner (**Add Mover to Group**).
 - A **Physics Body** falls and can be pushed in the game; **Settle** drops it where it comes to rest.
 
-## Logic <span class="tag-exp">Experimental</span>
-
-Entities can trigger each other, for example a collected coin opens a door. This part is still changing. To try it, select an entity and press [[K]] (Connect); [[F4]] shows the connections.
-
 ## Levels
 
 <div class="flow">
@@ -116,3 +112,7 @@ Entities can trigger each other, for example a collected coin opens a door. This
 | Show what the player collides with | [[Alt+Shift+K]] |
 
 If something looks wrong, the status bar says so in yellow; [[Ctrl+Z]] undoes it.
+
+## Logic <span class="tag-exp">Experimental</span>
+
+Entities can trigger each other, for example a collected coin opens a door. This part is still changing. To try it, select an entity and press [[K]] (Connect); [[F4]] shows the connections.

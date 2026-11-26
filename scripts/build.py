@@ -177,6 +177,20 @@ def read_shortcuts(text: str) -> list[tuple[str, list[dict]]]:
     return out
 
 
+# The Shortcuts page puts what people press most first; a group not listed goes last.
+CARD_ORDER = ["Modes and Transform", "Create", "Mesh", "Select", "Edit", "3D View", "Texture and UV", "File",
+              "Overlays", "Material Browser", "Window and Help", "Logic and Entities", "Logic Graph Window"]
+
+
+# Within a group these single keys lead, in this order (modes, then Move / Rotate / Scale / Grab).
+FIRST_KEYS = {k: i for i, k in enumerate(["1", "2", "3", "4", "W", "E", "R", "G"])}
+
+
+def by_priority(shortcuts):
+    rank = {t: i for i, t in enumerate(CARD_ORDER)}
+    return sorted(shortcuts, key=lambda group: rank.get(group[0], len(CARD_ORDER)))
+
+
 def known_keys(shortcuts) -> set[str]:
     known = set(EXTRA_KEYS)
     for _, rows in shortcuts:
@@ -191,7 +205,9 @@ def shortcuts_body(shortcuts) -> str:
     cards = []
     for title, rows in shortcuts:
         items = []
-        for r in sorted(rows, key=lambda r: (r["keys"] == "", r["command"].lower())):
+        # single keys first (1-4, W/E/R...), then combos by how many modifiers they need, keyless last
+        for r in sorted(rows, key=lambda r: (r["keys"] == "", r["keys"].split(" / ")[0].count("+"),
+                                         FIRST_KEYS.get(r["keys"], len(FIRST_KEYS)), r["keys"], r["command"].lower())):
             mode = "" if r["mode"] == "Any" else f'<span class="mode">{html.escape(r["mode"])}</span>'
             keys = keys_html(r["keys"]) if r["keys"] else '<span class="nokey">no key</span>'
             what = re.sub(r"[*`]", "", r["what"])
@@ -325,7 +341,7 @@ def main() -> int:
     source = find_source(args.source)
     commit = subprocess.run(["git", "-C", str(source), "rev-parse", "--short", args.ref],
                             capture_output=True, text=True, check=True).stdout.strip()
-    shortcuts = read_shortcuts(read_editor_doc(source, args.ref, "docs/SHORTCUTS.md"))
+    shortcuts = by_priority(read_shortcuts(read_editor_doc(source, args.ref, "docs/SHORTCUTS.md")))
     known = known_keys(shortcuts)
     docs = SITE / "docs"
     docs.mkdir(exist_ok=True)
