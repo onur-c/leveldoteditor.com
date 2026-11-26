@@ -74,7 +74,13 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - Ana sayfa (`site/index.html`) elle yazılır, İngilizce; özellik metinleri editörün kılavuzunda olanı
   söyler, olmayan özellik ya da fiyat iddiası yazılmaz.
 - Dış kütüphane, web fontu, izleme betiği yok; yalnız `site/` altındaki HTML / CSS / JS.
-- Ekran görüntüleri `site/img/shot-*.jpg` (1600 × 900, JPEG kalite 90). Kaynağı editör reposunun smoke
+- **Galeri** (ana sayfa): görüntüler `a.zoom` içinde; `site/home.js` onları sayfadan çıkmadan
+  `<dialog id="lightbox">`'ta açar (oklar, Esc, karanlık alana tık). Yeni görüntü `.shots`'a `a.zoom` ile
+  eklenir, düz bağlantı değil. **Temalar** bölümü: `.theme-tab` düğmeleri `site/img/theme-*.jpg`
+  arasında geçer (aynı sahne, yedi tema; kullanıcının görüntüleri). Görüntüler 1600 px genişliğe
+  küçültülüp JPEG 86 kaydedilir. `home.js` de `style.css` gibi `?v=` ile çağrılır.
+- Ekran görüntüleri `site/img/shot-*.jpg` (1600 × 900, JPEG kalite 90; arches / backrooms / hotspot
+  kullanıcının gerçek seviyeleri). Kaynağı editör reposunun smoke
   render'ları: geçici, detached bir worktree'de `scripts/smoke_test.ps1 -Only logic_audit`
   (`logic-audit-textured-modeling`, `-sample-1600-all`, `-sample-quad-selected`) ve tam smoke'un
   `levels-view-1600` / `surface-details-1600` render'ları. Godot koşusu ağır iştir: makinede başka CI /

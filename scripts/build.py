@@ -135,6 +135,7 @@ def put_shared_blocks(page: Path, prefix: str, current: str) -> None:
         a, b = text.index(start), text.index(end) + len(end)
         text = text[:a] + block + text[b:]
     text = re.sub(r'href="style\.css(\?v=\w+)?"', 'href="' + asset_url(prefix, "style.css") + '"', text)
+    text = re.sub(r'src="home\.js(\?v=\w+)?"', 'src="' + asset_url(prefix, "home.js") + '"', text)
     page.write_text(text, encoding="utf-8", newline="\n")
 
 

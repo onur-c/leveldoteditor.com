@@ -9,7 +9,7 @@
 <meta property="og:description" content="A level editor for Godot 4: block out, model and texture levels, then play them in your game.">
 <meta property="og:image" content="img/shot-modeling.jpg">
 <link rel="icon" href="img/icon.png">
-<link rel="stylesheet" href="style.css?v=2b8cc81f8b">
+<link rel="stylesheet" href="style.css?v=6af5aecdaf">
 </head>
 <body>
 <!-- header (scripts/build.py writes this block) -->
@@ -90,20 +90,48 @@
     <h2 id="gallery-title">Screenshots</h2>
     <div class="shots">
       <figure>
-        <a href="img/shot-four-views.jpg"><img src="img/shot-four-views.jpg" alt="Four views: perspective, top, front and side of the Coin Rooms sample" width="1600" height="900" loading="lazy"></a>
-        <figcaption>Four views at once: perspective, top, front and side.</figcaption>
+        <a class="zoom" href="img/shot-arches.jpg"><img src="img/shot-arches.jpg" alt="Concrete arches and walls textured from one hotspot atlas" width="1600" height="858" loading="lazy"></a>
+        <figcaption>Arches and walls, textured from one hotspot atlas.</figcaption>
       </figure>
       <figure>
-        <a href="img/shot-levels.jpg"><img src="img/shot-levels.jpg" alt="A hall with a Player Start and a Level Exit to the cellar, on a UV checker floor" width="1600" height="900" loading="lazy"></a>
+        <a class="zoom" href="img/shot-backrooms.jpg"><img src="img/shot-backrooms.jpg" alt="An office level with yellow wallpaper, ceiling lights and measurements in the 3D view" width="1600" height="859" loading="lazy"></a>
+        <figcaption>An office maze with lights, groups and live measurements.</figcaption>
+      </figure>
+      <figure>
+        <a class="zoom" href="img/shot-hotspot.jpg"><img src="img/shot-hotspot.jpg" alt="Blocky concrete level: 61 faces textured in one step" width="1600" height="850" loading="lazy"></a>
+        <figcaption>Blockout to textured: 61 faces hotspotted in one step.</figcaption>
+      </figure>
+      <figure>
+        <a class="zoom" href="img/shot-levels.jpg"><img src="img/shot-levels.jpg" alt="A hall with a Player Start and a Level Exit to the cellar, on a UV checker floor" width="1600" height="900" loading="lazy"></a>
         <figcaption>Player Start and a Level Exit leading to the next level.</figcaption>
       </figure>
       <figure>
-        <a href="img/shot-faces.jpg"><img src="img/shot-faces.jpg" alt="Face mode with one face selected, its size and material shown in Details" width="1600" height="900" loading="lazy"></a>
+        <a class="zoom" href="img/shot-faces.jpg"><img src="img/shot-faces.jpg" alt="Face mode with one face selected, its size and material shown in Details" width="1600" height="900" loading="lazy"></a>
         <figcaption>Face mode: sizes in the view, material and surface in Details.</figcaption>
+      </figure>
+      <figure>
+        <a class="zoom" href="img/shot-four-views.jpg"><img src="img/shot-four-views.jpg" alt="Four views: perspective, top, front and side" width="1600" height="900" loading="lazy"></a>
+        <figcaption>Four views at once: perspective, top, front and side.</figcaption>
       </figure>
     </div>
   </section>
 
+  <section class="themes" aria-labelledby="themes-title">
+    <h2 id="themes-title">Seven themes</h2>
+    <p class="section-lead">Pick the look you work best in: <strong>Window → Theme</strong>. Your choice is remembered for you, not stored in the project.</p>
+    <div class="theme-tabs" role="tablist" aria-label="Themes">
+        <button type="button" class="theme-tab" role="tab" aria-selected="true" data-src="img/theme-dark.jpg" data-name="Leveldot Dark">Leveldot Dark</button>
+        <button type="button" class="theme-tab" role="tab" aria-selected="false" data-src="img/theme-light.jpg" data-name="Leveldot Light">Leveldot Light</button>
+        <button type="button" class="theme-tab" role="tab" aria-selected="false" data-src="img/theme-godot3.jpg" data-name="Godot 3">Godot 3</button>
+        <button type="button" class="theme-tab" role="tab" aria-selected="false" data-src="img/theme-workstation.jpg" data-name="Workstation">Workstation</button>
+        <button type="button" class="theme-tab" role="tab" aria-selected="false" data-src="img/theme-steam.jpg" data-name="Steam">Steam</button>
+        <button type="button" class="theme-tab" role="tab" aria-selected="false" data-src="img/theme-xp.jpg" data-name="XP">XP</button>
+        <button type="button" class="theme-tab" role="tab" aria-selected="false" data-src="img/theme-retro.jpg" data-name="Retro 95">Retro 95</button>
+    </div>
+    <figure class="theme-shot">
+      <a class="zoom" href="img/theme-dark.jpg"><img id="theme-img" src="img/theme-dark.jpg" alt="The editor in the Leveldot Dark theme" width="1600" height="858"></a>
+    </figure>
+  </section>
   <section class="steps" aria-labelledby="steps-title">
     <h2 id="steps-title">Get started</h2>
     <ol class="step-list">
@@ -155,5 +183,12 @@
   </div>
 </footer>
 <!-- /footer -->
+<dialog id="lightbox" class="lightbox" aria-label="Screenshot" tabindex="-1">
+  <button type="button" class="lb-close" aria-label="Close">&times;</button>
+  <button type="button" class="lb-prev" aria-label="Previous">&#8249;</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button type="button" class="lb-next" aria-label="Next">&#8250;</button>
+</dialog>
+<script src="home.js?v=877795b13f"></script>
 </body>
 </html>

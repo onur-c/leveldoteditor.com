@@ -54,7 +54,7 @@ def main() -> int:
             problems.append(f"{rel}: the footer is not the one scripts/build.py writes (run it)")
         for src in page.images_without_alt:
             problems.append(f"{rel}: image without alt text: {src}")
-        if re.search(r'(href|src)="[./]*(style\.css|docs\.js)"', text):
+        if re.search(r'(href|src)="[./]*(style\.css|docs\.js|home\.js)"', text):
             problems.append(f"{rel}: style.css / docs.js without a version (browsers keep an old copy; run scripts/build.py)")
         if "{{" in text or "TODO" in text:
             problems.append(f"{rel}: unfinished placeholder text")
