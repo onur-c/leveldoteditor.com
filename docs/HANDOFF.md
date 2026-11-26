@@ -12,8 +12,8 @@ Current state only; replace, never append. History is `git log`, reasons are in 
 
 ## Not verified
 
-- Rendering checked with headless Edge (desktop 1440 px, phone 390 px in an iframe), dark theme only; the
-  light theme (`prefers-color-scheme: light`) was not looked at.
+- Rendering checked with headless Edge: desktop 1440 px dark and light (live URL), phone 390 px in an
+  iframe. Not seen on a real phone, Safari or Firefox.
 
 ## Open requests
 
