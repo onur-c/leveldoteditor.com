@@ -6,7 +6,7 @@
 <title>Entities and logic · Leveldot Docs</title>
 <meta name="description" content="Leveldot Editor documentation: entities and logic.">
 <link rel="icon" href="../img/icon.png">
-<link rel="stylesheet" href="../style.css?v=d44a71c69b">
+<link rel="stylesheet" href="../style.css?v=8663337df9">
 </head>
 <body class="docs">
 <header class="top">
@@ -42,11 +42,29 @@
 
 <h2 id="what-an-entity-is">What an entity is</h2>
 <p>An entity is an object that does something in the game: a light, a door, a lift, a trigger, an effect.</p>
-<ul>
-<li>It has <strong>settings</strong>: a light's energy, a door's speed.</li>
-<li>It can <strong>do things</strong> when told: <code>enable</code>, <code>start</code>, <code>toggle</code>.</li>
-<li>It <strong>announces</strong> what happens to it: <code>entered</code>, <code>turned_on</code>.</li>
-</ul>
+<p>Its script says what it can do, in plain Godot:</p>
+<table>
+<thead>
+<tr>
+<th>In the script</th>
+<th>In Leveldot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@export</code> variable</td>
+<td>a <strong>setting</strong>, edited in Entity Details</td>
+</tr>
+<tr>
+<td>public function</td>
+<td>something it <strong>does</strong> when told</td>
+</tr>
+<tr>
+<td>signal</td>
+<td>something it <strong>announces</strong>, to start a connection</td>
+</tr>
+</tbody>
+</table>
 <h2 id="make-your-own-entity-type">Make your own entity type</h2>
 <div class="flow">
   <div class="node"><p class="node-kicker">In Godot</p><p class="node-title">New Entity…</p><p class="node-text">a script that extends <code>LeveldotEntity</code></p></div>
@@ -125,9 +143,103 @@
 <li>The lists offer only what the entity can do with its current settings. A connection made before a setting changed is kept and marked with <strong>!</strong>.</li>
 <li>Your Godot code can talk to an entity too: <strong>Entity Details → Events → Copy game code</strong> copies the lines to use.</li>
 </ul>
+<h2 id="write-the-script">Write the script</h2>
+<p>An entity type is a scene in <code>res://leveldot/entities/</code>: a <code>Node3D</code> root with a script that extends <code>LeveldotEntity</code>. The root node's name is the name Leveldot shows; the file name is the type's id.</p>
+<table>
+<thead>
+<tr>
+<th>You write</th>
+<th>Leveldot reads it as</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>signal powered_up</code></td>
+<td>an announcement with no value</td>
+</tr>
+<tr>
+<td><code>signal fuel_changed(litres: float)</code></td>
+<td>an announcement that carries one value</td>
+</tr>
+<tr>
+<td><code>func add_fuel(litres: float) -&gt; void</code></td>
+<td>a command that takes one value</td>
+</tr>
+<tr>
+<td><code>func shut_down() -&gt; bool</code></td>
+<td>a command that may refuse: return <code>false</code></td>
+</tr>
+<tr>
+<td><code>@export var capacity := 20.0</code></td>
+<td>a setting; <code>@export_range</code> gives it a min and max</td>
+</tr>
+<tr>
+<td><code>## Pours fuel in.</code> above a member</td>
+<td>the help text Leveldot shows for it</td>
+</tr>
+<tr>
+<td><code>const LEVELDOT_CATEGORY := "Machines"</code></td>
+<td>the group it is filed under in the drawer</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>A signal or a function takes <strong>at most one value</strong>, typed: <code>bool</code>, <code>int</code>, <code>float</code>, <code>String</code> or <code>Vector3</code>. A setting can also be a <code>Color</code>.</li>
+<li>Names that start with <code>_</code> stay private: Leveldot does not offer them.</li>
+<li>Anything Leveldot cannot use is listed with the reason when the types are read, so you know what to fix.</li>
+</ul>
+<h2 id="example-a-generator">Example: a generator</h2>
+<p>A generator that needs fuel before the lights come back on.</p>
+<pre><code class="language-gdscript">## A generator. Fill it up and it powers the room.
+extends LeveldotEntity
+
+const LEVELDOT_CATEGORY := &quot;Machines&quot;
+
+## Sent once, when the tank is full.
+signal powered_up
+## Sent on every refill, with the litres in the tank.
+signal fuel_changed(litres: float)
+
+## Litres it needs before it runs.
+@export_range(1.0, 100.0) var capacity := 20.0
+
+var _fuel := 0.0
+
+## Pours fuel in.
+func add_fuel(litres: float) -&gt; void:
+    if _fuel &gt;= capacity:
+        return
+    _fuel = minf(_fuel + litres, capacity)
+    fuel_changed.emit(_fuel)
+    if _fuel &gt;= capacity:
+        powered_up.emit()
+
+## Stops it and empties the tank. Refused while it is empty.
+func shut_down() -&gt; bool:
+    if _fuel &lt;= 0.0:
+        return false
+    _fuel = 0.0
+    fuel_changed.emit(_fuel)
+    return true
+</code></pre>
+<p>After <strong>Update from Godot</strong>, the Generator is in the drawer under <strong>Machines</strong>, with <strong>capacity</strong> in its settings. Wire it up in the level with <span class="keys"><span class="combo"><kbd>K</kbd></span></span>:</p>
+<div class="flow">
+  <div class="node"><p class="node-kicker">Trigger Area</p><p class="node-title">entered</p><p class="node-text">the player walks in with a can</p></div>
+  <div class="edge"><span>add_fuel, value 5</span></div>
+  <div class="node"><p class="node-kicker">Generator</p><p class="node-title">powered_up</p><p class="node-text">after four cans</p></div>
+  <div class="edge"><span>turn_on</span></div>
+  <div class="node accent"><p class="node-kicker">Omni Light</p><p class="node-title">The room lights up</p></div>
+</div>
+
+<ul>
+<li><strong>entered → add_fuel</strong>: <code>entered</code> carries no value, so the connection gives <code>add_fuel</code> a fixed one: 5 litres.</li>
+<li><strong>powered_up → turn_on</strong>: every light in the room can listen to the same announcement.</li>
+<li><code>fuel_changed</code> carries its value along: connect it to a command that takes a <code>float</code>, such as a gauge of your own.</li>
+<li>If something tells an empty generator to <code>shut_down</code>, it refuses and nothing else happens.</li>
+</ul>
     <nav class="pager" aria-label="Pages"><a class="pager-prev" href="shortcuts.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Shortcuts</span></a></nav>
   </main>
-  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#what-an-entity-is">What an entity is</a></li><li><a href="#make-your-own-entity-type">Make your own entity type</a></li><li><a href="#use-entities-in-a-level">Use entities in a level</a></li><li><a href="#connect-entities-experimental">Connect entities</a></li></ul></aside>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#what-an-entity-is">What an entity is</a></li><li><a href="#make-your-own-entity-type">Make your own entity type</a></li><li><a href="#use-entities-in-a-level">Use entities in a level</a></li><li><a href="#connect-entities-experimental">Connect entities</a></li><li><a href="#write-the-script">Write the script</a></li><li><a href="#example-a-generator">Example: a generator</a></li></ul></aside>
 </div>
 <footer class="foot">
   <div class="foot-inner">

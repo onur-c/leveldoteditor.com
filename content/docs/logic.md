@@ -6,9 +6,13 @@
 
 An entity is an object that does something in the game: a light, a door, a lift, a trigger, an effect.
 
-- It has **settings**: a light's energy, a door's speed.
-- It can **do things** when told: `enable`, `start`, `toggle`.
-- It **announces** what happens to it: `entered`, `turned_on`.
+Its script says what it can do, in plain Godot:
+
+| In the script | In Leveldot |
+|---|---|
+| `@export` variable | a **setting**, edited in Entity Details |
+| public function | something it **does** when told |
+| signal | something it **announces**, to start a connection |
 
 ## Make your own entity type
 
@@ -49,3 +53,74 @@ Logic is "when this happens, do this": a trigger turns on a light, a button open
 
 - The lists offer only what the entity can do with its current settings. A connection made before a setting changed is kept and marked with **!**.
 - Your Godot code can talk to an entity too: **Entity Details → Events → Copy game code** copies the lines to use.
+
+## Write the script
+
+An entity type is a scene in `res://leveldot/entities/`: a `Node3D` root with a script that extends `LeveldotEntity`. The root node's name is the name Leveldot shows; the file name is the type's id.
+
+| You write | Leveldot reads it as |
+|---|---|
+| `signal powered_up` | an announcement with no value |
+| `signal fuel_changed(litres: float)` | an announcement that carries one value |
+| `func add_fuel(litres: float) -> void` | a command that takes one value |
+| `func shut_down() -> bool` | a command that may refuse: return `false` |
+| `@export var capacity := 20.0` | a setting; `@export_range` gives it a min and max |
+| `## Pours fuel in.` above a member | the help text Leveldot shows for it |
+| `const LEVELDOT_CATEGORY := "Machines"` | the group it is filed under in the drawer |
+
+- A signal or a function takes **at most one value**, typed: `bool`, `int`, `float`, `String` or `Vector3`. A setting can also be a `Color`.
+- Names that start with `_` stay private: Leveldot does not offer them.
+- Anything Leveldot cannot use is listed with the reason when the types are read, so you know what to fix.
+
+## Example: a generator
+
+A generator that needs fuel before the lights come back on.
+
+```gdscript
+## A generator. Fill it up and it powers the room.
+extends LeveldotEntity
+
+const LEVELDOT_CATEGORY := "Machines"
+
+## Sent once, when the tank is full.
+signal powered_up
+## Sent on every refill, with the litres in the tank.
+signal fuel_changed(litres: float)
+
+## Litres it needs before it runs.
+@export_range(1.0, 100.0) var capacity := 20.0
+
+var _fuel := 0.0
+
+## Pours fuel in.
+func add_fuel(litres: float) -> void:
+	if _fuel >= capacity:
+		return
+	_fuel = minf(_fuel + litres, capacity)
+	fuel_changed.emit(_fuel)
+	if _fuel >= capacity:
+		powered_up.emit()
+
+## Stops it and empties the tank. Refused while it is empty.
+func shut_down() -> bool:
+	if _fuel <= 0.0:
+		return false
+	_fuel = 0.0
+	fuel_changed.emit(_fuel)
+	return true
+```
+
+After **Update from Godot**, the Generator is in the drawer under **Machines**, with **capacity** in its settings. Wire it up in the level with [[K]]:
+
+<div class="flow">
+  <div class="node"><p class="node-kicker">Trigger Area</p><p class="node-title">entered</p><p class="node-text">the player walks in with a can</p></div>
+  <div class="edge"><span>add_fuel, value 5</span></div>
+  <div class="node"><p class="node-kicker">Generator</p><p class="node-title">powered_up</p><p class="node-text">after four cans</p></div>
+  <div class="edge"><span>turn_on</span></div>
+  <div class="node accent"><p class="node-kicker">Omni Light</p><p class="node-title">The room lights up</p></div>
+</div>
+
+- **entered → add_fuel**: `entered` carries no value, so the connection gives `add_fuel` a fixed one: 5 litres.
+- **powered_up → turn_on**: every light in the room can listen to the same announcement.
+- `fuel_changed` carries its value along: connect it to a command that takes a `float`, such as a gauge of your own.
+- If something tells an empty generator to `shut_down`, it refuses and nothing else happens.
