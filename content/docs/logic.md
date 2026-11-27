@@ -39,6 +39,8 @@ The built-in entities are ordinary `LeveldotEntity` scripts in the addon. Open o
 | Edit the selected entity's settings and events | [[Alt+Enter]] |
 | Write every entity's name above it | [[Alt+Shift+N]] |
 
+In Entity Details a value changes in place; [[Enter]] or [[Tab]] moves to the next one.
+
 ## Connect entities <span class="tag-exp">Experimental</span>
 
 Logic is "when this happens, do this": a trigger turns on a light, a button opens a door.

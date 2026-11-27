@@ -17,7 +17,15 @@ The screen, selecting, moving things and the camera.
 <li><strong>Status bar:</strong> what you can do now. Read it when a step does not work.</li>
 </ol>
 
-Hide or show the side panels: Tools [[F6]], Outliner and Details [[F7 / Alt+O]].
+Hide or show the side panels: Tools [[F6]], Outliner and Details [[F7 / Alt+O]]. Too small or too large: **Window → UI Scale** (75 % to 150 %).
+
+### Outliner and Details
+
+- **Outliner:** the row icon shows the object's type. Selecting in the 3D view opens its group and scrolls to it.
+- Drag rows onto a group to put them in, or onto a loose row to take them out. [[F2]] renames the row you are on.
+- **Details:** drag a number sideways to change it; the level follows live. [[Shift]] drags finer, [[Ctrl]] snaps, [[Esc]] puts it back. Click to type a value.
+- Right-click a number or its name: **Reset**, **Copy**, **Paste**.
+- Drag the line between Outliner and Details to share the room; it is remembered.
 
 ## Camera
 
@@ -65,6 +73,7 @@ The mode decides what a click selects. These four keys never change.
 
 - Drag an arrow or ring of the gizmo for one axis, a square for a plane.
 - **Exact values:** while dragging, type a number and press [[Enter]]. [[Esc]] cancels.
+- **Fine steps:** hold [[Shift]] while you drag the Move gizmo: 1 cm at a time.
 - **Grab** moves with the mouse. Press [[X]], [[Y]] or [[Z]] to lock an axis.
 
 ### Snap to corners, edges and faces

@@ -32,7 +32,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 |---|---|
 | Sayfaları üret | `python scripts/build.py` (editör reposunun `master`'ındaki `docs/SHORTCUTS.md`'yi okur; yol: `--source`, `$env:LEVELDOT_EDITOR_REPO` ya da git-ignored `.source-path` ilk satırı) |
 | Yalnız ana sayfayı yaz | `python scripts/build.py --shared-only` |
-| Tam kapı (commit öncesi) | `powershell -ExecutionPolicy Bypass -File scripts/ci.ps1` → `CI: ALL GATES PASSED` |
+| Tam kapı (commit öncesi) | `powershell -ExecutionPolicy Bypass -File scripts/ci.ps1` → `CI: ALL GATES PASSED` (editör reposu bulunursa önce `build.py`'yi koşar; duran build kapıyı düşürür) |
 | Yayın | `master`'a push → `.github/workflows/pages.yml` denetler ve `site/`'ı yayımlar |
 
 ## Çalışma akışı (her ajan)
@@ -84,7 +84,8 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - **What's new** (`whats-new.md`, kullanıcı 2026-11-27): itch.io'ya çıkan her sürümde en üste bir bölüm
   (`## 0.215 · Ay Yıl`): en çok üç öne çıkan kart (ilgili doküman bölümüne bağlantı), sonra New / Better /
   Fixed maddeleri. Kaynak editörün `git log`'u ve kılavuzu; yalnız kullanıcının göreceği şey, iç terim yok.
-  Öne çıkan yeni araç ilgili doküman sayfasına da eklenir. Ana sayfadaki "What's new in …" sürümü de değişir.
+  What's new yalnız özettir: her New / Better maddesi aynı işte dokümanda ait olduğu bölüme de yazılır
+  (kullanıcı 2026-11-27: "eklenecekler dokümanın geri kalanında nereye gelmesi gerekiyorsa oraya"). Ana sayfadaki "What's new in …" sürümü de değişir.
 - Yayınlanan HTML'de yorum yok (kullanıcı, 2026-11-26): işaret ve notlar `content/`'te kalır, `build.py`
   siler, `check_site.py` reddeder.
 - Ana sayfa `content/index.html`'de elle yazılır (`site/index.html` üretilir, elle düzenlenmez), İngilizce; özellik metinleri editörün kılavuzunda olanı

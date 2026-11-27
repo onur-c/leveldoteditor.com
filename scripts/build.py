@@ -55,7 +55,7 @@ EXP_TAG = ' <span class="tag-exp">Experimental</span>'
 EXTRA_KEYS = {
     "Enter", "Esc", "Ctrl", "Shift", "X", "Y", "Z", "A", "S", "D", "Q",
     "Right mouse", "Middle mouse", "Wheel", "Alt+Left drag", "Shift+Click",
-    "Shift+Right-click", "Alt+Right-click", "Ctrl+Alt+Right-click", "Caps Lock",
+    "Shift+Right-click", "Alt+Right-click", "Ctrl+Alt+Right-click", "Caps Lock", "Tab",
 }
 
 KEY_NAMES = {

@@ -27,6 +27,9 @@ Once the game is linked, these keys do the rest.
 
 Both programs tell you when the level has arrived: a status button on Godot's top toolbar, and the status bar in Leveldot.
 
+- **Save without exporting:** uncheck **Export on Save** at the top right. Save then only saves; [[Ctrl+E]] updates the game.
+- **Open in Godot** and [[F5]] start the Godot version your game is made with. If only other versions are found, Leveldot asks you for the right one.
+
 ## How it fits together
 
 <div class="flow">
