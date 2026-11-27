@@ -15,7 +15,7 @@ Leveldot Editor is a standalone program for Windows. You build levels in it; you
 
 1. Download the ZIP from [itch.io](https://onur-c.itch.io/leveldot-editor).
 2. Extract it into a folder you can write to.
-3. Run `LeveldotEditor.exe`. Nothing else to install.
+3. Run `LeveldotEditor.exe`. Like Godot itself, the editor is a single file: nothing else to install.
 
 ## First launch
 
