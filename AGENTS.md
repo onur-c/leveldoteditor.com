@@ -85,7 +85,8 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - **What's new** (`whats-new.md`, kullanıcı 2026-11-27): itch.io'ya çıkan her sürümde en üste bir bölüm
   (`## 0.215 · Ay Yıl`): en çok üç öne çıkan kart (ilgili doküman bölümüne bağlantı), sonra New / Better /
   Fixed maddeleri. Kaynak editörün `git log`'u ve kılavuzu; yalnız kullanıcının göreceği şey, iç terim yok.
-  What's new yalnız özettir: her New / Better maddesi aynı işte dokümanda ait olduğu bölüme de yazılır
+  What's new yalnız özettir: kullanıcıya yeni bir iş yaptıran her madde (yeni araç, tuş, ayar) aynı işte
+  dokümanda ait olduğu bölüme de yazılır; kendiliğinden olan iyileştirme ve düzeltmeler yalnız What's new'da
   (kullanıcı 2026-11-27: "eklenecekler dokümanın geri kalanında nereye gelmesi gerekiyorsa oraya"). Gereksiz
   bilgi yok (kullanıcı 2026-11-27): kullanıcının işini değiştirmeyen küçük davranışlar (bir kopyanın adı
   gibi) ne What's new'a ne dokümana yazılır. Ana sayfadaki "What's new in …" sürümü de değişir.

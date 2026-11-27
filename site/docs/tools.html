@@ -48,7 +48,6 @@
 <p><strong>Draw on</strong> chooses where a shape starts: the surface under the mouse, or the grid.</p>
 <ul>
 <li><strong>Draw Grid</strong> (Create menu) draws a flat plane cut into cells; set <strong>X segments</strong> and <strong>Z segments</strong> on the tool card. Shape it with <a href="basics.html#proportional-editing">Proportional editing</a>.</li>
-<li>Click the bar's name <strong>Blockout</strong> to fold it to a thin strip; click again to open it.</li>
 </ul>
 <h2 id="modeling">Modeling</h2>
 <p>Select something first, then use a tool. Its settings show at the bottom left of the 3D view.</p>
@@ -276,7 +275,6 @@ void fragment() {
     METALLIC = 0.0;
 }
 </code></pre>
-<p>In Leveldot this gives two colour pickers (<code>shallow_color</code>, <code>deep_color</code>), three sliders (<code>wave_speed</code>, <code>wave_height</code>, <code>roughness_value</code>) and a texture field for <code>noise_tex</code>.</p>
 <figure class="shader-demo"><img src="../img/shader-water.gif" alt="A box drawn with the water shader in the Leveldot 3D view" width="1160" height="870" loading="lazy"><figcaption>The water shader on a box, live in Leveldot.</figcaption></figure>
 
 <p><strong>Limitations right now:</strong></p>
@@ -284,8 +282,6 @@ void fragment() {
 <li>Only <code>shader_type spatial</code> (3D surfaces).</li>
 <li>The shader file must be inside the linked game. A texture field takes an image from the game too.</li>
 <li>A shader that uses global uniforms, the screen or depth texture, or an <code>#include</code> Leveldot cannot find is not used: the material's picture shows instead, and Validation (<span class="keys"><span class="combo"><kbd>F8</kbd></span></span>) says why.</li>
-<li>The exported model itself carries the picture; Godot puts your shader on it when it refreshes the level.</li>
-<li>A value of a uniform you remove from the shader stays in the project; Validation lists it.</li>
 </ul>
 <h2 id="props">Props</h2>
 <ul>

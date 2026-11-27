@@ -39,8 +39,6 @@ The built-in entities are ordinary `LeveldotEntity` scripts in the addon. Open o
 | Edit the selected entity's settings and events | [[Alt+Enter]] |
 | Write every entity's name above it | [[Alt+Shift+N]] |
 
-In Entity Details a value changes in place; [[Enter]] or [[Tab]] moves to the next one.
-
 ## Connect entities <span class="tag-exp">Experimental</span>
 
 Logic is "when this happens, do this": a trigger turns on a light, a button opens a door.
@@ -53,12 +51,11 @@ Logic is "when this happens, do this": a trigger turns on a light, a button open
 | List every connection in the level | [[Ctrl+Shift+L]] |
 | See the connections as a graph | [[Alt+G]] |
 
-- The lists offer only what the entity can do with its current settings. A connection made before a setting changed is kept and marked with **!**.
 - Your Godot code can talk to an entity too: **Entity Details → Events → Copy game code** copies the lines to use.
 
 ## Write the script
 
-An entity type is a scene in `res://leveldot/entities/`: a `Node3D` root with a script that extends `LeveldotEntity`. The root node's name is the name Leveldot shows; the file name is the type's id.
+An entity type is a scene in `res://leveldot/entities/`: a `Node3D` root with a script that extends `LeveldotEntity`.
 
 | You write | Leveldot reads it as |
 |---|---|
@@ -72,7 +69,6 @@ An entity type is a scene in `res://leveldot/entities/`: a `Node3D` root with a 
 
 - A signal or a function takes **at most one value**, typed: `bool`, `int`, `float`, `String` or `Vector3`. A setting can also be a `Color`.
 - Names that start with `_` stay private: Leveldot does not offer them.
-- Anything Leveldot cannot use is listed with the reason when the types are read, so you know what to fix.
 
 ## Example: a generator
 

@@ -21,11 +21,9 @@ Hide or show the side panels: Tools [[F6]], Outliner and Details [[F7 / Alt+O]].
 
 ### Outliner and Details
 
-- **Outliner:** the row icon shows the object's type. Selecting in the 3D view opens its group and scrolls to it.
-- Drag rows onto a group to put them in, or onto a loose row to take them out. [[F2]] renames the row you are on.
-- **Details:** drag a number sideways to change it; the level follows live. [[Shift]] drags finer, [[Ctrl]] snaps, [[Esc]] puts it back. Click to type a value.
-- Right-click a number or its name: **Reset**, **Copy**, **Paste**.
-- Drag the line between Outliner and Details to share the room; it is remembered.
+- **Outliner:** drag rows onto a group to put them in, or onto a loose row to take them out. [[F2]] renames.
+- **Details:** drag a number sideways to change it. [[Shift]] drags finer, [[Ctrl]] snaps, [[Esc]] puts it back.
+- Right-click a number: **Reset**, **Copy**, **Paste**.
 
 ## Camera
 
@@ -88,10 +86,8 @@ Hold [[Caps Lock]] while you drag a gizmo or Grab, and point the mouse at someth
   <div class="node accent"><p class="node-kicker">3 · Done</p><p class="node-title">Lined up exactly</p></div>
 </div>
 
-- **What it catches**, first match wins: a corner, the middle of an edge, the centre of a face, any point along an edge, any point on a face.
-- Only what you can see counts; a corner hidden behind a wall is skipped.
-- The status bar names what it lined up with.
-- Press or release [[Caps Lock]] mid-drag: it takes effect at once. [[Ctrl]] does the same.
+- It catches corners, edge middles, face centres, and any point on an edge or a face.
+- [[Ctrl]] does the same while held.
 
 ### Proportional editing
 
@@ -106,7 +102,6 @@ Press [[O]] (or the **Proportional** button beside World) to bend a mesh softly 
 </div>
 
 - Works in Vertex, Edge and Face Mode, on the same mesh.
-- The button is filled while it is on; [[O]] turns it off again.
 - Good with **Draw Grid** on the [Tools](tools.html#blockout) page: hills, dents, uneven ground.
 
 ## Undo and repeat

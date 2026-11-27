@@ -108,7 +108,6 @@
 </tr>
 </tbody>
 </table>
-<p>In Entity Details a value changes in place; <span class="keys"><span class="combo"><kbd>Enter</kbd></span></span> or <span class="keys"><span class="combo"><kbd>Tab</kbd></span></span> moves to the next one.</p>
 <h2 id="connect-entities-experimental">Connect entities <span class="tag-exp">Experimental</span></h2>
 <p>Logic is "when this happens, do this": a trigger turns on a light, a button opens a door.</p>
 <table>
@@ -142,11 +141,10 @@
 </tbody>
 </table>
 <ul>
-<li>The lists offer only what the entity can do with its current settings. A connection made before a setting changed is kept and marked with <strong>!</strong>.</li>
 <li>Your Godot code can talk to an entity too: <strong>Entity Details → Events → Copy game code</strong> copies the lines to use.</li>
 </ul>
 <h2 id="write-the-script">Write the script</h2>
-<p>An entity type is a scene in <code>res://leveldot/entities/</code>: a <code>Node3D</code> root with a script that extends <code>LeveldotEntity</code>. The root node's name is the name Leveldot shows; the file name is the type's id.</p>
+<p>An entity type is a scene in <code>res://leveldot/entities/</code>: a <code>Node3D</code> root with a script that extends <code>LeveldotEntity</code>.</p>
 <table>
 <thead>
 <tr>
@@ -188,7 +186,6 @@
 <ul>
 <li>A signal or a function takes <strong>at most one value</strong>, typed: <code>bool</code>, <code>int</code>, <code>float</code>, <code>String</code> or <code>Vector3</code>. A setting can also be a <code>Color</code>.</li>
 <li>Names that start with <code>_</code> stay private: Leveldot does not offer them.</li>
-<li>Anything Leveldot cannot use is listed with the reason when the types are read, so you know what to fix.</li>
 </ul>
 <h2 id="example-a-generator">Example: a generator</h2>
 <p>A generator that needs fuel before the lights come back on.</p>

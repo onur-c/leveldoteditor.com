@@ -13,16 +13,14 @@ The latest version first. Download it on [itch.io](https://onur-c.itch.io/leveld
 
 ### New
 
-- **Drag number fields** in Details to change them, as in Blender: the level follows live, [[Shift]] drags finer, [[Ctrl]] snaps, [[Esc]] puts it back. Right-click a field to reset, copy or paste it.
+- **Drag number fields** in Details to change them, as in Blender. Right-click one to reset, copy or paste it.
 - **Export on Save** check box at the top right: turn it off and Save only saves; [[Ctrl+E]] then updates the game.
 - **Window → UI Scale** goes down to 75 %.
-- The Blockout bar folds to a thin strip: click its name.
 
 ### Better
 
-- **Outliner:** the row icon shows the type, a selection in the 3D view scrolls to its row, drag rows onto a group to put them in, [[F2]] renames.
-- **Details:** the object's own settings first, the group after; it fits small screens and remembers how much room you give it.
-- **Entity Details:** values change in place, [[Enter]] moves to the next one.
+- **Outliner:** drag rows onto a group to put them in, [[F2]] renames.
+- **Details** fits small screens.
 - Saving exports to Godot in the background, and Godot shows when it has refreshed the level.
 - **Open in Godot** and [[F5]] start the Godot version your game is made with.
 - Holding [[Shift]] while moving takes fine 1 cm steps.

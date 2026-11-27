@@ -14,7 +14,6 @@ Quick keys: Box [[Shift+B]], Plane [[Shift+P]]. **Height** sets where a shape st
 **Draw on** chooses where a shape starts: the surface under the mouse, or the grid.
 
 - **Draw Grid** (Create menu) draws a flat plane cut into cells; set **X segments** and **Z segments** on the tool card. Shape it with [Proportional editing](basics.html#proportional-editing).
-- Click the bar's name **Blockout** to fold it to a thin strip; click again to open it.
 
 ## Modeling
 
@@ -109,8 +108,6 @@ void fragment() {
 }
 ```
 
-In Leveldot this gives two colour pickers (`shallow_color`, `deep_color`), three sliders (`wave_speed`, `wave_height`, `roughness_value`) and a texture field for `noise_tex`.
-
 <figure class="shader-demo"><img src="../img/shader-water.gif" alt="A box drawn with the water shader in the Leveldot 3D view" width="1160" height="870" loading="lazy"><figcaption>The water shader on a box, live in Leveldot.</figcaption></figure>
 
 **Limitations right now:**
@@ -118,8 +115,6 @@ In Leveldot this gives two colour pickers (`shallow_color`, `deep_color`), three
 - Only `shader_type spatial` (3D surfaces).
 - The shader file must be inside the linked game. A texture field takes an image from the game too.
 - A shader that uses global uniforms, the screen or depth texture, or an `#include` Leveldot cannot find is not used: the material's picture shows instead, and Validation ([[F8]]) says why.
-- The exported model itself carries the picture; Godot puts your shader on it when it refreshes the level.
-- A value of a uniform you remove from the shader stays in the project; Validation lists it.
 
 ## Props
 
