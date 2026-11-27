@@ -1,5 +1,7 @@
 # Entities and logic
 
+<div class="note"><p><strong>Completely optional.</strong> Leveldot builds and exports levels without any of this: use your own entities and logic only if your game needs them.</p></div>
+
 <div class="note"><p><span class="tag-exp">Experimental</span> <strong>Logic is still being built.</strong> It works, but it grows and changes with each version: windows, names and steps on this page may change. Share what you need on the Leveldot <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>.</p></div>
 
 ## What an entity is
