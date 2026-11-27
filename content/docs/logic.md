@@ -4,6 +4,14 @@
 
 <div class="note"><p><span class="tag-exp">Experimental</span> <strong>Logic is still being built.</strong> It works, but it grows and changes with each version: windows, names and steps on this page may change. Share what you need on the Leveldot <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>.</p></div>
 
+## Why?
+
+Logic in Leveldot is a way to see and understand what happens in your level, right inside the 3D view: which trigger opens which door, which button lights which room.
+
+- **See it:** connections are drawn between the entities themselves, not hidden in scripts.
+- **Understand it:** follow a chain from cause to result at a glance ([[F4]]).
+- **Manage it:** add, change or remove a connection where the entities are ([[K]]).
+
 ## What an entity is
 
 An entity is an object that does something in the game: a light, a door, a lift, a trigger, an effect.
