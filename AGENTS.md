@@ -78,6 +78,8 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   tanıtım → Get started → özellikler → görüntüler → temalar → topluluk. Dokümanlarda adımlar diyagram ve
   ayrıntıdan önce; deneysel bölümler en sonda. Kısayol kartları `build.py` `CARD_ORDER`, kart içi
   `FIRST_KEYS` sonra tek tuşlular, sonra kombinasyonlar.
+- **Tek geliştirici** (kullanıcı, 2026-11-27): sitede geliştirici ağzından konuşulursa birinci tekil
+  ("Tell me…", "I"), asla "we / us / our"; `check_site.py` reddeder.
 - Yayınlanan HTML'de yorum yok (kullanıcı, 2026-11-26): işaret ve notlar `content/`'te kalır, `build.py`
   siler, `check_site.py` reddeder.
 - Ana sayfa `content/index.html`'de elle yazılır (`site/index.html` üretilir, elle düzenlenmez), İngilizce; özellik metinleri editörün kılavuzunda olanı

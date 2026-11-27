@@ -58,6 +58,10 @@ def main() -> int:
             problems.append(f"{rel}: style.css / docs.js without a version (browsers keep an old copy; run scripts/build.py)")
         if "<!--" in text:
             problems.append(f"{rel}: an HTML comment is published (comments belong in content/, run scripts/build.py)")
+        visible = re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)\b.*?</\1>", " ", text, flags=re.S))
+        plural = re.search(r"\b(we|we're|we've|us|our|ours)\b", visible, flags=re.I)
+        if plural:
+            problems.append(f"{rel}: '{plural.group(0)}': one developer, write 'I' / 'me' / 'my'")
         if "{{" in text or "TODO" in text:
             problems.append(f"{rel}: unfinished placeholder text")
         if re.search(r"[A-Za-z]:\\\\?Users|@gmail\.com", text):
