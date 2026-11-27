@@ -59,6 +59,6 @@ Keep your own scenes and scripts outside `generated/`.
 <details><summary>“Save the project first”</summary><p>Press [[Ctrl+S]], then link again.</p></details>
 <details><summary>Godot does not react to an export</summary><p>The game must be open in Godot with <strong>Leveldot Bridge</strong> switched on (<strong>Project → Project Settings → Plugins</strong>). Reload the project once after linking, or press <strong>Refresh</strong> on the Leveldot screen.</p></details>
 <details><summary>The level is not in the game</summary><p>Only a scene that contains the level shows it. Make one with <strong>Create Game Scene…</strong>.</p></details>
-<details><summary>My Godot is older than 4.4</summary><p>The addon needs Godot 4.4 or later. Open the game in a newer Godot.</p></details>
+<details><summary>Godot is older than 4.4</summary><p>The addon needs Godot 4.4 or later. Open the game in a newer Godot.</p></details>
 
 If Leveldot or Godot shows a message, it says what to fix.

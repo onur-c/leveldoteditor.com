@@ -79,8 +79,9 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   tanıtım → Get started → özellikler → görüntüler → temalar → topluluk. Dokümanlarda adımlar diyagram ve
   ayrıntıdan önce; deneysel bölümler en sonda. Kısayol kartları `build.py` `CARD_ORDER`, kart içi
   `FIRST_KEYS` sonra tek tuşlular, sonra kombinasyonlar.
-- **Tek geliştirici** (kullanıcı, 2026-11-27): sitede geliştirici ağzından konuşulursa birinci tekil
-  ("Tell me…", "I"), asla "we / us / our"; `check_site.py` reddeder.
+- **Geliştirici ağzı yok** (kullanıcı, 2026-11-27): ne "we / us / our" ne "I / me / my / mine"; ürünün adı
+  kullanılır ("Leveldot does…", "on the Leveldot Discord"). `check_site.py` görünen metinde (kod, tuş ve
+  dosya ağacı hariç) reddeder.
 - **What's new** (`whats-new.md`, kullanıcı 2026-11-27): itch.io'ya çıkan her sürümde en üste bir bölüm
   (`## 0.215 · Ay Yıl`): en çok üç öne çıkan kart (ilgili doküman bölümüne bağlantı), sonra New / Better /
   Fixed maddeleri. Kaynak editörün `git log`'u ve kılavuzu; yalnız kullanıcının göreceği şey, iç terim yok.
