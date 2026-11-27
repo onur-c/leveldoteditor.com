@@ -90,6 +90,7 @@ Entities are objects that do something in the game: lights, doors, coins, trigge
 
 - Open the **Entities** drawer with [[Shift+A]]. It also holds the built-in set: lights, effects (smoke, fire, rain…), doors and lifts, Player Start, Level Exit.
 - [[Alt+Enter]] shows the selected entity's settings and events.
+- Make your own entity types and connect entities: [Entities and logic](logic.html) <span class="tag-exp">Experimental</span>.
 - **Movers** make a group move on its own, without code: a door, a lift, a platform, a spinner (**Add Mover to Group**).
 - A **Physics Body** falls and can be pushed in the game; **Settle** drops it where it comes to rest.
 
@@ -112,7 +113,3 @@ Entities are objects that do something in the game: lights, doors, coins, trigge
 | Show what the player collides with | [[Alt+Shift+K]] |
 
 If something looks wrong, the status bar says so in yellow; [[Ctrl+Z]] undoes it.
-
-## Logic <span class="tag-exp">Experimental</span>
-
-Entities can trigger each other, for example a collected coin opens a door. This part is still changing. To try it, select an entity and press [[K]] (Connect); [[F4]] shows the connections.

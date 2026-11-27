@@ -23,6 +23,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 | `content/docs/link-godot.md` | site sayfası kaynağı: Link Godot |
 | `content/docs/basics.md` | site sayfası kaynağı: Basics (ekran, seçim, dönüşüm, kamera) |
 | `content/docs/tools.md` | site sayfası kaynağı: Tools |
+| `content/docs/logic.md` | site sayfası kaynağı: Entities and logic (deneysel, son sayfa) |
 
 ## Komutlar
 
@@ -69,8 +70,10 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   orada. Bağlantılar (itch.io, Discord, YouTube) yalnız `build.py` `LINKS`'te ve `content/index.html` gövdesinde;
   değişince ikisi birlikte.
 - **Mantık (logic) sistemi deneyseldir** (kullanıcı, 2026-11-26: henüz olgunlaşmadı): sitede az yer alır,
-  geçtiği yerde `.tag-exp` "Experimental" etiketi taşır (Tools'ta iki cümle, ana sayfada yarım cümle,
-  kısayol kartlarında başlık etiketi). Tanıtımda öne çıkarılmaz, ekran görüntüsü yok.
+  geçtiği yerde `.tag-exp` "Experimental" etiketi taşır (ana sayfada yarım cümle, kısayol kartlarında
+  başlık etiketi). Kendi sayfası **Entities and logic** (`logic.md`, kullanıcı 2026-11-27) dokümanların
+  sonundadır: başta "gelişiyor, değişiyor" notu, kenar çubuğunda ve başlıkta etiket (`build.py`
+  `EXPERIMENTAL`); Tools yalnız oraya kısa bağlantı verir. Tanıtımda öne çıkarılmaz, ekran görüntüsü yok.
 - **Öncelik yukarıda** (kullanıcı, 2026-11-26): her sayfada en çok gereken önce gelir. Ana sayfa:
   tanıtım → Get started → özellikler → görüntüler → temalar → topluluk. Dokümanlarda adımlar diyagram ve
   ayrıntıdan önce; deneysel bölümler en sonda. Kısayol kartları `build.py` `CARD_ORDER`, kart içi

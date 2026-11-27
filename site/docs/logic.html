@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entities and logic · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: entities and logic.">
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../style.css?v=d44a71c69b">
+</head>
+<body class="docs">
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="../index.html" aria-label="Leveldot home, alpha">
+      <picture>
+        <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
+        <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
+      </picture>
+      <span class="pill" aria-hidden="true">Alpha</span>
+    </a>
+    <nav class="top-nav" aria-label="Site">
+      <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
+      <a class="nav-link" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg><span>Discord</span></a>
+      <a class="nav-link" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg><span>YouTube</span></a>
+      <a class="button primary small" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download</span></a>
+    </nav>
+  </div>
+</header>
+<div class="docs-layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="side-title">Documentation</p>
+    <a href="index.html">Install</a>
+    <a href="link-godot.html">Link Godot</a>
+    <a href="basics.html">Basics</a>
+    <a href="tools.html">Tools</a>
+    <a href="shortcuts.html">Shortcuts</a>
+    <a href="logic.html" aria-current="page">Entities and logic <span class="tag-exp">Experimental</span></a>
+  </nav>
+  <main class="doc page-logic" id="main">
+    <h1>Entities and logic <span class="tag-exp">Experimental</span></h1>
+    <div class="note"><p><span class="tag-exp">Experimental</span> <strong>Logic is still being built.</strong> It works, but it grows and changes with each version: windows, names and steps on this page may change. Tell us what you need on <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>.</p></div>
+
+<h2 id="what-an-entity-is">What an entity is</h2>
+<p>An entity is an object that does something in the game: a light, a door, a lift, a trigger, an effect.</p>
+<ul>
+<li>It has <strong>settings</strong>: a light's energy, a door's speed.</li>
+<li>It can <strong>do things</strong> when told: <code>enable</code>, <code>start</code>, <code>toggle</code>.</li>
+<li>It <strong>announces</strong> what happens to it: <code>entered</code>, <code>turned_on</code>.</li>
+</ul>
+<h2 id="make-your-own-entity-type">Make your own entity type</h2>
+<div class="flow">
+  <div class="node"><p class="node-kicker">In Godot</p><p class="node-title">New Entity…</p><p class="node-text">a script that extends <code>LeveldotEntity</code></p></div>
+  <div class="edge"><span>Update from Godot</span></div>
+  <div class="node"><p class="node-kicker">In Leveldot</p><p class="node-title">A tile in the Entities drawer</p></div>
+  <div class="edge"><span>drag</span></div>
+  <div class="node accent"><p class="node-kicker">In the level</p><p class="node-title">An entity with its settings</p></div>
+</div>
+
+<ol>
+<li>In Godot, open the Leveldot screen → <strong>Entities</strong> → <strong>New Entity…</strong>, which writes the type to <code>res://leveldot/entities/</code>. Any script that extends <code>LeveldotEntity</code> works too.</li>
+<li>In Leveldot, open the Entity Catalog (<span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span></span>) and press <strong>Update from Godot</strong> (the first time: <strong>Import from Godot…</strong>). Linking a game imports its types for you.</li>
+<li>The type is now in the <strong>Entities</strong> drawer (<span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span></span>), next to the built-in ones.</li>
+</ol>
+<p>The built-in entities are ordinary <code>LeveldotEntity</code> scripts in the addon. Open one and copy it to start your own.</p>
+<h2 id="use-entities-in-a-level">Use entities in a level</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open the Entities drawer, drag a type into the view</td>
+<td><span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span></span></td>
+</tr>
+<tr>
+<td>Search every type</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span></span></td>
+</tr>
+<tr>
+<td>Edit the selected entity's settings and events</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Enter</kbd></span></span></td>
+</tr>
+<tr>
+<td>Write every entity's name above it</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>N</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="connect-entities-experimental">Connect entities <span class="tag-exp">Experimental</span></h2>
+<p>Logic is "when this happens, do this": a trigger turns on a light, a button opens a door.</p>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Make the selected entity tell another one to do something</td>
+<td><span class="keys"><span class="combo"><kbd>K</kbd></span></span></td>
+</tr>
+<tr>
+<td>The level's own logic: level start, timers, signals</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>L</kbd></span></span></td>
+</tr>
+<tr>
+<td>See the connections in the level</td>
+<td><span class="keys"><span class="combo"><kbd>F4</kbd></span></span></td>
+</tr>
+<tr>
+<td>List every connection in the level</td>
+<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>L</kbd></span></span></td>
+</tr>
+<tr>
+<td>See the connections as a graph</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>G</kbd></span></span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The lists offer only what the entity can do with its current settings. A connection made before a setting changed is kept and marked with <strong>!</strong>.</li>
+<li>Your Godot code can talk to an entity too: <strong>Entity Details → Events → Copy game code</strong> copies the lines to use.</li>
+</ul>
+    <nav class="pager" aria-label="Pages"><a class="pager-prev" href="shortcuts.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Shortcuts</span></a></nav>
+  </main>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#what-an-entity-is">What an entity is</a></li><li><a href="#make-your-own-entity-type">Make your own entity type</a></li><li><a href="#use-entities-in-a-level">Use entities in a level</a></li><li><a href="#connect-entities-experimental">Connect entities</a></li></ul></aside>
+</div>
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="../img/icon.png" alt="" width="24" height="24">
+    <span>Leveldot Editor, a level editor for Godot 4. Alpha: things still change.</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">YouTube</a>
+      <a href="../docs/index.html">Docs</a>
+    </nav>
+  </div>
+</footer>
+<script src="../docs.js?v=671ac3d521"></script>
+</body>
+</html>

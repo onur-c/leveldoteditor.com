@@ -42,7 +42,12 @@ PAGES = [
     ("basics.html", "Basics", "basics.md"),
     ("tools.html", "Tools", "tools.md"),
     ("shortcuts.html", "Shortcuts", "shortcuts"),
+    ("logic.html", "Entities and logic", "logic.md"),
 ]
+
+# Pages about a part of the app that is still changing: tagged in the sidebar and the title.
+EXPERIMENTAL = {"logic.html"}
+EXP_TAG = ' <span class="tag-exp">Experimental</span>'
 
 # Keys the pages may name that are not commands of SHORTCUTS.md: mouse gestures and the keys
 # that work inside a tool (manual: Transform, Camera and mouse, Modeling tools).
@@ -266,7 +271,8 @@ def render_content(text: str, known: set[str] | None, name: str) -> tuple[str, s
 def doc_page(index: int, title: str, body: str, toc: list[tuple[str, str]]) -> str:
     out = PAGES[index][0]
     current = ' aria-current="page"'
-    side = "\n    ".join(f'<a href="{o}"{current if o == out else ""}>{html.escape(l)}</a>' for o, l, _ in PAGES)
+    side = "\n    ".join(f'<a href="{o}"{current if o == out else ""}>{html.escape(l)}{EXP_TAG if o in EXPERIMENTAL else ""}</a>'
+                           for o, l, _ in PAGES)
     on_page = "".join(f'<li><a href="#{i}">{html.escape(n)}</a></li>' for i, n in toc)
     toc_block = (f'<aside class="toc"><p class="toc-title">On this page</p><ul>{on_page}</ul></aside>'
                  if toc and out != "shortcuts.html" else "")
@@ -296,7 +302,7 @@ def doc_page(index: int, title: str, body: str, toc: list[tuple[str, str]]) -> s
     {side}
   </nav>
   <main class="doc page-{out.removesuffix('.html')}" id="main">
-    <h1>{html.escape(title)}</h1>
+    <h1>{html.escape(title)}{EXP_TAG if out in EXPERIMENTAL else ""}</h1>
     {body}
     <nav class="pager" aria-label="Pages">{"".join(pager)}</nav>
   </main>
