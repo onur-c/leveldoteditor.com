@@ -34,6 +34,7 @@
     <a href="basics.html">Basics</a>
     <a href="tools.html" aria-current="page">Tools</a>
     <a href="shortcuts.html">Shortcuts</a>
+    <a href="whats-new.html">What&#x27;s new</a>
     <a href="logic.html">Entities and logic <span class="tag-exp">Experimental</span></a>
   </nav>
   <main class="doc page-tools" id="main">
@@ -45,6 +46,10 @@
 
 <p>Quick keys: Box <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>B</kbd></span></span>, Plane <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>P</kbd></span></span>. <strong>Height</strong> sets where a shape starts above the grid.</p>
 <p><strong>Draw on</strong> chooses where a shape starts: the surface under the mouse, or the grid.</p>
+<ul>
+<li><strong>Draw Grid</strong> (Create menu) draws a flat plane cut into cells; set <strong>X segments</strong> and <strong>Z segments</strong> on the tool card. Shape it with <a href="basics.html#proportional-editing">Proportional editing</a>.</li>
+<li>Click the bar's name <strong>Blockout</strong> to fold it to a thin strip; click again to open it.</li>
+</ul>
 <h2 id="modeling">Modeling</h2>
 <p>Select something first, then use a tool. Its settings show at the bottom left of the 3D view.</p>
 <h3 id="shape">Shape</h3>
@@ -240,6 +245,7 @@
 </tbody>
 </table>
 <p>A UV editor, decals and vertex colours are in the <strong>Texture</strong> menu.</p>
+<p><strong>Your own shader:</strong> in the Material Browser, <strong>Details → Shader → Choose…</strong> picks a <code>.gdshader</code> from your linked Godot game. Each of its uniforms gets a field, the 3D view shows the shader, and Godot gets it with your values.</p>
 <h2 id="props">Props</h2>
 <ul>
 <li><strong>File → Import Models…</strong> brings in GLB, glTF or FBX files (with Blender installed, <code>.blend</code> and <code>.obj</code> too). Dropping files on the window does the same.</li>

@@ -84,6 +84,22 @@ Hold [[Caps Lock]] while you drag a gizmo or Grab, and point the mouse at someth
 - The status bar names what it lined up with.
 - Press or release [[Caps Lock]] mid-drag: it takes effect at once. [[Ctrl]] does the same.
 
+### Proportional editing
+
+Press [[O]] (or the **Proportional** button beside World) to bend a mesh softly instead of moving single corners.
+
+<div class="flow">
+  <div class="node"><p class="node-kicker">1 · Select</p><p class="node-title">A few corners, edges or faces</p></div>
+  <div class="edge"><span>[[O]] on, then [[G]] / [[W]] / [[E]] / [[R]]</span></div>
+  <div class="node"><p class="node-kicker">2 · Drag</p><p class="node-title">Nearby corners follow</p><p class="node-text">Less the farther they are.</p></div>
+  <div class="edge"><span>[[Wheel]] while dragging</span></div>
+  <div class="node accent"><p class="node-kicker">3 · Reach</p><p class="node-title">The circle grows or shrinks</p></div>
+</div>
+
+- Works in Vertex, Edge and Face Mode, on the same mesh.
+- The button is filled while it is on; [[O]] turns it off again.
+- Good with **Draw Grid** on the [Tools](tools.html#blockout) page: hills, dents, uneven ground.
+
 ## Undo and repeat
 
 | Do | Key |

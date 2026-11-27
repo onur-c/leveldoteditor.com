@@ -13,6 +13,9 @@ Quick keys: Box [[Shift+B]], Plane [[Shift+P]]. **Height** sets where a shape st
 
 **Draw on** chooses where a shape starts: the surface under the mouse, or the grid.
 
+- **Draw Grid** (Create menu) draws a flat plane cut into cells; set **X segments** and **Z segments** on the tool card. Shape it with [Proportional editing](basics.html#proportional-editing).
+- Click the bar's name **Blockout** to fold it to a thin strip; click again to open it.
+
 ## Modeling
 
 Select something first, then use a tool. Its settings show at the bottom left of the 3D view.
@@ -69,6 +72,8 @@ Select something first, then use a tool. Its settings show at the bottom left of
 | Show a UV checker | [[Alt+Shift+U]] |
 
 A UV editor, decals and vertex colours are in the **Texture** menu.
+
+**Your own shader:** in the Material Browser, **Details → Shader → Choose…** picks a `.gdshader` from your linked Godot game. Each of its uniforms gets a field, the 3D view shows the shader, and Godot gets it with your values.
 
 ## Props
 

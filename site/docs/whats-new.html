@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What&#x27;s new · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: what&#x27;s new.">
+<link rel="icon" href="../img/icon.png">
+<link rel="stylesheet" href="../style.css?v=8663337df9">
+</head>
+<body class="docs">
+<header class="top">
+  <div class="top-inner">
+    <a class="brand" href="../index.html" aria-label="Leveldot home, alpha">
+      <picture>
+        <source srcset="../img/logo-light.png" media="(prefers-color-scheme: light)">
+        <img src="../img/logo-dark.png" alt="Leveldot" width="144" height="31">
+      </picture>
+      <span class="pill" aria-hidden="true">Alpha</span>
+    </a>
+    <nav class="top-nav" aria-label="Site">
+      <a class="nav-link" href="../docs/index.html" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z"/><path d="M4 21a2 2 0 0 1 2-2h13"/></svg><span>Docs</span></a>
+      <a class="nav-link" href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.5C7 5.2 9 4.6 12 4.6s5 .6 7 1.9c1.4 2.6 2 5.4 1.8 8.6-1.6 1.5-3.4 2.5-5.3 3l-1.1-1.9M5 6.5C3.6 9.1 3 11.9 3.2 15.1c1.6 1.5 3.4 2.5 5.3 3l1.1-1.9M7.5 16c2.9 1.3 6.1 1.3 9 0"/><circle cx="9.2" cy="12" r="1.1"/><circle cx="14.8" cy="12" r="1.1"/></svg><span>Discord</span></a>
+      <a class="nav-link" href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="m10.2 9.3 4.6 2.7-4.6 2.7V9.3Z"/></svg><span>YouTube</span></a>
+      <a class="button primary small" href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg><span>Download</span></a>
+    </nav>
+  </div>
+</header>
+<div class="docs-layout">
+  <nav class="sidebar" aria-label="Documentation">
+    <p class="side-title">Documentation</p>
+    <a href="index.html">Install</a>
+    <a href="link-godot.html">Link Godot</a>
+    <a href="basics.html">Basics</a>
+    <a href="tools.html">Tools</a>
+    <a href="shortcuts.html">Shortcuts</a>
+    <a href="whats-new.html" aria-current="page">What&#x27;s new</a>
+    <a href="logic.html">Entities and logic <span class="tag-exp">Experimental</span></a>
+  </nav>
+  <main class="doc page-whats-new" id="main">
+    <h1>What&#x27;s new</h1>
+    <p class="lead">The latest version first. Download it on <a href="https://onur-c.itch.io/leveldot-editor">itch.io</a>; projects from earlier versions open as they are.</p>
+<h2 id="0215-november-2026">0.215 · November 2026</h2>
+<div class="cards three">
+  <div class="card"><p class="card-title">Proportional editing</p><p><span class="keys"><span class="combo"><kbd>O</kbd></span></span> bends a mesh softly: nearby corners follow, the wheel sets the reach. <a href="basics.html#proportional-editing">How</a></p></div>
+  <div class="card"><p class="card-title">Draw Grid</p><p>A flat plane cut into cells, ready for hills and uneven ground. <a href="tools.html#blockout">How</a></p></div>
+  <div class="card"><p class="card-title">Your own shaders</p><p>A material can use a <code>.gdshader</code> from your Godot game, with a field for each setting. <a href="tools.html#texture-and-uv">How</a></p></div>
+</div>
+
+<h3 id="new">New</h3>
+<ul>
+<li><strong>Drag number fields</strong> in Details to change them, as in Blender: the level follows live, <span class="keys"><span class="combo"><kbd>Shift</kbd></span></span> drags finer, <span class="keys"><span class="combo"><kbd>Ctrl</kbd></span></span> snaps, <span class="keys"><span class="combo"><kbd>Esc</kbd></span></span> puts it back. Right-click a field to reset, copy or paste it.</li>
+<li><strong>Export on Save</strong> check box at the top right: turn it off and Save only saves; <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>E</kbd></span></span> then updates the game.</li>
+<li><strong>Window → UI Scale</strong> goes down to 75 %.</li>
+<li>The Blockout bar folds to a thin strip: click its name.</li>
+</ul>
+<h3 id="better">Better</h3>
+<ul>
+<li><strong>Outliner:</strong> the row icon shows the type, a selection in the 3D view scrolls to its row, drag rows onto a group to put them in, <span class="keys"><span class="combo"><kbd>F2</kbd></span></span> renames.</li>
+<li><strong>Details:</strong> the object's own settings first, the group after; it fits small screens and remembers how much room you give it.</li>
+<li><strong>Entity Details:</strong> values change in place, <span class="keys"><span class="combo"><kbd>Enter</kbd></span></span> moves to the next one.</li>
+<li>A copied group keeps its name with a number (Group 1_001).</li>
+<li>Saving exports to Godot in the background, and Godot shows when it has refreshed the level.</li>
+<li><strong>Open in Godot</strong> and <span class="keys"><span class="combo"><kbd>F5</kbd></span></span> start the Godot version your game is made with.</li>
+<li>Holding <span class="keys"><span class="combo"><kbd>Shift</kbd></span></span> while moving takes fine 1 cm steps.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Projects saved by the first public version open again.</li>
+<li>Saving with a level open in Godot no longer crashes Godot.</li>
+<li>Export never overwrites or deletes a file of yours.</li>
+<li>Moving platforms carry their trigger and solid areas with them in the game.</li>
+<li>Level changes in the game never stay on a black screen.</li>
+</ul>
+<h2 id="0195-november-2026">0.195 · November 2026</h2>
+<p>The first public alpha.</p>
+    <nav class="pager" aria-label="Pages"><a class="pager-prev" href="shortcuts.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Shortcuts</span></a><a class="pager-next" href="logic.html"><span><small>Next</small>Entities and logic</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
+  </main>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#0215-november-2026">0.215 · November 2026</a></li><li><a href="#0195-november-2026">0.195 · November 2026</a></li></ul></aside>
+</div>
+<footer class="foot">
+  <div class="foot-inner">
+    <img src="../img/icon.png" alt="" width="24" height="24">
+    <span>Leveldot Editor, a level editor for Godot 4. Alpha: things still change.</span>
+    <nav aria-label="Elsewhere">
+      <a href="https://onur-c.itch.io/leveldot-editor" target="_blank" rel="noopener">itch.io</a>
+      <a href="https://discord.gg/e3CdgVQxp" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@LeveldotEditor" target="_blank" rel="noopener">YouTube</a>
+      <a href="../docs/index.html">Docs</a>
+    </nav>
+  </div>
+</footer>
+<script src="../docs.js?v=671ac3d521"></script>
+</body>
+</html>

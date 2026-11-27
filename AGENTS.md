@@ -23,6 +23,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 | `content/docs/link-godot.md` | site sayfası kaynağı: Link Godot |
 | `content/docs/basics.md` | site sayfası kaynağı: Basics (ekran, seçim, dönüşüm, kamera) |
 | `content/docs/tools.md` | site sayfası kaynağı: Tools |
+| `content/docs/whats-new.md` | site sayfası kaynağı: What's new (sürüm notları, en yenisi üstte) |
 | `content/docs/logic.md` | site sayfası kaynağı: Entities and logic (deneysel, son sayfa) |
 
 ## Komutlar
@@ -80,6 +81,10 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
   `FIRST_KEYS` sonra tek tuşlular, sonra kombinasyonlar.
 - **Tek geliştirici** (kullanıcı, 2026-11-27): sitede geliştirici ağzından konuşulursa birinci tekil
   ("Tell me…", "I"), asla "we / us / our"; `check_site.py` reddeder.
+- **What's new** (`whats-new.md`, kullanıcı 2026-11-27): itch.io'ya çıkan her sürümde en üste bir bölüm
+  (`## 0.215 · Ay Yıl`): en çok üç öne çıkan kart (ilgili doküman bölümüne bağlantı), sonra New / Better /
+  Fixed maddeleri. Kaynak editörün `git log`'u ve kılavuzu; yalnız kullanıcının göreceği şey, iç terim yok.
+  Öne çıkan yeni araç ilgili doküman sayfasına da eklenir. Ana sayfadaki "What's new in …" sürümü de değişir.
 - Yayınlanan HTML'de yorum yok (kullanıcı, 2026-11-26): işaret ve notlar `content/`'te kalır, `build.py`
   siler, `check_site.py` reddeder.
 - Ana sayfa `content/index.html`'de elle yazılır (`site/index.html` üretilir, elle düzenlenmez), İngilizce; özellik metinleri editörün kılavuzunda olanı

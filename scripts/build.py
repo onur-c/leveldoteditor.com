@@ -42,6 +42,7 @@ PAGES = [
     ("basics.html", "Basics", "basics.md"),
     ("tools.html", "Tools", "tools.md"),
     ("shortcuts.html", "Shortcuts", "shortcuts"),
+    ("whats-new.html", "What's new", "whats-new.md"),
     ("logic.html", "Entities and logic", "logic.md"),
 ]
 
