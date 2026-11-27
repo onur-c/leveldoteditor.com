@@ -22,6 +22,7 @@ Hide or show the side panels: Tools [[F6]], Outliner and Details [[F7 / Alt+O]].
 ### Outliner and Details
 
 - **Outliner:** drag rows onto a group to put them in, or onto a loose row to take them out. [[F2]] renames.
+- **Collections** are folders: **+** in the Outliner's title row makes one, drag rows onto it, folders nest. In Godot each collection is a node with its objects under it.
 - **Details:** drag a number sideways to change it. [[Shift]] drags finer, [[Ctrl]] snaps, [[Esc]] puts it back.
 - Right-click a number: **Reset**, **Copy**, **Paste**.
 
@@ -86,7 +87,7 @@ Hold [[Caps Lock]] while you drag a gizmo or Grab, and point the mouse at someth
   <div class="node accent"><p class="node-kicker">3 · Done</p><p class="node-title">Lined up exactly</p></div>
 </div>
 
-- It catches corners, edge middles, face centres, and any point on an edge or a face.
+- It catches corners, edge middles, face centres, and any point on an edge or a face, on props too.
 - [[Ctrl]] does the same while held.
 
 ### Proportional editing

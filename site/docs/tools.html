@@ -34,8 +34,8 @@
     <a href="basics.html">Basics</a>
     <a href="tools.html" aria-current="page">Tools</a>
     <a href="shortcuts.html">Shortcuts</a>
-    <a href="whats-new.html">What&#x27;s new</a>
     <a href="logic.html">Entities and logic <span class="tag-exp">Experimental</span></a>
+    <a href="changelog.html">Changelog</a>
   </nav>
   <main class="doc page-tools" id="main">
     <h1>Tools</h1>
@@ -47,7 +47,7 @@
 <p>Quick keys: Box <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>B</kbd></span></span>, Plane <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>P</kbd></span></span>. <strong>Height</strong> sets where a shape starts above the grid.</p>
 <p><strong>Draw on</strong> chooses where a shape starts: the surface under the mouse, or the grid.</p>
 <ul>
-<li><strong>Draw Grid</strong> (Create menu) draws a flat plane cut into cells; set <strong>X segments</strong> and <strong>Z segments</strong> on the tool card. Shape it with <a href="basics.html#proportional-editing">Proportional editing</a>.</li>
+<li><strong>Draw Grid</strong> (Create menu) draws a flat plane cut into cells; set <strong>X segments</strong> and <strong>Z segments</strong> on the tool card, or turn the wheel while dragging. Shape it with <a href="basics.html#proportional-editing">Proportional editing</a>.</li>
 </ul>
 <h2 id="modeling">Modeling</h2>
 <p>Select something first, then use a tool. Its settings show at the bottom left of the 3D view.</p>
@@ -166,6 +166,11 @@
 <td>Closes an opening</td>
 </tr>
 <tr>
+<td>Merge vertices</td>
+<td><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>M</kbd></span></span></td>
+<td>In Vertex Mode: at the centre, into the first or last picked vertex, or by distance</td>
+</tr>
+<tr>
 <td>Merge Objects</td>
 <td><span class="keys"><span class="combo"><kbd>M</kbd></span></span></td>
 <td>Joins objects into one</td>
@@ -204,6 +209,10 @@
 <tr>
 <td>Open the Material Browser</td>
 <td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>M</kbd></span></span></td>
+</tr>
+<tr>
+<td>Add materials: blank, from images, from texture sets</td>
+<td>Material Browser → <strong>Create</strong></td>
 </tr>
 <tr>
 <td>Apply the active material</td>
@@ -248,7 +257,7 @@
 <p>A material can be drawn with a <code>.gdshader</code> from your linked Godot game.</p>
 <ol>
 <li>Put the shader in your game, for example <code>res://shaders/water.gdshader</code>.</li>
-<li>In the Material Browser (<span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>M</kbd></span></span>), select a material: <strong>Details → Shader → Choose…</strong> and pick the file.</li>
+<li>In the Material Browser (<span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>M</kbd></span></span>), select a material (or make one: <strong>Create → Blank Material</strong>), then <strong>Details → Shader → Choose…</strong> and pick the file.</li>
 <li>Each <code>uniform</code> gets a field: colour, slider, number, vector or texture. The 3D view shows the shader as you change them.</li>
 <li>Save: Godot gets your shader with your values.</li>
 </ol>
@@ -288,6 +297,7 @@ void fragment() {
 <li><strong>File → Import Models…</strong> brings in GLB, glTF or FBX files (with Blender installed, <code>.blend</code> and <code>.obj</code> too). Dropping files on the window does the same.</li>
 <li>Each model becomes a tile in the <strong>Props</strong> drawer <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>M</kbd></span></span>. Drag a tile into the level; the wheel turns it before you drop it.</li>
 <li><strong>Mark as Prop</strong> turns your own geometry into a reusable model. Edit it once, every copy follows.</li>
+<li><strong>Pivot:</strong> <span class="keys"><span class="combo"><kbd>P</kbd></span></span> on a prop's corner, edge or surface puts the pivot there, <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>P</kbd></span></span> keeps it. <strong>Edit → Object Pivot to Centre / Bottom Centre</strong> does the same for its box. Every copy of the model gets it.</li>
 </ul>
 <h2 id="entities">Entities</h2>
 <p>Entities are objects that do something in the game: lights, doors, coins, triggers, effects.</p>

@@ -23,7 +23,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 | `content/docs/link-godot.md` | site sayfası kaynağı: Link Godot |
 | `content/docs/basics.md` | site sayfası kaynağı: Basics (ekran, seçim, dönüşüm, kamera) |
 | `content/docs/tools.md` | site sayfası kaynağı: Tools |
-| `content/docs/whats-new.md` | site sayfası kaynağı: What's new (sürüm notları, en yenisi üstte) |
+| `content/docs/changelog.md` | site sayfası kaynağı: Changelog (sürüm notları, en yenisi üstte; dokümanlarda en son sayfa) |
 | `content/docs/logic.md` | site sayfası kaynağı: Entities and logic (deneysel, son sayfa) |
 
 ## Komutlar
@@ -82,14 +82,14 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 - **Geliştirici ağzı yok** (kullanıcı, 2026-11-27): ne "we / us / our" ne "I / me / my / mine"; ürünün adı
   kullanılır ("Leveldot does…", "on the Leveldot Discord"). `check_site.py` görünen metinde (kod, tuş ve
   dosya ağacı hariç) reddeder.
-- **What's new** (`whats-new.md`, kullanıcı 2026-11-27): itch.io'ya çıkan her sürümde en üste bir bölüm
-  (`## 0.215 · Ay Yıl`): en çok üç öne çıkan kart (ilgili doküman bölümüne bağlantı), sonra New / Better /
+- **Changelog** (`changelog.md`, kullanıcı 2026-11-27: adı Changelog, dokümanlarda hep en sonda): itch.io'ya
+  çıkan her sürümde en üste bir bölüm (`## 0.220 · Ay Yıl`): en çok üç öne çıkan kart (ilgili doküman bölümüne bağlantı), sonra New / Better /
   Fixed maddeleri. Kaynak editörün `git log`'u ve kılavuzu; yalnız kullanıcının göreceği şey, iç terim yok.
-  What's new yalnız özettir: kullanıcıya yeni bir iş yaptıran her madde (yeni araç, tuş, ayar) aynı işte
-  dokümanda ait olduğu bölüme de yazılır; kendiliğinden olan iyileştirme ve düzeltmeler yalnız What's new'da
+  Changelog yalnız özettir: kullanıcıya yeni bir iş yaptıran her madde (yeni araç, tuş, ayar) aynı işte
+  dokümanda ait olduğu bölüme de yazılır; kendiliğinden olan iyileştirme ve düzeltmeler yalnız Changelog'da
   (kullanıcı 2026-11-27: "eklenecekler dokümanın geri kalanında nereye gelmesi gerekiyorsa oraya"). Gereksiz
   bilgi yok (kullanıcı 2026-11-27): kullanıcının işini değiştirmeyen küçük davranışlar (bir kopyanın adı
-  gibi) ne What's new'a ne dokümana yazılır. Ana sayfadaki "What's new in …" sürümü de değişir.
+  gibi) ne Changelog'a ne dokümana yazılır. Ana sayfadaki "Changelog: …" sürümü de değişir.
 - Yayınlanan HTML'de yorum yok (kullanıcı, 2026-11-26): işaret ve notlar `content/`'te kalır, `build.py`
   siler, `check_site.py` reddeder.
 - Ana sayfa `content/index.html`'de elle yazılır (`site/index.html` üretilir, elle düzenlenmez), İngilizce; özellik metinleri editörün kılavuzunda olanı

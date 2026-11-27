@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What&#x27;s new · Leveldot Docs</title>
-<meta name="description" content="Leveldot Editor documentation: what&#x27;s new.">
+<title>Changelog · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: changelog.">
 <link rel="icon" href="../img/icon.png">
 <link rel="stylesheet" href="../style.css?v=c3931f06c8">
 </head>
@@ -34,12 +34,37 @@
     <a href="basics.html">Basics</a>
     <a href="tools.html">Tools</a>
     <a href="shortcuts.html">Shortcuts</a>
-    <a href="whats-new.html" aria-current="page">What&#x27;s new</a>
     <a href="logic.html">Entities and logic <span class="tag-exp">Experimental</span></a>
+    <a href="changelog.html" aria-current="page">Changelog</a>
   </nav>
-  <main class="doc page-whats-new" id="main">
-    <h1>What&#x27;s new</h1>
+  <main class="doc page-changelog" id="main">
+    <h1>Changelog</h1>
     <p class="lead">The latest version first. Download it on <a href="https://onur-c.itch.io/leveldot-editor">itch.io</a>; projects from earlier versions open as they are.</p>
+<h2 id="0220-november-2026">0.220 · November 2026</h2>
+<div class="cards three">
+  <div class="card"><p class="card-title">Collections</p><p>Folders in the Outliner that nest. In Godot each one is a node with its objects under it. <a href="basics.html#outliner-and-details">How</a></p></div>
+  <div class="card"><p class="card-title">Merge vertices</p><p><span class="keys"><span class="combo"><kbd>Alt</kbd><span class="plus">+</span><kbd>M</kbd></span></span> in Vertex Mode: at the centre, into the first or last picked vertex, or by distance. <a href="tools.html#join-and-copy">How</a></p></div>
+  <div class="card"><p class="card-title">Prop pivots</p><p>Move a prop's pivot to a corner, its centre or its bottom; every copy of the model follows. <a href="tools.html#props">How</a></p></div>
+</div>
+
+<h3 id="new">New</h3>
+<ul>
+<li><strong>Create</strong> menu in the Material Browser: Blank Material, From Image Files, From Texture Sets, Blockout Set.</li>
+<li><strong>Blank Material:</strong> a material without an image, for a tint or your own shader.</li>
+<li><strong>Draw Grid:</strong> the wheel while dragging adds or removes cells.</li>
+<li><span class="keys"><span class="combo"><kbd>Ctrl</kbd></span></span> lines up with a prop's corners, edges and surfaces.</li>
+</ul>
+<h3 id="better">Better</h3>
+<ul>
+<li>Text stays sharp at every UI Scale.</li>
+<li><strong>Texture Sets</strong> take the category you type.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Changing a texture and saving no longer opens Windows' "Item Not Found" window.</li>
+<li>A failed Save keeps the last good copy of the project.</li>
+<li>Undoing <strong>Import Level from Project</strong> brings back the original Level Exit destinations.</li>
+</ul>
 <h2 id="0215-november-2026">0.215 · November 2026</h2>
 <div class="cards three">
   <div class="card"><p class="card-title">Proportional editing</p><p><span class="keys"><span class="combo"><kbd>O</kbd></span></span> bends a mesh softly: nearby corners follow, the wheel sets the reach. <a href="basics.html#proportional-editing">How</a></p></div>
@@ -47,13 +72,13 @@
   <div class="card"><p class="card-title">Your own shaders</p><p>A material can use a <code>.gdshader</code> from your Godot game, with a field for each setting. <a href="tools.html#your-own-shader">How</a></p></div>
 </div>
 
-<h3 id="new">New</h3>
+<h3 id="new_1">New</h3>
 <ul>
 <li><strong>Drag number fields</strong> in Details to change them, as in Blender. Right-click one to reset, copy or paste it.</li>
 <li><strong>Export on Save</strong> check box at the top right: turn it off and Save only saves; <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>E</kbd></span></span> then updates the game.</li>
 <li><strong>Window → UI Scale</strong> goes down to 75 %.</li>
 </ul>
-<h3 id="better">Better</h3>
+<h3 id="better_1">Better</h3>
 <ul>
 <li><strong>Outliner:</strong> drag rows onto a group to put them in, <span class="keys"><span class="combo"><kbd>F2</kbd></span></span> renames.</li>
 <li><strong>Details</strong> fits small screens.</li>
@@ -61,7 +86,7 @@
 <li><strong>Open in Godot</strong> and <span class="keys"><span class="combo"><kbd>F5</kbd></span></span> start the Godot version your game is made with.</li>
 <li>Holding <span class="keys"><span class="combo"><kbd>Shift</kbd></span></span> while moving takes fine 1 cm steps.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed_1">Fixed</h3>
 <ul>
 <li>Projects saved by the first public version open again.</li>
 <li>Saving with a level open in Godot no longer crashes Godot.</li>
@@ -71,9 +96,9 @@
 </ul>
 <h2 id="0195-november-2026">0.195 · November 2026</h2>
 <p>The first public alpha.</p>
-    <nav class="pager" aria-label="Pages"><a class="pager-prev" href="shortcuts.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Shortcuts</span></a><a class="pager-next" href="logic.html"><span><small>Next</small>Entities and logic</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
+    <nav class="pager" aria-label="Pages"><a class="pager-prev" href="logic.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0 6-6m-6 6 6 6"/></svg><span><small>Previous</small>Entities and logic</span></a></nav>
   </main>
-  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#0215-november-2026">0.215 · November 2026</a></li><li><a href="#0195-november-2026">0.195 · November 2026</a></li></ul></aside>
+  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#0220-november-2026">0.220 · November 2026</a></li><li><a href="#0215-november-2026">0.215 · November 2026</a></li><li><a href="#0195-november-2026">0.195 · November 2026</a></li></ul></aside>
 </div>
 <footer class="foot">
   <div class="foot-inner">

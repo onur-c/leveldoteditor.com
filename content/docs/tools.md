@@ -13,7 +13,7 @@ Quick keys: Box [[Shift+B]], Plane [[Shift+P]]. **Height** sets where a shape st
 
 **Draw on** chooses where a shape starts: the surface under the mouse, or the grid.
 
-- **Draw Grid** (Create menu) draws a flat plane cut into cells; set **X segments** and **Z segments** on the tool card. Shape it with [Proportional editing](basics.html#proportional-editing).
+- **Draw Grid** (Create menu) draws a flat plane cut into cells; set **X segments** and **Z segments** on the tool card, or turn the wheel while dragging. Shape it with [Proportional editing](basics.html#proportional-editing).
 
 ## Modeling
 
@@ -49,6 +49,7 @@ Select something first, then use a tool. Its settings show at the bottom left of
 |---|---|---|
 | Bridge | [[Shift+C]] | Joins two rows of edges with faces |
 | Fill Hole | [[Ctrl+F]] | Closes an opening |
+| Merge vertices | [[Alt+M]] | In Vertex Mode: at the centre, into the first or last picked vertex, or by distance |
 | Merge Objects | [[M]] | Joins objects into one |
 | Boolean difference | [[Ctrl+Minus / Ctrl+Shift+Numpad Subtract]] | Cuts one object out of another |
 | Mirror | [[Shift+Z]] | Mirrors objects (X; Y and Z in the menu) |
@@ -60,6 +61,7 @@ Select something first, then use a tool. Its settings show at the bottom left of
 | Do | How |
 |---|---|
 | Open the Material Browser | [[Ctrl+M]] |
+| Add materials: blank, from images, from texture sets | Material Browser → **Create** |
 | Apply the active material | [[Shift+T]] |
 | Make a material from an image | [[Ctrl+Shift+I]], or drop the image on the window |
 | Pick a face's material | [[Shift+Right-click]] |
@@ -77,7 +79,7 @@ A UV editor, decals and vertex colours are in the **Texture** menu.
 A material can be drawn with a `.gdshader` from your linked Godot game.
 
 1. Put the shader in your game, for example `res://shaders/water.gdshader`.
-2. In the Material Browser ([[Ctrl+M]]), select a material: **Details → Shader → Choose…** and pick the file.
+2. In the Material Browser ([[Ctrl+M]]), select a material (or make one: **Create → Blank Material**), then **Details → Shader → Choose…** and pick the file.
 3. Each `uniform` gets a field: colour, slider, number, vector or texture. The 3D view shows the shader as you change them.
 4. Save: Godot gets your shader with your values.
 
@@ -121,6 +123,7 @@ void fragment() {
 - **File → Import Models…** brings in GLB, glTF or FBX files (with Blender installed, `.blend` and `.obj` too). Dropping files on the window does the same.
 - Each model becomes a tile in the **Props** drawer [[Shift+M]]. Drag a tile into the level; the wheel turns it before you drop it.
 - **Mark as Prop** turns your own geometry into a reusable model. Edit it once, every copy follows.
+- **Pivot:** [[P]] on a prop's corner, edge or surface puts the pivot there, [[Ctrl+P]] keeps it. **Edit → Object Pivot to Centre / Bottom Centre** does the same for its box. Every copy of the model gets it.
 
 ## Entities
 
