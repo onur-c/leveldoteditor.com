@@ -427,3 +427,6 @@ section > h2 { font-size: 28px; margin-bottom: 24px; }
   .pager { flex-direction: column; }
   .pager a:only-child.pager-prev, .pager a:only-child.pager-next { flex: 1 1 auto; }
 }
+.shader-demo { margin: 8px 0 18px; }
+.shader-demo img { display: block; width: 100%; max-width: 640px; height: auto; border-radius: 8px; box-shadow: 0 0 0 1px var(--line), 0 10px 24px -14px rgba(0, 0, 0, .6); }
+.shader-demo figcaption { color: var(--text-muted); font-size: 14px; margin-top: 6px; }

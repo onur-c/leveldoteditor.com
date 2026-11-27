@@ -8,7 +8,7 @@ The latest version first. Download it on [itch.io](https://onur-c.itch.io/leveld
 <div class="cards three">
   <div class="card"><p class="card-title">Proportional editing</p><p>[[O]] bends a mesh softly: nearby corners follow, the wheel sets the reach. <a href="basics.html#proportional-editing">How</a></p></div>
   <div class="card"><p class="card-title">Draw Grid</p><p>A flat plane cut into cells, ready for hills and uneven ground. <a href="tools.html#blockout">How</a></p></div>
-  <div class="card"><p class="card-title">Your own shaders</p><p>A material can use a <code>.gdshader</code> from your Godot game, with a field for each setting. <a href="tools.html#texture-and-uv">How</a></p></div>
+  <div class="card"><p class="card-title">Your own shaders</p><p>A material can use a <code>.gdshader</code> from your Godot game, with a field for each setting. <a href="tools.html#your-own-shader">How</a></p></div>
 </div>
 
 ### New

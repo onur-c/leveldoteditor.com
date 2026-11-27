@@ -6,7 +6,7 @@
 <title>Tools · Leveldot Docs</title>
 <meta name="description" content="Leveldot Editor documentation: tools.">
 <link rel="icon" href="../img/icon.png">
-<link rel="stylesheet" href="../style.css?v=8663337df9">
+<link rel="stylesheet" href="../style.css?v=c3931f06c8">
 </head>
 <body class="docs">
 <header class="top">
@@ -245,7 +245,48 @@
 </tbody>
 </table>
 <p>A UV editor, decals and vertex colours are in the <strong>Texture</strong> menu.</p>
-<p><strong>Your own shader:</strong> in the Material Browser, <strong>Details → Shader → Choose…</strong> picks a <code>.gdshader</code> from your linked Godot game. Each of its uniforms gets a field, the 3D view shows the shader, and Godot gets it with your values.</p>
+<h3 id="your-own-shader">Your own shader</h3>
+<p>A material can be drawn with a <code>.gdshader</code> from your linked Godot game.</p>
+<ol>
+<li>Put the shader in your game, for example <code>res://shaders/water.gdshader</code>.</li>
+<li>In the Material Browser (<span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>M</kbd></span></span>), select a material: <strong>Details → Shader → Choose…</strong> and pick the file.</li>
+<li>Each <code>uniform</code> gets a field: colour, slider, number, vector or texture. The 3D view shows the shader as you change them.</li>
+<li>Save: Godot gets your shader with your values.</li>
+</ol>
+<p>After you edit the shader file, press <strong>Refresh</strong> in the Material Browser. <strong>Clear</strong> goes back to the material's picture.</p>
+<p>Example: water with waves and a moving noise texture.</p>
+<pre><code class="language-glsl">shader_type spatial;
+
+uniform vec4 shallow_color : source_color = vec4(0.2, 0.7, 0.8, 1.0);
+uniform vec4 deep_color : source_color = vec4(0.02, 0.15, 0.3, 1.0);
+uniform float wave_speed : hint_range(0.0, 5.0) = 1.0;
+uniform float wave_height : hint_range(0.0, 0.5) = 0.05;
+uniform float roughness_value : hint_range(0.0, 1.0) = 0.1;
+uniform sampler2D noise_tex;
+
+void vertex() {
+    float t = TIME * wave_speed;
+    VERTEX.y += sin(VERTEX.x * 2.0 + t) * cos(VERTEX.z * 2.0 + t) * wave_height;
+}
+
+void fragment() {
+    float n = texture(noise_tex, UV + TIME * 0.02 * wave_speed).r;
+    ALBEDO = mix(deep_color.rgb, shallow_color.rgb, n);
+    ROUGHNESS = roughness_value;
+    METALLIC = 0.0;
+}
+</code></pre>
+<p>In Leveldot this gives two colour pickers (<code>shallow_color</code>, <code>deep_color</code>), three sliders (<code>wave_speed</code>, <code>wave_height</code>, <code>roughness_value</code>) and a texture field for <code>noise_tex</code>.</p>
+<figure class="shader-demo"><img src="../img/shader-water.gif" alt="A box drawn with the water shader in the Leveldot 3D view" width="1160" height="870" loading="lazy"><figcaption>The water shader on a box, live in Leveldot.</figcaption></figure>
+
+<p><strong>Limitations right now:</strong></p>
+<ul>
+<li>Only <code>shader_type spatial</code> (3D surfaces).</li>
+<li>The shader file must be inside the linked game. A texture field takes an image from the game too.</li>
+<li>A shader that uses global uniforms, the screen or depth texture, or an <code>#include</code> Leveldot cannot find is not used: the material's picture shows instead, and Validation (<span class="keys"><span class="combo"><kbd>F8</kbd></span></span>) says why.</li>
+<li>The exported model itself carries the picture; Godot puts your shader on it when it refreshes the level.</li>
+<li>A value of a uniform you remove from the shader stays in the project; Validation lists it.</li>
+</ul>
 <h2 id="props">Props</h2>
 <ul>
 <li><strong>File → Import Models…</strong> brings in GLB, glTF or FBX files (with Blender installed, <code>.blend</code> and <code>.obj</code> too). Dropping files on the window does the same.</li>
