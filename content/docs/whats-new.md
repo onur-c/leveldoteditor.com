@@ -23,7 +23,6 @@ The latest version first. Download it on [itch.io](https://onur-c.itch.io/leveld
 - **Outliner:** the row icon shows the type, a selection in the 3D view scrolls to its row, drag rows onto a group to put them in, [[F2]] renames.
 - **Details:** the object's own settings first, the group after; it fits small screens and remembers how much room you give it.
 - **Entity Details:** values change in place, [[Enter]] moves to the next one.
-- A copied group keeps its name with a number (Group 1_001).
 - Saving exports to Godot in the background, and Godot shows when it has refreshed the level.
 - **Open in Godot** and [[F5]] start the Godot version your game is made with.
 - Holding [[Shift]] while moving takes fine 1 cm steps.

@@ -54,7 +54,7 @@ Select something first, then use a tool. Its settings show at the bottom left of
 | Boolean difference | [[Ctrl+Minus / Ctrl+Shift+Numpad Subtract]] | Cuts one object out of another |
 | Mirror | [[Shift+Z]] | Mirrors objects (X; Y and Z in the menu) |
 | Array | | Copies in a line or around a circle |
-| Group | [[Ctrl+G]] | Parts that select and move together; a copy keeps the name with a number (Group 1_001) |
+| Group | [[Ctrl+G]] | Parts that select and move together |
 
 ## Texture and UV
 
