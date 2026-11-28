@@ -37,9 +37,9 @@ LINKS = {
 
 # (output file, nav label, source: a file in content/docs or "shortcuts")
 PAGES = [
-    ("index.html", "Install", "install.md"),
+    ("index.html", "Quick Start", "quick-start.md"),  # always first: the docs' landing page
+    ("install.html", "Install", "install.md"),
     ("link-godot.html", "Link Godot", "link-godot.md"),
-    ("quick-start.html", "Quick Start", "quick-start.md"),
     ("basics.html", "Basics", "basics.md"),
     ("tools.html", "Tools", "tools.md"),
     ("shortcuts.html", "Shortcuts", "shortcuts"),

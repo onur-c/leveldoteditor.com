@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Install · Leveldot Docs</title>
-<meta name="description" content="Leveldot Editor documentation: install.">
+<title>Quick Start · Leveldot Docs</title>
+<meta name="description" content="Leveldot Editor documentation: quick start.">
 <link rel="icon" href="../img/icon.png">
 <link rel="stylesheet" href="../style.css?v=c3931f06c8">
 </head>
@@ -29,9 +29,9 @@
 <div class="docs-layout">
   <nav class="sidebar" aria-label="Documentation">
     <p class="side-title">Documentation</p>
-    <a href="index.html" aria-current="page">Install</a>
+    <a href="index.html" aria-current="page">Quick Start</a>
+    <a href="install.html">Install</a>
     <a href="link-godot.html">Link Godot</a>
-    <a href="quick-start.html">Quick Start</a>
     <a href="basics.html">Basics</a>
     <a href="tools.html">Tools</a>
     <a href="shortcuts.html">Shortcuts</a>
@@ -39,75 +39,31 @@
     <a href="changelog.html">Changelog</a>
   </nav>
   <main class="doc page-index" id="main">
-    <h1>Install</h1>
-    <p class="lead">Leveldot Editor is a standalone program for Windows. You build levels in it; your game runs in Godot.</p>
-<h2 id="what-you-need">What you need</h2>
-<div class="cards three">
-  <div class="card"><p class="card-title">Windows 10 or 11</p><p>64-bit.</p></div>
-  <div class="card"><p class="card-title">A Vulkan graphics card</p><p>Most cards from the last ten years.</p></div>
-  <div class="card"><p class="card-title">Godot 4.4 or later</p><p>Only for your game. The editor does not need it.</p></div>
-</div>
-
-<h2 id="install">Install</h2>
+    <h1>Quick Start</h1>
+    <p class="lead">From download to your own game scene in a few steps.</p>
 <ol>
-<li>Download the ZIP from <a href="https://onur-c.itch.io/leveldot-editor">itch.io</a>.</li>
-<li>Extract it into a folder you can write to.</li>
-<li>Run <code>LeveldotEditor.exe</code>. Like Godot itself, the editor is a single file: nothing else to install.</li>
+<li><strong>Download Leveldot</strong> from <a href="https://onur-c.itch.io/leveldot-editor">itch.io</a>, extract the ZIP and run <code>LeveldotEditor.exe</code> (<a href="install.html">Install</a> has the details).</li>
+<li><strong>Open Leveldot</strong> and save your project (<span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></span></span>) in a folder of your choice.</li>
+<li><strong>Link the Godot project</strong> your levels should go to: choose <strong>File → Link Godot Project…</strong> and pick the folder that holds <code>project.godot</code>.</li>
+<li><strong>Export to Godot:</strong> save again with <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></span></span> (or <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>E</kbd></span></span>). Your levels go into the game.</li>
+<li><strong>In Godot:</strong> make sure the Leveldot plugin is on (<strong>Project → Project Settings → Plugins</strong>), then <strong>Project → Reload Current Project</strong>.</li>
+<li><strong>Make your game scene:</strong> open the <strong>Leveldot</strong> screen at the top of Godot, select your level in <strong>Levels</strong>, press <strong>Create Game Scene…</strong>.</li>
 </ol>
-<h2 id="first-launch">First launch</h2>
-<ul>
-<li>An empty level opens with one cube and a <strong>New level</strong> card.</li>
-<li>Click an empty spot in the 3D view to close the card.</li>
-<li>Press <span class="keys"><span class="combo"><kbd>Shift</kbd><span class="plus">+</span><kbd>B</kbd></span></span> and drag on the grid to draw your first box.</li>
-</ul>
-<h2 id="projects">Projects</h2>
-<p>A project is one folder. It holds every level of your game, with its materials and models.</p>
-<div class="tree"><pre>
-My Game.leveldot/
-└─ project.json      <span>← open this file</span>
-</pre></div>
+<figure class="ui-strip"><img src="../img/qs-leveldot-tab.jpg" alt="Godot's top bar with the Leveldot screen next to 2D, 3D, Script, Game and Asset Store" width="530" height="44" loading="lazy"><figcaption>The Leveldot screen in Godot</figcaption></figure>
 
-<table>
-<thead>
-<tr>
-<th>Do</th>
-<th>Key</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Save</td>
-<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></span></span></td>
-</tr>
-<tr>
-<td>Save to a new folder</td>
-<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>S</kbd></span></span></td>
-</tr>
-<tr>
-<td>Open (pick <code>project.json</code>, or drop the folder on the window)</td>
-<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>O</kbd></span></span></td>
-</tr>
-<tr>
-<td>New project</td>
-<td><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>N</kbd></span></span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="safety-nets">Safety nets</h2>
-<ul>
-<li><strong>Undo and redo:</strong> <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span></span> and <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Y</kbd></span></span>. Every edit is one step, selection included.</li>
-<li><strong>Recovery:</strong> unsaved work is copied every 30 seconds. After a crash the copies are offered at the next start.</li>
-<li><strong>Your settings</strong> (theme, scale, layout, keys) belong to you, not to the project.</li>
-</ul>
-<h2 id="find-anything">Find anything</h2>
-<ul>
-<li><span class="keys"><span class="combo"><kbd>F1</kbd></span></span> opens the manual inside the app.</li>
-<li><span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>K</kbd></span><span class="or">or</span><span class="combo"><kbd>F3</kbd></span></span> finds any command by name and shows its key.</li>
-<li><strong>Help → Tutorial</strong> builds a small game with you, step by step.</li>
-</ul>
-    <nav class="pager" aria-label="Pages"><a class="pager-next" href="link-godot.html"><span><small>Next</small>Link Godot</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
+<figure class="ui-strip"><img src="../img/qs-create-game-scene.jpg" alt="The Levels tab of the Leveldot screen with the Backrooms level selected and the Create Game Scene button" width="900" height="252" loading="lazy"><figcaption>Levels → Create Game Scene…</figcaption></figure>
+
+<p>This makes a scene with your level inside it as <strong>World</strong>. Add anything you want to this scene: your player, enemies, scripts.</p>
+<figure class="ui-strip"><img src="../img/qs-world.jpg" alt="The new scene in Godot: Backrooms with the World level under it" width="262" height="68" loading="lazy"><figcaption>Your scene, with the level as World</figcaption></figure>
+
+<div class="note"><p><strong>Keep World as it is.</strong> If you make World editable in Godot, your changes in Leveldot no longer appear.</p></div>
+
+<div class="note"><p><strong>Only once.</strong> These steps are the first setup. After that, export from Leveldot (<span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>S</kbd></span></span> or <span class="keys"><span class="combo"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>E</kbd></span></span>) and World updates itself.</p></div>
+
+<p>More on linking: <a href="link-godot.html">Link Godot</a>.</p>
+    <nav class="pager" aria-label="Pages"><a class="pager-next" href="install.html"><span><small>Next</small>Install</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m0 0-6-6m6 6-6 6"/></svg></a></nav>
   </main>
-  <aside class="toc"><p class="toc-title">On this page</p><ul><li><a href="#what-you-need">What you need</a></li><li><a href="#install">Install</a></li><li><a href="#first-launch">First launch</a></li><li><a href="#projects">Projects</a></li><li><a href="#safety-nets">Safety nets</a></li><li><a href="#find-anything">Find anything</a></li></ul></aside>
+  
 </div>
 <footer class="foot">
   <div class="foot-inner">

@@ -19,11 +19,11 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 | `README.md` | kullanıcı için: nasıl çalıştırılır, nasıl kullanılır |
 | `docs/HANDOFF.md` | şu anki durum, doğrulanmayanlar, bekleyen istekler (değiştirilir, eklenmez) |
 | `docs/DECISIONS.md` | kararlar ve nedenleri (ADR) |
-| `content/docs/install.md` | site sayfası kaynağı: Install (`site/docs/index.html`) |
+| `content/docs/install.md` | site sayfası kaynağı: Install (`site/docs/install.html`) |
 | `content/docs/link-godot.md` | site sayfası kaynağı: Link Godot |
 | `content/docs/basics.md` | site sayfası kaynağı: Basics (ekran, seçim, dönüşüm, kamera) |
 | `content/docs/tools.md` | site sayfası kaynağı: Tools |
-| `content/docs/quick-start.md` | site sayfası kaynağı: Quick Start (Basics'ten önce; beş adımda Leveldot'tan Godot oyun sahnesine) |
+| `content/docs/quick-start.md` | site sayfası kaynağı: Quick Start (`site/docs/index.html`, dokümanlarda hep ilk sayfa; indirmeden Godot oyun sahnesine adımlar) |
 | `content/docs/changelog.md` | site sayfası kaynağı: Changelog (sürüm notları, en yenisi üstte; dokümanlarda en son sayfa) |
 | `content/docs/logic.md` | site sayfası kaynağı: Entities and logic (deneysel, son sayfa) |
 

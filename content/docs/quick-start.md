@@ -1,8 +1,9 @@
 # Quick Start
 
-From an empty level to your own game scene in five steps.
+From download to your own game scene in a few steps.
 {: .lead }
 
+1. **Download Leveldot** from [itch.io](https://onur-c.itch.io/leveldot-editor), extract the ZIP and run `LeveldotEditor.exe` ([Install](install.html) has the details).
 1. **Open Leveldot** and save your project ([[Ctrl+S]]) in a folder of your choice.
 2. **Link the Godot project** your levels should go to: choose **File → Link Godot Project…** and pick the folder that holds `project.godot`.
 3. **Export to Godot:** save again with [[Ctrl+S]] (or [[Ctrl+E]]). Your levels go into the game.
@@ -18,5 +19,7 @@ This makes a scene with your level inside it as **World**. Add anything you want
 <figure class="ui-strip"><img src="../img/qs-world.jpg" alt="The new scene in Godot: Backrooms with the World level under it" width="262" height="68" loading="lazy"><figcaption>Your scene, with the level as World</figcaption></figure>
 
 <div class="note"><p><strong>Keep World as it is.</strong> If you make World editable in Godot, your changes in Leveldot no longer appear.</p></div>
+
+<div class="note"><p><strong>Only once.</strong> These steps are the first setup. After that, export from Leveldot ([[Ctrl+S]] or [[Ctrl+E]]) and World updates itself.</p></div>
 
 More on linking: [Link Godot](link-godot.html).
