@@ -23,6 +23,7 @@ yeni belgeyi engeller). Geçmiş `git log`'dadır.
 | `content/docs/link-godot.md` | site sayfası kaynağı: Link Godot |
 | `content/docs/basics.md` | site sayfası kaynağı: Basics (ekran, seçim, dönüşüm, kamera) |
 | `content/docs/tools.md` | site sayfası kaynağı: Tools |
+| `content/docs/quick-start.md` | site sayfası kaynağı: Quick Start (Basics'ten önce; beş adımda Leveldot'tan Godot oyun sahnesine) |
 | `content/docs/changelog.md` | site sayfası kaynağı: Changelog (sürüm notları, en yenisi üstte; dokümanlarda en son sayfa) |
 | `content/docs/logic.md` | site sayfası kaynağı: Entities and logic (deneysel, son sayfa) |
 

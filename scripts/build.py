@@ -39,6 +39,7 @@ LINKS = {
 PAGES = [
     ("index.html", "Install", "install.md"),
     ("link-godot.html", "Link Godot", "link-godot.md"),
+    ("quick-start.html", "Quick Start", "quick-start.md"),
     ("basics.html", "Basics", "basics.md"),
     ("tools.html", "Tools", "tools.md"),
     ("shortcuts.html", "Shortcuts", "shortcuts"),
