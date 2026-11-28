@@ -133,6 +133,7 @@ section > h2 { font-size: 28px; margin-bottom: 24px; }
 .lead { font-size: 18px; color: var(--text-muted); margin: 0 0 28px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .fine { font-size: 14px; color: var(--text-muted); margin-top: 20px; }
+.inspired { font-size: 15px; color: var(--text-muted); margin: -4px 0 26px; }
 .hero-shot { margin: 0; }
 .hero-shot img, .shots img {
   border-radius: var(--radius);
